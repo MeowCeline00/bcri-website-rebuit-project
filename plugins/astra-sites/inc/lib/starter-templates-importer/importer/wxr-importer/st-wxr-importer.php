@@ -31,6 +31,14 @@ class ST_WXR_Importer {
 	private static $instance = null;
 
 	/**
+	 * Transient key for WXR import progress.
+	 *
+	 * @since 1.1.24
+	 * @var string
+	 */
+	private $wxr_import_progress_key = 'st_wxr_importer_progress';
+
+	/**
 	 * Initiator of this class.
 	 *
 	 * @since 1.0.0
@@ -61,6 +69,9 @@ class ST_WXR_Importer {
 		}
 		add_action( 'wp_import_insert_post', array( $this, 'after_imported_post' ), 10, 4 );
 
+		// To handle the multiple WXR import requests.
+		add_action( 'import_start', array( $this, 'wxr_import_transient_start' ) );
+		add_action( 'import_end', array( $this, 'wxr_import_transient_cleanup' ) );
 	}
 
 	/**
@@ -124,6 +135,54 @@ class ST_WXR_Importer {
 	}
 
 	/**
+	 * WXR Import Transient Start
+	 *
+	 * @since 1.1.24
+	 */
+	public function wxr_import_transient_start() {
+		set_transient( $this->wxr_import_progress_key, 'ongoing', 300 ); // 5 minutes.
+	}
+
+	/**
+	 * WXR Import Transient Cleanup
+	 *
+	 * @since 1.1.24
+	 */
+	public function wxr_import_transient_cleanup() {
+		set_transient( $this->wxr_import_progress_key, 'completed', 30 ); // 30 seconds.
+	}
+
+	/**
+	 * Is WXR Import In Progress
+	 *
+	 * @since 1.1.24
+	 * @return bool True if in progress, false otherwise.
+	 */
+	public function is_wxr_import_in_progress() {
+		// Check existing progress.
+		$wxr_progress = get_transient( $this->wxr_import_progress_key );
+		if ( ! $wxr_progress ) {
+			return false;
+		}
+
+		if ( 'completed' === $wxr_progress ) {
+			$data = array(
+				'action' => 'complete',
+				'error'  => false,
+			);
+		} else {
+			$data = array(
+				'action' => 'updatedDelta',
+				'type'   => 'status',
+				'delta'  => 1,
+			);
+		}
+
+		$this->emit_sse_message( $data );
+		return true;
+	}
+
+	/**
 	 * Constructor.
 	 *
 	 * @since  1.1.0
@@ -172,8 +231,14 @@ class ST_WXR_Importer {
 			$xml_url = get_attached_file( $xml_id );
 		}
 
+		// Check for existing progress to prevent duplicate content.
+		if ( $this->is_wxr_import_in_progress() ) {
+			return;
+		}
+
 		// Enhanced XML file validation.
 		if ( empty( $xml_url ) ) {
+			$this->wxr_import_transient_cleanup();
 			$this->emit_sse_message(
 				array(
 					'action' => 'complete',
@@ -187,6 +252,7 @@ class ST_WXR_Importer {
 		}
 
 		if ( ! file_exists( $xml_url ) ) {
+			$this->wxr_import_transient_cleanup();
 			$this->emit_sse_message(
 				array(
 					'action' => 'complete',
@@ -200,6 +266,7 @@ class ST_WXR_Importer {
 		}
 
 		if ( ! is_readable( $xml_url ) ) {
+			$this->wxr_import_transient_cleanup();
 			$this->emit_sse_message(
 				array(
 					'action' => 'complete',
@@ -260,11 +327,17 @@ class ST_WXR_Importer {
 		// Flush once more.
 		flush();
 
+		/**
+		 * Importer instance.
+		 *
+		 * @var \WXR_Importer $importer Importer instance.
+		 */
 		$importer = $this->get_importer();
 
 		try {
 			$response = $importer->import( $xml_url );
 		} catch ( \Exception $e ) {
+			$this->wxr_import_transient_cleanup();
 			$this->emit_sse_message(
 				array(
 					'action'    => 'complete',
@@ -277,6 +350,7 @@ class ST_WXR_Importer {
 			}
 			return;
 		} catch ( \Error $e ) {
+			$this->wxr_import_transient_cleanup();
 			$this->emit_sse_message(
 				array(
 					'action'    => 'complete',

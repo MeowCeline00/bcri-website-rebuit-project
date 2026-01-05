@@ -20,13 +20,13 @@ import { BarChart, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { SureRankFullLogo } from '@GlobalComponents/icons';
 import PageChecks from '@SeoPopup/components/page-seo-checks/page-checks';
-import { useDispatch, useSuspenseSelect } from '@wordpress/data';
+import { useDispatch, useSuspenseSelect, resolveSelect } from '@wordpress/data';
 import PageChecksListSkeleton from '@/apps/seo-popup/components/page-seo-checks/page-checks-list-skeleton';
 import RenderQueue from '@Functions/render-queue';
 import { STORE_NAME } from '@Store/constants';
 import '@Store/store';
-import './style.scss';
 import { cn } from '@/functions/utils';
+import './style.scss';
 
 // Initialize a global RenderQueue for sequential badge rendering
 const renderQueue = new RenderQueue();
@@ -146,21 +146,24 @@ const CustomBadge = ( {
 		checks: seoChecks,
 		error: errorMessage,
 		batchGeneration,
-	} = useSuspenseSelect( ( select ) => {
-		const store = select( STORE_NAME );
-		const checksResult =
-			store?.getSeoBarChecks(
-				id,
-				isTaxonomy ? 'taxonomy' : 'post',
-				forceRefresh
-			) || {};
-		const pageSeoChecks = store?.getPageSeoChecks() || {};
+	} = useSuspenseSelect(
+		( select ) => {
+			const store = select( STORE_NAME );
+			const checksResult =
+				store?.getSeoBarChecks(
+					id,
+					isTaxonomy ? 'taxonomy' : 'post',
+					forceRefresh
+				) || {};
+			const pageSeoChecks = store?.getPageSeoChecks() || {};
 
-		return {
-			...checksResult,
-			batchGeneration: pageSeoChecks.batchGeneration,
-		};
-	}, [] );
+			return {
+				...checksResult,
+				batchGeneration: pageSeoChecks.batchGeneration,
+			};
+		},
+		[ forceRefresh ]
+	);
 
 	// Call onRenderComplete when data is loaded and component is rendered
 	useEffect( () => {
@@ -313,10 +316,22 @@ const renderBadge = ( span, forceRefresh = false ) => {
 	} );
 };
 
-const renderBadges = () => {
+const renderBadges = async () => {
 	const spans = document.querySelectorAll(
 		'span.surerank-page-score[data-id]'
 	);
+
+	const isTaxonomy = window?.surerank_seo_bar?.type === 'taxonomy';
+	const ids = Array.from( spans )
+		.map( ( span ) => span.getAttribute( 'data-id' ) )
+		.filter( Boolean );
+
+	if ( ids.length > 0 ) {
+		await resolveSelect( STORE_NAME ).getSeoBarChecks(
+			ids,
+			isTaxonomy ? 'taxonomy' : 'post'
+		);
+	}
 
 	// Use queue for sequential rendering
 	spans.forEach( ( span ) => {
@@ -352,6 +367,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	const table = document.querySelector( '#the-list' );
 	if ( table ) {
 		const observer = new MutationObserver( ( mutations ) => {
+			const newSpans = [];
+			const newIds = [];
+
 			mutations.forEach( ( mutation ) => {
 				if ( mutation.addedNodes.length ) {
 					mutation.addedNodes.forEach( ( node ) => {
@@ -361,15 +379,30 @@ document.addEventListener( 'DOMContentLoaded', () => {
 							);
 							spans.forEach( ( span ) => {
 								if ( ! span.dataset.rendered ) {
-									renderQueue.enqueue( () =>
-										renderBadge( span, Date.now() )
-									); // Force refresh for new terms
+									newSpans.push( span );
+									newIds.push( span.dataset.id );
 								}
 							} );
 						}
 					} );
 				}
 			} );
+
+			const isTaxonomy = window?.surerank_seo_bar?.type === 'taxonomy';
+
+			const processSpans = ( forceRefresh = true ) => {
+				newSpans.forEach( ( span ) => {
+					renderQueue.enqueue( () =>
+						renderBadge( span, forceRefresh ? Date.now() : null )
+					);
+				} );
+			};
+
+			if ( newIds.length > 0 ) {
+				resolveSelect( STORE_NAME )
+					.getSeoBarChecks( newIds, isTaxonomy ? 'taxonomy' : 'post' )
+					.finally( () => processSpans( true ) );
+			}
 		} );
 
 		observer.observe( table, {

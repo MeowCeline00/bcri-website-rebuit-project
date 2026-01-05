@@ -8,13 +8,13 @@
 
 namespace SureRank\Inc\Functions;
 
+use SureRank\Inc\Admin\Helper as AdminHelper;
+use SureRank\Inc\Frontend\Robots;
 use SureRank\Inc\Meta_Variables\Post;
 use SureRank\Inc\Meta_Variables\Site;
 use SureRank\Inc\Meta_Variables\Term;
-use SureRank\Inc\Frontend\Robots;
 use WP_Post;
 use WP_Query;
-use SureRank\Inc\Admin\Helper as AdminHelper;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -609,6 +609,28 @@ class Helper {
 	 */
 	public static function is_wp_schema_pro_active() {
 		return defined( 'BSF_AIOSRS_PRO_VER' );
+	}
+
+	/**
+	 * Encode a value using base64.
+	 *
+	 * @since 1.6.0
+	 * @param string $value Value to encode.
+	 * @return string Encoded value.
+	 */
+	public static function encode( $value ) {
+		return base64_encode( $value ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
+	}
+
+	/**
+	 * Decode a value using base64.
+	 *
+	 * @since 1.6.0
+	 * @param string $value Value to decode.
+	 * @return string|false Decoded value or false on failure.
+	 */
+	public static function decode( $value ) {
+		return base64_decode( $value, true ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode
 	}
 
 	/**

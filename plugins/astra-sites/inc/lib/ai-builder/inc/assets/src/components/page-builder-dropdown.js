@@ -120,6 +120,27 @@ export const SelectTemplatePageBuilderDropdown = ( {
 		} );
 	}
 
+	// Filter and order by supported page builders.
+	if ( supportedPageBuilders?.length ) {
+		// Map 'spectra' to 'block-editor' for comparison with supportedPageBuilders.
+		const mapBuilderId = ( id ) =>
+			id === 'spectra' ? 'block-editor' : id;
+
+		buildersList.splice(
+			0,
+			buildersList.length,
+			...buildersList
+				.filter( ( builder ) =>
+					supportedPageBuilders.includes( mapBuilderId( builder.id ) )
+				)
+				.sort(
+					( a, b ) =>
+						supportedPageBuilders.indexOf( mapBuilderId( a.id ) ) -
+						supportedPageBuilders.indexOf( mapBuilderId( b.id ) )
+				)
+		);
+	}
+
 	return (
 		<>
 			<DropdownList

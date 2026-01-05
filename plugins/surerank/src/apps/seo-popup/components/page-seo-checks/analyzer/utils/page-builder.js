@@ -1,5 +1,6 @@
 import apiFetch from '@wordpress/api-fetch';
 import { __ } from '@wordpress/i18n';
+import { addQueryArgs } from '@wordpress/url';
 import { Button, toast } from '@bsf/force-ui';
 import { formatSeoChecks, cn } from '@/functions/utils';
 import { STORE_NAME } from '@/store/constants';
@@ -123,12 +124,15 @@ export const refreshPageChecks = async (
 
 	try {
 		const response = await apiFetch( {
-			path: `/surerank/v1/checks/page?post_id=${ dynamicPostId }&_t=${ Date.now() }`,
+			path: addQueryArgs( '/surerank/v1/checks/page', {
+				post_ids: [ dynamicPostId ],
+				_t: Date.now(),
+			} ),
 			method: 'GET',
 		} );
 
-		const checks = formatSeoChecks( response?.checks );
-		const allLinks = response?.checks?.all_links || [];
+		const checks = formatSeoChecks( response?.data[ dynamicPostId ]?.checks );
+		const allLinks = response.data[ dynamicPostId ]?.checks?.all_links || [];
 
 		// Reset brokenLinkState, keeping only broken links that still exist
 		setBrokenLinkState( ( prev ) => {

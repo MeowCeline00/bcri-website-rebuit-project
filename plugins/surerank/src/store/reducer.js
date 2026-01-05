@@ -214,6 +214,14 @@ function reducer( state = DEFAULT_STATE, action ) {
 					},
 				},
 			};
+		case actionTypes.SET_BATCH_PAGE_SEO_CHECKS:
+			return {
+				...state,
+				pageSeoChecks: {
+					...state.pageSeoChecks,
+					...action.payload,
+				},
+			};
 		default:
 			const proState = applyFilters(
 				'surerank-pro.seo-metabox-store',

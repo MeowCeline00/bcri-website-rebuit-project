@@ -5,7 +5,7 @@ Tags: Elementor,Templates,Gutenberg,Block Editor,Astra Starter Sites
 Requires at least: 6.6
 Requires PHP: 7.4
 Tested up to: 6.9
-Stable tag: 4.4.44
+Stable tag: 4.4.45
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -245,6 +245,18 @@ You can report the issue through our [Bug Bounty Program](https://brainstormforc
 6. Use the power of AI with a single click to write copy, proofread, translate content into different languages. Adjust content length and tone seamlessly for maximum appeal.
 
 == Changelog ==
+v4.4.45 - 31-December-2025
+- Improvement:
+    - Enhanced the import process to prevent duplicate content in rare cases.
+    - Improved the feature plugin list UI to avoid duplicate entries.
+    - Importer: Added support for the SureCart checkout form block during batch processing.
+    - Design Kit: Added compatibility for reorganized Astra Color Palette.
+- Fix:
+    - Fixed an issue where widgets were missing during CLI imports.
+    - Resolved the eCommerce option selection issue in template preview.
+    - Handled memory-limit check function errors more gracefully.
+    - Free Images: Fixed the Media Uploader “Select” button text issue caused by media frame conflicts with other plugins.
+
 v4.4.44 - 08-December2025
 - New:
     - AI Builder: Added switch team and disconnect AI links in the Zip Plan info modal.

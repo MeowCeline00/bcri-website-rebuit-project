@@ -57,6 +57,7 @@ use SureRank\Inc\GoogleSearchConsole\Auth;
 use SureRank\Inc\Lib\Surerank_Nps_Survey;
 use SureRank\Inc\Modules\Ai_Auth\Init as Ai_Auth_Init;
 use SureRank\Inc\Modules\Content_Generation\Init as Content_Generation_Init;
+use SureRank\Inc\Modules\EmailReports\Init as EmailReports_Init;
 use SureRank\Inc\Modules\Fix_Seo_Checks\Init as Fix_Seo_Checks_Init;
 use SureRank\Inc\Modules\Nudges\Init as Nudges_Init;
 use SureRank\Inc\Nps_Notice;
@@ -323,6 +324,7 @@ class Loader {
 			Checksum::class,
 			Ai_Auth_Init::class,
 			Content_Generation_Init::class,
+			EmailReports_Init::class,
 			Fix_Seo_Checks_Init::class,
 			Nudges_Init::class,
 			Integrations_Init::class,

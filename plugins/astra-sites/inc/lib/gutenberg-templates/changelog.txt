@@ -1,3 +1,6 @@
+v.2.4.17 - 30-December-2025
+Improvement: Added Astra Color Palette reorganize compatibility.
+
 v.2.4.16 - 05-December-2025
 Improvement: Added automatic library sync when Spectra plugin is installed, updated, or deleted to ensure proper version switching between v2 and v3.
 

@@ -193,7 +193,7 @@ const Analyze = () => {
 		<div className="space-y-2">
 			{ /* Show save message only for Elementor */ }
 			{ isElementorBuilder() && (
-				<div className="[&_p.mr-10]:mr-0">
+				<div className="[&_p.mr-10]:mr-0 m-1">
 					<Alert
 						variant="info"
 						content={

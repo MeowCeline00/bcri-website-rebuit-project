@@ -466,8 +466,9 @@ if ( ! class_exists( 'ST_Replace_Blocks_Images' ) ) :
 				$block['innerHTML'] = str_replace( 'alt=""', 'alt="' . esc_attr( $alt_text ) . '"', $block['innerHTML'] );
 			}
 
-			if ( isset( $block['alt'] ) && ! empty( $attachment['alt'] ) ) {
-				$block['innerHTML'] = str_replace( $block['alt'], $attachment['alt'], $block['innerHTML'] );
+			// Replace old alt text with new alt text if both exist in block attrs and attachment.
+			if ( isset( $block['attrs']['alt'] ) && ! empty( $block['attrs']['alt'] ) && ! empty( $attachment['alt'] ) ) {
+				$block['innerHTML'] = str_replace( $block['attrs']['alt'], $attachment['alt'], $block['innerHTML'] );
 			}
 
 			$tablet_size_slug = ! empty( $block['attrs']['sizeSlugTablet'] ) ? $block['attrs']['sizeSlugTablet'] : '';

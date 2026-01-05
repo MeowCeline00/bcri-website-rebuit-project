@@ -6,15 +6,20 @@ import { cn } from '@/functions/utils';
 import { SeoPopupTooltip } from '@AdminComponents/tooltip';
 
 const MagicButton = ( { fieldKey, onUseThis, tooltip } ) => {
-	const { currentScreen, currentTab, currentMetaTab, generatedContents } =
-		useSelect( ( select ) => {
-			const selector = select( STORE_NAME );
+	const {
+		currentScreen,
+		currentTab,
+		currentMetaTab,
+		currentAccordion,
+		generatedContents,
+	} = useSelect( ( select ) => {
+		const selector = select( STORE_NAME );
 
-			return {
-				...selector.getPageSeoChecks(),
-				...selector.getAppSettings(),
-			};
-		}, [] );
+		return {
+			...selector.getPageSeoChecks(),
+			...selector.getAppSettings(),
+		};
+	}, [] );
 	const { updateAppSettings } = useDispatch( STORE_NAME );
 
 	// Check if content has been generated for this field
@@ -34,6 +39,7 @@ const MagicButton = ( { fieldKey, onUseThis, tooltip } ) => {
 			previousScreen: currentScreen,
 			previousTab: currentTab,
 			previousMetaTab: currentMetaTab,
+			previousAccordion: currentAccordion,
 			selectedFieldKey: fieldKey,
 			onUseThis,
 			generateContentProcess: 'idle',

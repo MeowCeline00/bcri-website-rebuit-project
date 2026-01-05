@@ -9,13 +9,13 @@
 
 namespace SureRank\Inc\API;
 
+use SureRank\Inc\Admin\Helper;
 use SureRank\Inc\Admin\Update_Timestamp;
 use SureRank\Inc\Functions\Requests;
 use SureRank\Inc\Functions\Send_Json;
 use SureRank\Inc\Functions\Settings;
 use SureRank\Inc\Functions\Update;
 use SureRank\Inc\Traits\Get_Instance;
-use SureRank\Inc\Admin\Helper;
 use WP_REST_Request;
 use WP_REST_Server;
 

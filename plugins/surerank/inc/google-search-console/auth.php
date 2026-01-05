@@ -10,7 +10,6 @@
 
 namespace SureRank\Inc\GoogleSearchConsole;
 
-use SureRank\Inc\Functions\Helper;
 use SureRank\Inc\Functions\Requests;
 use SureRank\Inc\Functions\Settings;
 use SureRank\Inc\Traits\Get_Instance;

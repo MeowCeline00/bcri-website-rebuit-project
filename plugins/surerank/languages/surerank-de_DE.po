@@ -292,82 +292,82 @@ msgstr "Keine URL angegeben."
 msgid "Post id or term id is required"
 msgstr "Post-ID oder Term-ID ist erforderlich"
 
-#: inc/api/admin.php:166
+#: inc/api/admin.php:175
 msgid "No data found"
 msgstr "Keine Daten gefunden"
 
-#: inc/api/admin.php:196
+#: inc/api/admin.php:205
 msgid "Settings updated"
 msgstr "Einstellungen aktualisiert"
 
-#: inc/api/analyzer.php:434
+#: inc/api/analyzer.php:448
 msgid "Google Search Console is connected."
 msgstr "Google Search Console ist verbunden."
 
-#: inc/api/analyzer.php:435
+#: inc/api/analyzer.php:449
 msgid "Google Search Console is not connected."
 msgstr "Google Search Console ist nicht verbunden."
 
-#: inc/api/analyzer.php:535
+#: inc/api/analyzer.php:554
 msgid "No other SEO plugin detected on the site."
 msgstr "Kein anderes SEO-Plugin auf der Seite erkannt."
 
-#: inc/api/analyzer.php:539
+#: inc/api/analyzer.php:558
 msgid "More than one SEO plugin detected on the site."
 msgstr "Mehr als ein SEO-Plugin auf der Seite erkannt."
 
-#: inc/api/analyzer.php:575
+#: inc/api/analyzer.php:617
 msgid "Site tagline is set in WordPress settings."
 msgstr "Der Seiten-Tagline ist in den WordPress-Einstellungen festgelegt."
 
-#: inc/api/analyzer.php:575
+#: inc/api/analyzer.php:617
 msgid "Site tagline is not set in WordPress settings."
 msgstr "Der Seiten-Tagline ist in den WordPress-Einstellungen nicht festgelegt."
 
 #. translators: %s is the URL of the surerank settings page
-#: inc/api/analyzer.php:591
+#: inc/api/analyzer.php:633
 #, php-format
 msgid "Set the site tagline on <a href=\"%s\">General settings page</a>."
 msgstr "Legen Sie die Seiten-Tagline auf der <a href=\"%s\">Seite der allgemeinen Einstellungen</a> fest."
 
-#: inc/api/analyzer.php:611
+#: inc/api/analyzer.php:653
 msgid "Robots.txt file is accessible."
 msgstr "Die Robots.txt-Datei ist zugänglich."
 
-#: inc/api/analyzer.php:612
+#: inc/api/analyzer.php:654
 msgid "Robots.txt file is not accessible."
 msgstr "Die Robots.txt-Datei ist nicht zugänglich."
 
-#: inc/api/analyzer.php:653
+#: inc/api/analyzer.php:735
 msgid "Search engine visibility is not blocked in WordPress settings."
 msgstr "Die Sichtbarkeit für Suchmaschinen ist in den WordPress-Einstellungen nicht blockiert."
 
-#: inc/api/analyzer.php:654
+#: inc/api/analyzer.php:736
 msgid "Search engine visibility is blocked in WordPress settings."
 msgstr "Die Sichtbarkeit für Suchmaschinen ist in den WordPress-Einstellungen blockiert."
 
-#: inc/api/analyzer.php:656
+#: inc/api/analyzer.php:738
 msgid "Search engine visibility settings need to be enabled. The “Discourage search engines from indexing this site” option in WordPress settings must remain unchecked to allow normal crawling and indexing."
 msgstr "Die Einstellungen zur Sichtbarkeit für Suchmaschinen müssen aktiviert werden. Die Option „Suchmaschinen davon abhalten, diese Website zu indizieren“ in den WordPress-Einstellungen muss deaktiviert bleiben, um normales Crawling und Indizieren zu ermöglichen."
 
-#: inc/api/analyzer.php:699
+#: inc/api/analyzer.php:781
 msgid "XML sitemap is accessible to search engines."
 msgstr "Die XML-Sitemap ist für Suchmaschinen zugänglich."
 
-#: inc/api/analyzer.php:700
+#: inc/api/analyzer.php:782
 msgid "XML sitemap is not accessible to search engines."
 msgstr "Die XML-Sitemap ist für Suchmaschinen nicht zugänglich."
 
-#: inc/api/analyzer.php:774
+#: inc/api/analyzer.php:887
 msgid "Post not found"
 msgstr "Beitrag nicht gefunden"
 
-#: inc/api/analyzer.php:1767
-#: inc/api/analyzer.php:1790
+#: inc/api/analyzer.php:1874
+#: inc/api/analyzer.php:1897
 msgid "Link is broken"
 msgstr "Link ist defekt"
 
-#: inc/api/analyzer.php:791
+#: inc/api/analyzer.php:904
 msgid "Link is not broken"
 msgstr "Link ist nicht defekt"
 
@@ -480,22 +480,22 @@ msgid "Tag: "
 msgstr "Tag:"
 
 #: inc/frontend/title.php:146
-#: inc/meta-variables/post.php:244
+#: inc/meta-variables/post.php:245
 msgid "Author: "
 msgstr "Autor:"
 
 #: inc/frontend/title.php:155
-#: inc/meta-variables/post.php:248
+#: inc/meta-variables/post.php:249
 msgid "Day Archives: "
 msgstr "Tagesarchive:"
 
 #: inc/frontend/title.php:157
-#: inc/meta-variables/post.php:251
+#: inc/meta-variables/post.php:252
 msgid "Month Archives: "
 msgstr "Monatsarchive:"
 
 #: inc/frontend/title.php:159
-#: inc/meta-variables/post.php:254
+#: inc/meta-variables/post.php:255
 msgid "Year Archives: "
 msgstr "Jahresarchive:"
 
@@ -528,51 +528,51 @@ msgstr "Nicht auf Lager"
 msgid " - Page %1$s of %2$s"
 msgstr "- Seite %1$s von %2$s"
 
-#: inc/meta-variables/post.php:60
-#: inc/meta-variables/term.php:57
+#: inc/meta-variables/post.php:61
+#: inc/meta-variables/term.php:58
 msgid "ID"
 msgstr "ID"
 
-#: inc/meta-variables/post.php:61
+#: inc/meta-variables/post.php:62
 msgid "The unique identifier for a post."
 msgstr "Die eindeutige Kennung für einen Beitrag."
 
 #: inc/admin/dashboard.php:582
-#: inc/meta-variables/post.php:64
-#: inc/schema/variables.php:82
+#: inc/meta-variables/post.php:65
+#: inc/schema/variables.php:83
 #: build/admin-dashboard/index.js:1
 msgid "Post Title"
 msgstr "Beitragstitel"
 
 #: inc/admin/dashboard.php:584
-#: inc/meta-variables/post.php:65
+#: inc/meta-variables/post.php:66
 msgid "The title of the post."
 msgstr "Der Titel des Beitrags."
 
-#: inc/meta-variables/post.php:68
+#: inc/meta-variables/post.php:69
 msgid "Excerpt"
 msgstr "Auszug"
 
 #: inc/admin/dashboard.php:589
-#: inc/meta-variables/post.php:69
+#: inc/meta-variables/post.php:70
 msgid "The excerpt of the post."
 msgstr "Der Auszug des Beitrags."
 
-#: inc/meta-variables/post.php:72
+#: inc/meta-variables/post.php:73
 msgid "Content"
 msgstr "Inhalt"
 
 #: inc/admin/dashboard.php:594
-#: inc/meta-variables/post.php:73
+#: inc/meta-variables/post.php:74
 msgid "The content of the post."
 msgstr "Der Inhalt des Beitrags."
 
-#: inc/meta-variables/post.php:76
-#: inc/meta-variables/term.php:73
+#: inc/meta-variables/post.php:77
+#: inc/meta-variables/term.php:74
 msgid "Permalink"
 msgstr "Permalink"
 
-#: inc/meta-variables/post.php:77
+#: inc/meta-variables/post.php:78
 msgid "The permalink of the site."
 msgstr "Der Permalink der Seite."
 
@@ -618,21 +618,21 @@ msgstr "Seite"
 msgid "The current page number."
 msgstr "Die aktuelle Seitennummer."
 
-#: inc/meta-variables/term.php:58
+#: inc/meta-variables/term.php:59
 msgid "The unique identifier for a term."
 msgstr "Die eindeutige Kennung für einen Begriff."
 
-#: inc/meta-variables/term.php:61
-#: inc/schema/variables.php:111
+#: inc/meta-variables/term.php:62
+#: inc/schema/variables.php:112
 msgid "Term Name"
 msgstr "Begriffname"
 
 #: inc/admin/dashboard.php:579
-#: inc/meta-variables/term.php:62
+#: inc/meta-variables/term.php:63
 msgid "The name of the term."
 msgstr "Der Name des Begriffs."
 
-#: inc/meta-variables/term.php:65
+#: inc/meta-variables/term.php:66
 #: inc/schema/helper.php:170
 #: inc/schema/helper.php:225
 #: inc/schema/types/thing.php:82
@@ -642,19 +642,19 @@ msgid "Description"
 msgstr "Beschreibung"
 
 #: inc/admin/dashboard.php:599
-#: inc/meta-variables/term.php:66
+#: inc/meta-variables/term.php:67
 msgid "The description of the term."
 msgstr "Die Beschreibung des Begriffs."
 
-#: inc/meta-variables/term.php:69
+#: inc/meta-variables/term.php:70
 msgid "Slug"
 msgstr "Slug"
 
-#: inc/meta-variables/term.php:70
+#: inc/meta-variables/term.php:71
 msgid "The slug of the term."
 msgstr "Der Slug des Begriffs."
 
-#: inc/meta-variables/term.php:74
+#: inc/meta-variables/term.php:75
 msgid "The permalink of the term."
 msgstr "Der Permalink des Begriffs."
 
@@ -898,31 +898,52 @@ msgstr "Wochentag"
 msgid "The day of the week for which these opening hours are valid"
 msgstr "Der Wochentag, für den diese Öffnungszeiten gültig sind"
 
+#: inc/modules/email-reports/utils.php:97
 #: inc/schema/helper.php:405
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
 msgid "Monday"
 msgstr "Montag"
 
+#: inc/modules/email-reports/utils.php:98
 #: inc/schema/helper.php:406
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
 msgid "Tuesday"
 msgstr "Dienstag"
 
+#: inc/modules/email-reports/utils.php:99
 #: inc/schema/helper.php:407
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
 msgid "Wednesday"
 msgstr "Mittwoch"
 
+#: inc/modules/email-reports/utils.php:100
 #: inc/schema/helper.php:408
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
 msgid "Thursday"
 msgstr "Donnerstag"
 
+#: inc/modules/email-reports/utils.php:101
 #: inc/schema/helper.php:409
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
 msgid "Friday"
 msgstr "Freitag"
 
+#: inc/modules/email-reports/utils.php:102
 #: inc/schema/helper.php:410
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
 msgid "Saturday"
 msgstr "Samstag"
 
+#: inc/modules/email-reports/utils.php:96
 #: inc/schema/helper.php:411
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
 msgid "Sunday"
 msgstr "Sonntag"
 
@@ -2448,204 +2469,204 @@ msgstr "Geben Sie die Person oder Organisation an, die die Webseite besitzt oder
 msgid "A thumbnail image relevant to the website."
 msgstr "Ein Thumbnail-Bild, das relevant für die Webseite ist."
 
-#: inc/schema/variables.php:83
+#: inc/schema/variables.php:84
 msgid "Post ID"
 msgstr "Beitrag-ID"
 
 #: inc/admin/dashboard.php:587
-#: inc/schema/variables.php:84
+#: inc/schema/variables.php:85
 msgid "Post Excerpt"
 msgstr "Beitragsauszug"
 
 #: inc/admin/dashboard.php:592
-#: inc/schema/variables.php:85
+#: inc/schema/variables.php:86
 msgid "Post Content"
 msgstr "Beitragsinhalt"
 
 #: inc/admin/dashboard.php:612
-#: inc/schema/variables.php:86
+#: inc/schema/variables.php:87
 msgid "Post URL"
 msgstr "Beitrags-URL"
 
-#: inc/schema/variables.php:87
+#: inc/schema/variables.php:88
 msgid "Post Slug"
 msgstr "Beitrags-Slug"
 
-#: inc/schema/variables.php:88
+#: inc/schema/variables.php:89
 msgid "Post Date"
 msgstr "Beitragsdatum"
 
-#: inc/schema/variables.php:89
+#: inc/schema/variables.php:90
 msgid "Post Modified Date"
 msgstr "Beitragsänderungsdatum"
 
-#: inc/schema/variables.php:90
+#: inc/schema/variables.php:91
 msgid "Post Thumbnail"
 msgstr "Beitrags-Thumbnail"
 
-#: inc/schema/variables.php:91
+#: inc/schema/variables.php:92
 msgid "Post Comment Count"
 msgstr "Beitragskommentareanzahl"
 
-#: inc/schema/variables.php:92
+#: inc/schema/variables.php:93
 msgid "Post Word Count"
 msgstr "Beitragswortanzahl"
 
-#: inc/schema/variables.php:93
+#: inc/schema/variables.php:94
 msgid "Post Tags"
 msgstr "Beitrags-Tags"
 
-#: inc/schema/variables.php:94
+#: inc/schema/variables.php:95
 msgid "Post Categories"
 msgstr "Beitrags-Kategorien"
 
-#: inc/schema/variables.php:110
+#: inc/schema/variables.php:111
 msgid "Term ID"
 msgstr "Begriff-ID"
 
-#: inc/schema/variables.php:112
+#: inc/schema/variables.php:113
 msgid "Term Slug"
 msgstr "Begriff-Slug"
 
-#: inc/schema/variables.php:113
+#: inc/schema/variables.php:114
 msgid "Term Taxonomy"
 msgstr "Begriff-Taxonomie"
 
 #: inc/admin/dashboard.php:597
-#: inc/schema/variables.php:114
+#: inc/schema/variables.php:115
 msgid "Term Description"
 msgstr "Begriff-Beschreibung"
 
-#: inc/schema/variables.php:115
+#: inc/schema/variables.php:116
 msgid "Term URL"
 msgstr "Begriff-URL"
 
-#: inc/schema/variables.php:126
+#: inc/schema/variables.php:127
 msgid "Author ID"
 msgstr "Autor-ID"
 
-#: inc/schema/variables.php:127
+#: inc/schema/variables.php:128
 msgid "Author First Name"
 msgstr "Vorname des Autors"
 
-#: inc/schema/variables.php:128
+#: inc/schema/variables.php:129
 msgid "Author Last Name"
 msgstr "Nachname des Autors"
 
-#: inc/schema/variables.php:129
+#: inc/schema/variables.php:130
 msgid "Author Display Name"
 msgstr "Anzeigename des Autors"
 
-#: inc/schema/variables.php:130
+#: inc/schema/variables.php:131
 msgid "Author Username"
 msgstr "Benutzername des Autors"
 
-#: inc/schema/variables.php:131
+#: inc/schema/variables.php:132
 msgid "Author Nickname"
 msgstr "Spitzname des Autors"
 
-#: inc/schema/variables.php:132
+#: inc/schema/variables.php:133
 msgid "Author Email"
 msgstr "E-Mail des Autors"
 
-#: inc/schema/variables.php:133
+#: inc/schema/variables.php:134
 msgid "Author Website URL"
 msgstr "Website-URL des Autors"
 
-#: inc/schema/variables.php:134
+#: inc/schema/variables.php:135
 msgid "Author Nicename"
 msgstr "Schöner Name des Autors"
 
-#: inc/schema/variables.php:135
+#: inc/schema/variables.php:136
 msgid "Author Description"
 msgstr "Beschreibung des Autors"
 
-#: inc/schema/variables.php:136
+#: inc/schema/variables.php:137
 msgid "Author Posts URL"
 msgstr "Beitrags-URL des Autors"
 
-#: inc/schema/variables.php:137
+#: inc/schema/variables.php:138
 msgid "Author Avatar"
 msgstr "Avatar des Autors"
 
-#: inc/schema/variables.php:148
+#: inc/schema/variables.php:149
 msgid "User ID"
 msgstr "Benutzer-ID"
 
-#: inc/schema/variables.php:149
+#: inc/schema/variables.php:150
 msgid "User First Name"
 msgstr "Vorname des Benutzers"
 
-#: inc/schema/variables.php:150
+#: inc/schema/variables.php:151
 msgid "User Last Name"
 msgstr "Nachname des Benutzers"
 
-#: inc/schema/variables.php:151
+#: inc/schema/variables.php:152
 msgid "User Display Name"
 msgstr "Anzeigename des Benutzers"
 
-#: inc/schema/variables.php:152
+#: inc/schema/variables.php:153
 msgid "User Username"
 msgstr "Benutzername"
 
-#: inc/schema/variables.php:153
+#: inc/schema/variables.php:154
 msgid "User Nickname"
 msgstr "Spitzname des Benutzers"
 
-#: inc/schema/variables.php:154
+#: inc/schema/variables.php:155
 msgid "User Email"
 msgstr "E-Mail des Benutzers"
 
-#: inc/schema/variables.php:155
+#: inc/schema/variables.php:156
 msgid "User Website URL"
 msgstr "Benutzer-Website-URL"
 
-#: inc/schema/variables.php:156
+#: inc/schema/variables.php:157
 msgid "User Nicename"
 msgstr "Benutzer-Nicename"
 
-#: inc/schema/variables.php:157
+#: inc/schema/variables.php:158
 msgid "User Description"
 msgstr "Benutzerbeschreibung"
 
-#: inc/schema/variables.php:158
+#: inc/schema/variables.php:159
 msgid "User Posts URL"
 msgstr "Benutzer-Posts-URL"
 
-#: inc/schema/variables.php:159
+#: inc/schema/variables.php:160
 msgid "User Avatar"
 msgstr "Benutzer-Avatar"
 
-#: inc/schema/variables.php:170
+#: inc/schema/variables.php:171
 msgid "Site Title"
 msgstr "Website-Titel"
 
-#: inc/schema/variables.php:171
+#: inc/schema/variables.php:172
 msgid "Site Description"
 msgstr "Website-Beschreibung"
 
-#: inc/schema/variables.php:172
+#: inc/schema/variables.php:173
 msgid "Site URL"
 msgstr "Website-URL"
 
-#: inc/schema/variables.php:173
+#: inc/schema/variables.php:174
 msgid "Site Language"
 msgstr "Website-Sprache"
 
-#: inc/schema/variables.php:174
+#: inc/schema/variables.php:175
 msgid "Site Icon"
 msgstr "Website-Icon"
 
-#: inc/schema/variables.php:185
+#: inc/schema/variables.php:186
 msgid "Current Page Title"
 msgstr "Aktueller Seitentitel"
 
-#: inc/schema/variables.php:186
+#: inc/schema/variables.php:187
 msgid "Current Page URL"
 msgstr "Aktuelle Seiten-URL"
 
 #. translators: %s is replaced with the schema type (e.g., "Product", "Article").
-#: inc/schema/variables.php:203
+#: inc/schema/variables.php:204
 #, php-format
 msgid "%s Schema"
 msgstr "%s-Schema"
@@ -2822,10 +2843,6 @@ msgid "Robot Instructions"
 msgstr "Robot-Anweisungen"
 
 #: build/seo-popup/index.js:1
-msgid "These settings help search engines understand how to treat your page in search results. Enabling ‘No Index’ will prevent the page from appearing in search results. ‘No Follow’ tells search engines not to follow any links on the page, and ‘No Archive’ prevents search engines from storing a cached version of the page."
-msgstr "Diese Einstellungen helfen Suchmaschinen zu verstehen, wie sie deine Seite in den Suchergebnissen behandeln sollen. Das Aktivieren von 'Kein Index' verhindert, dass die Seite in den Suchergebnissen erscheint. 'Kein Follow' sagt Suchmaschinen, dass sie keinen Links auf der Seite folgen sollen, und 'Kein Archiv' verhindert, dass Suchmaschinen eine zwischengespeicherte Version der Seite speichern."
-
-#: build/seo-popup/index.js:1
 msgid "Canonical URL"
 msgstr "Kanonische URL"
 
@@ -2876,10 +2893,6 @@ msgstr "Neu hinzufügen"
 #: build/seo-popup/index.js:1
 msgid "No schemas configured."
 msgstr "Keine Schemata konfiguriert."
-
-#: build/seo-popup/index.js:1
-msgid "Meta"
-msgstr "Meta"
 
 #: build/admin-dashboard/index.js:1
 #: build/admin-onboarding/index.js:1
@@ -3040,11 +3053,11 @@ msgstr "Die URL der Seite ist kurz und SEO-freundlich."
 msgid "Page URL is longer than %s characters and may affect SEO and readability."
 msgstr "Die URL der Seite ist länger als %s Zeichen und kann SEO und Lesbarkeit beeinträchtigen."
 
-#: inc/api/analyzer.php:1331
+#: inc/api/analyzer.php:1499
 msgid "These broken links were found on the page: "
 msgstr "Diese defekten Links wurden auf der Seite gefunden:"
 
-#: inc/api/analyzer.php:1336
+#: inc/api/analyzer.php:1504
 #: build/elementor/index.js:1
 #: build/seo-popup/index.js:1
 msgid "One or more broken links found on the page."
@@ -3205,15 +3218,18 @@ msgstr "Sobald eine Website ausgewählt ist, sehen Sie hier, wie Ihre Inhalte in
 msgid "Status"
 msgstr "Status"
 
+#: inc/modules/email-reports/controller.php:566
 #: build/admin-dashboard/index.js:1
 #: build/search-console-widget/index.js:1
 msgid "Clicks"
 msgstr "Klicks"
 
+#: inc/modules/email-reports/controller.php:567
 #: build/admin-dashboard/index.js:1
 msgid "Avg. Position"
 msgstr "Durchschnittliche Position"
 
+#: inc/modules/email-reports/controller.php:568
 #: build/admin-dashboard/index.js:1
 #: build/search-console-widget/index.js:1
 msgid "Impressions"
@@ -3578,6 +3594,7 @@ msgstr "Geben Sie die URL Ihrer standardmäßigen Facebook-Autorenseite ein. Sie
 
 #: build/admin-dashboard/index.js:1
 #: build/admin-onboarding/index.js:1
+#: build/seo-popup/index.js:1
 msgid "Facebook"
 msgstr "Facebook"
 
@@ -3648,6 +3665,7 @@ msgstr "Geben Sie die URL Ihrer Fallback-Twitter-Autorenseite ein. Diese wird ve
 
 #: build/admin-dashboard/index.js:1
 #: build/admin-onboarding/index.js:1
+#: build/seo-popup/index.js:1
 msgid "X"
 msgstr "X"
 
@@ -3838,18 +3856,22 @@ msgstr "Community-Blog/Nachrichten-Website"
 msgid "This Website Represents"
 msgstr "Diese Website repräsentiert"
 
+#: inc/schema/variables.php:223
 #: build/admin-onboarding/index.js:1
 msgid "Organization Type"
 msgstr "Organisationstyp"
 
+#: inc/schema/variables.php:220
 #: build/admin-onboarding/index.js:1
 msgid "Website Name"
 msgstr "Website-Name"
 
+#: inc/schema/variables.php:222
 #: build/admin-onboarding/index.js:1
 msgid "Website Owner Name"
 msgstr "Name des Website-Besitzers"
 
+#: inc/schema/variables.php:225
 #: build/admin-onboarding/index.js:1
 msgid "Website Logo"
 msgstr "Website-Logo"
@@ -3903,33 +3925,10 @@ msgstr "Lass uns anfangen"
 msgid "Invalid term ID or term object."
 msgstr "Ungültige Begriff-ID oder Begriffobjekt."
 
-#: inc/api/analyzer.php:1574
-msgid "Post ID is required."
-msgstr "Post-ID ist erforderlich."
-
-#: inc/api/analyzer.php:123
+#: inc/api/analyzer.php:117
+#: inc/api/analyzer.php:1056
 msgid "Invalid Post ID."
 msgstr "Ungültige Post-ID."
-
-#: inc/api/analyzer.php:1627
-msgid "SEO checks retrieved from cache."
-msgstr "SEO-Überprüfungen aus dem Cache abgerufen."
-
-#: inc/api/analyzer.php:1650
-msgid "SEO checks completed."
-msgstr "SEO-Überprüfungen abgeschlossen."
-
-#: inc/api/analyzer.php:146
-msgid "Taxonomy and term ID are required."
-msgstr "Taxonomie und Begriff-ID sind erforderlich."
-
-#: inc/api/analyzer.php:1689
-msgid "Taxonomy SEO checks retrieved from cache."
-msgstr "SEO-Überprüfungen der Taxonomie aus dem Cache abgerufen."
-
-#: inc/api/analyzer.php:1712
-msgid "Taxonomy SEO checks found."
-msgstr "SEO-Überprüfungen der Taxonomie gefunden."
 
 #: build/admin-seo-bar/index.js:1
 msgid "Close drawer"
@@ -3977,7 +3976,7 @@ msgid "Search engine description of the home page is present and under 160 chara
 msgstr "Die Suchmaschinenbeschreibung der Startseite ist vorhanden und unter 160 Zeichen."
 
 #. translators: %s is the URL of the surerank settings page
-#: inc/api/analyzer.php:659
+#: inc/api/analyzer.php:741
 #, php-format
 msgid "Set the search engine visibility on <a href=\"%s\">WordPress Reading settings page</a>."
 msgstr "Stellen Sie die Sichtbarkeit der Suchmaschine auf der <a href=\"%s\">WordPress-Leseeinstellungen-Seite</a> ein."
@@ -4064,22 +4063,22 @@ msgid "The name of the site."
 msgstr "Der Name der Website."
 
 #: inc/admin/dashboard.php:602
-#: inc/meta-variables/post.php:80
+#: inc/meta-variables/post.php:81
 msgid "Date Published"
 msgstr "Veröffentlichungsdatum"
 
 #: inc/admin/dashboard.php:604
-#: inc/meta-variables/post.php:81
+#: inc/meta-variables/post.php:82
 msgid "Publication date of the current post/page OR specified date on date archives"
 msgstr "Veröffentlichungsdatum des aktuellen Beitrags/der aktuellen Seite ODER angegebenes Datum in Datumsarchiven"
 
 #: inc/admin/dashboard.php:607
-#: inc/meta-variables/post.php:84
+#: inc/meta-variables/post.php:85
 msgid "Date Modified"
 msgstr "Änderungsdatum"
 
 #: inc/admin/dashboard.php:609
-#: inc/meta-variables/post.php:85
+#: inc/meta-variables/post.php:86
 msgid "Last modification date of the current post/page"
 msgstr "Letztes Änderungsdatum des aktuellen Beitrags/der aktuellen Seite"
 
@@ -4175,11 +4174,11 @@ msgstr "Name des Beitragsautors"
 msgid "Display author's nicename of the current post, page or author archive."
 msgstr "Zeigt den Nicename des Autors des aktuellen Beitrags, der Seite oder des Autorenarchivs an."
 
-#: inc/meta-variables/post.php:88
+#: inc/meta-variables/post.php:89
 msgid "Author Name"
 msgstr "Name des Autors"
 
-#: inc/meta-variables/post.php:89
+#: inc/meta-variables/post.php:90
 msgid "The name of the author of the current post/page"
 msgstr "Der Name des Autors des aktuellen Beitrags/der aktuellen Seite"
 
@@ -4191,7 +4190,7 @@ msgstr "Suchanfrage"
 msgid "Search query (only available on search results page)"
 msgstr "Suchanfrage (nur auf der Suchergebnisseite verfügbar)"
 
-#: loader.php:287
+#: loader.php:288
 msgid "Rate our plugin"
 msgstr "Bewerten Sie unser Plugin"
 
@@ -4317,8 +4316,10 @@ msgstr "Dies ist oft das Erste, was jemand sieht, bevor er Ihre Website besucht.
 #: inc/analyzer/seo-analyzer.php:655
 #: inc/analyzer/seo-analyzer.php:780
 #: inc/analyzer/seo-analyzer.php:1071
-#: inc/api/analyzer.php:550
-#: inc/api/analyzer.php:580
+#: inc/api/analyzer.php:568
+#: inc/api/analyzer.php:622
+#: inc/api/analyzer.php:669
+#: inc/api/analyzer.php:797
 msgid "Why this matters:"
 msgstr "Warum das wichtig ist:"
 
@@ -4525,10 +4526,8 @@ msgstr "Wenn Suchmaschinen mehrere Versionen derselben Seite sehen, können sie 
 #: inc/analyzer/seo-analyzer.php:658
 #: inc/analyzer/seo-analyzer.php:735
 #: inc/analyzer/seo-analyzer.php:783
-#: inc/api/analyzer.php:444
-#: inc/api/analyzer.php:583
-#: inc/api/analyzer.php:621
-#: inc/api/analyzer.php:709
+#: inc/api/analyzer.php:458
+#: inc/api/analyzer.php:625
 msgid "What you can do:"
 msgstr "Was Sie tun können:"
 
@@ -4563,9 +4562,7 @@ msgstr "Dies kann passieren, wenn Ihre Startseite verschoben, gelöscht oder fal
 #: inc/analyzer/seo-analyzer.php:586
 #: inc/analyzer/seo-analyzer.php:623
 #: inc/analyzer/seo-analyzer.php:732
-#: inc/api/analyzer.php:441
-#: inc/api/analyzer.php:618
-#: inc/api/analyzer.php:706
+#: inc/api/analyzer.php:455
 msgid "Why it matters:"
 msgstr "Warum das wichtig ist:"
 
@@ -4689,136 +4686,76 @@ msgstr "Wo Sie es hinzufügen:"
 msgid "When uploading or editing images in WordPress, you’ll see an “ALT text” field in the media settings. Fill this out for each image on your homepage."
 msgstr "Beim Hochladen oder Bearbeiten von Bildern in WordPress sehen Sie im Medienbereich ein Feld für „ALT-Text“. Füllen Sie dieses für jedes Bild auf Ihrer Startseite aus."
 
-#: inc/api/analyzer.php:1538
-#: inc/api/analyzer.php:1561
+#: inc/api/analyzer.php:1714
+#: inc/api/analyzer.php:1737
 msgid "Type of check to delete. Can be \"post\" or \"taxonomy\"."
 msgstr "Art der zu löschenden Prüfung. Kann „post“ oder „taxonomy“ sein."
 
-#: inc/api/analyzer.php:208
+#: inc/api/analyzer.php:222
 msgid "Checks ignored."
 msgstr "Ignorierte Prüfungen."
 
-#: inc/api/analyzer.php:245
+#: inc/api/analyzer.php:259
 msgid "Checks unignored."
 msgstr "Nicht mehr ignorierte Prüfungen."
 
-#: inc/api/analyzer.php:330
+#: inc/api/analyzer.php:344
 msgid "Check ignored for post."
 msgstr "Prüfung für Beitrag ignoriert."
 
-#: inc/api/analyzer.php:358
+#: inc/api/analyzer.php:372
 msgid "Check unignored for post."
 msgstr "Prüfung für Beitrag nicht mehr ignoriert."
 
-#: inc/api/analyzer.php:381
+#: inc/api/analyzer.php:395
 msgid "Ignored checks retrieved."
 msgstr "Ignorierte Prüfungen abgerufen."
 
-#: inc/api/analyzer.php:438
+#: inc/api/analyzer.php:452
 msgid "Google Search Console is a free tool that shows how your site is doing in Google search — how many people are finding it, what they’re searching for, and which pages are getting the most attention."
 msgstr "Google Search Console ist ein kostenloses Tool, das zeigt, wie Ihre Seite in der Google-Suche abschneidet – wie viele Menschen sie finden, wonach sie suchen und welche Seiten die meiste Aufmerksamkeit erhalten."
 
-#: inc/api/analyzer.php:439
+#: inc/api/analyzer.php:453
 msgid "Connecting Search Console to your site doesn’t change anything on the front end — but it gives you a behind-the-scenes view of what’s working. SureRank uses this connection to show useful insights directly in your dashboard."
 msgstr "Die Verbindung der Search Console mit Ihrer Seite ändert nichts am Frontend – aber sie gibt Ihnen einen Blick hinter die Kulissen, was funktioniert. SureRank nutzt diese Verbindung, um nützliche Einblicke direkt in Ihrem Dashboard anzuzeigen."
 
-#: inc/api/analyzer.php:523
-msgid "SEO plugins help manage how your site appears in search engines. They control important things like titles, meta descriptions, canonical tags, and structured data. "
-msgstr "SEO-Plugins helfen dabei, zu steuern, wie Ihre Seite in Suchmaschinen erscheint. Sie verwalten wichtige Dinge wie Titel, Meta-Beschreibungen, kanonische Tags und strukturierte Daten."
-
 #. translators: %s is the list of active plugins
-#: inc/api/analyzer.php:546
+#: inc/api/analyzer.php:565
 #, php-format
 msgid "Currently active plugins : %s"
 msgstr "Derzeit aktive Plugins: %s"
 
-#: inc/api/analyzer.php:547
-msgid "But here’s something many site owners don’t realize — using more than one SEO plugin at the same time can lead to issues."
-msgstr "Aber hier ist etwas, das viele Seitenbetreiber nicht wissen – die gleichzeitige Verwendung von mehr als einem SEO-Plugin kann zu Problemen führen."
-
-#: inc/api/analyzer.php:551
-msgid "Most SEO plugins try to manage the same parts of your site. When two plugins do this together, they can send mixed signals to search engines. This might affect how your content is indexed or shown in results. It also makes it harder to know which tool is changing what."
-msgstr "Die meisten SEO-Plugins versuchen, dieselben Bereiche Ihrer Seite zu verwalten. Wenn zwei Plugins dies gleichzeitig tun, können sie Suchmaschinen widersprüchliche Signale senden. Das kann beeinflussen, wie Ihre Inhalte indexiert oder in den Ergebnissen angezeigt werden. Außerdem wird es schwieriger zu erkennen, welches Tool was ändert."
-
-#: inc/api/analyzer.php:553
-msgid "What to keep in mind:"
-msgstr "Was Sie beachten sollten:"
-
-#: inc/api/analyzer.php:554
-msgid "Keeping just one SEO plugin active ensures your settings stay clean and consistent. It’s easier to manage, avoids conflicts, and helps search engines read your site clearly."
-msgstr "Nur ein aktives SEO-Plugin zu behalten, sorgt dafür, dass Ihre Einstellungen sauber und konsistent bleiben. Es ist einfacher zu verwalten, vermeidet Konflikte und hilft Suchmaschinen, Ihre Seite klar zu lesen."
-
-#: inc/api/analyzer.php:556
-msgid "SureRank is designed to handle everything you need in one place — so there’s no need for multiple plugins doing the same job."
-msgstr "SureRank ist so konzipiert, dass alles, was Sie brauchen, an einem Ort erledigt wird — daher sind keine mehreren Plugins nötig, die dieselbe Aufgabe übernehmen."
-
-#: inc/api/analyzer.php:577
+#: inc/api/analyzer.php:619
 msgid "Your site tagline is a simple line that helps explain what your website is about. It often shows up in the browser tab, homepage, or in search snippets — depending on your theme or SEO settings."
 msgstr "Ihr Website-Slogan ist eine einfache Zeile, die erklärt, worum es auf Ihrer Website geht. Er erscheint oft im Browser-Tab, auf der Startseite oder in Suchergebnissen — je nach Ihrem Theme oder SEO-Einstellungen."
 
-#: inc/api/analyzer.php:578
+#: inc/api/analyzer.php:620
 msgid "Leaving it blank, using a default message like “Just another WordPress site,” or writing something unclear doesn’t help people or search engines understand your site."
 msgstr "Es hilft weder Menschen noch Suchmaschinen, wenn Sie ihn leer lassen, eine Standardnachricht wie „Just another WordPress site“ verwenden oder etwas Unklares schreiben."
 
-#: inc/api/analyzer.php:581
+#: inc/api/analyzer.php:623
 msgid "A good tagline can instantly tell visitors what your site offers — and make it more appealing in search results. Think of it like a mini pitch that follows your site name."
 msgstr "Ein guter Slogan kann Besuchern sofort sagen, was Ihre Seite bietet — und sie in Suchergebnissen attraktiver machen. Denken Sie daran wie an einen kurzen Pitch, der Ihrem Seitennamen folgt."
 
-#: inc/api/analyzer.php:584
+#: inc/api/analyzer.php:626
 msgid "Write one short sentence that describes your site’s purpose or audience. For example: "
 msgstr "Schreiben Sie einen kurzen Satz, der den Zweck oder die Zielgruppe Ihrer Seite beschreibt. Zum Beispiel:"
 
-#: inc/api/analyzer.php:585
+#: inc/api/analyzer.php:627
 msgid "“Simple budgeting tools for everyday people”"
 msgstr "„Einfache Budgetierungswerkzeuge für jedermann“"
 
-#: inc/api/analyzer.php:586
+#: inc/api/analyzer.php:628
 msgid "“Home workouts and fitness tips that fit your schedule”"
 msgstr "„Heimtraining und Fitnesstipps, die in Ihren Zeitplan passen“"
 
-#: inc/api/analyzer.php:587
+#: inc/api/analyzer.php:629
 msgid "Keep it short, specific, and friendly. You can change it from the WordPress settings."
 msgstr "Halten Sie es kurz, spezifisch und freundlich. Sie können es in den WordPress-Einstellungen ändern."
 
-#: inc/api/analyzer.php:614
-msgid "Your site uses a small file called robots.txt to guide search engines on where they can and can’t go. It’s like a set of instructions that says, “You’re welcome to look here — but please don’t touch this part.”"
-msgstr "Ihre Seite verwendet eine kleine Datei namens robots.txt, um Suchmaschinen zu zeigen, wo sie dürfen und wo nicht. Es ist wie eine Anleitung, die sagt: „Sie dürfen hier schauen — aber bitte diesen Bereich nicht berühren.“"
-
-#: inc/api/analyzer.php:616
-msgid "Most of the time, WordPress creates this automatically. But if the file is missing or misconfigured, search engines might avoid pages they’re actually allowed to visit — or worse, miss important content altogether."
-msgstr "Meist erstellt WordPress diese automatisch. Wenn die Datei jedoch fehlt oder falsch konfiguriert ist, könnten Suchmaschinen Seiten meiden, die sie eigentlich besuchen dürfen — oder schlimmer, wichtige Inhalte ganz übersehen."
-
-#: inc/api/analyzer.php:619
-msgid "Without a robots.txt file, search engines may not crawl your site properly, or they might spend too much time on pages that don’t matter. With a working file, your site can be explored more efficiently."
-msgstr "Ohne eine robots.txt-Datei könnten Suchmaschinen Ihre Seite nicht richtig durchsuchen oder zu viel Zeit auf unwichtigen Seiten verbringen. Mit einer funktionierenden Datei kann Ihre Seite effizienter erkundet werden."
-
-#: inc/api/analyzer.php:622
-msgid "Check if your robots.txt file is available by visiting yourdomain.com/robots.txt in your browser. If it opens and lists some basic rules (even if you don’t understand them), that means it’s active. "
-msgstr "Überprüfen Sie, ob Ihre robots.txt-Datei verfügbar ist, indem Sie yourdomain.com/robots.txt in Ihrem Browser aufrufen. Wenn sie sich öffnet und einige Grundregeln auflistet (auch wenn Sie sie nicht verstehen), ist sie aktiv."
-
-#: inc/api/analyzer.php:624
-msgid "SureRank takes care of this by default — so if it’s missing, we’ll help you fix it easily."
-msgstr "SureRank kümmert sich standardmäßig darum — falls sie fehlt, helfen wir Ihnen, sie einfach zu reparieren."
-
-#: inc/api/analyzer.php:702
-msgid "A sitemap is like a guide or map that helps search engines explore your website more efficiently. It lists out the important pages on your site and gives search engines a clear path to follow — like a floor plan showing where everything is. This way, nothing important gets missed."
-msgstr "Eine Sitemap ist wie ein Leitfaden oder eine Karte, die Suchmaschinen dabei hilft, Ihre Website effizienter zu durchsuchen. Sie listet die wichtigen Seiten Ihrer Website auf und gibt Suchmaschinen einen klaren Pfad vor – wie ein Grundriss, der zeigt, wo sich alles befindet. So geht nichts Wichtiges verloren."
-
-#: inc/api/analyzer.php:704
+#: inc/api/analyzer.php:806
 msgid "Think of it like this: if your website was a story, the sitemap would be the chapter list — helping Google and other search engines jump to the right sections. It doesn’t change how your site looks to visitors, but it makes a big difference in how your site is discovered and understood behind the scenes."
 msgstr "Stellen Sie sich das so vor: Wenn Ihre Website eine Geschichte wäre, wäre die Sitemap das Kapitelverzeichnis – sie hilft Google und anderen Suchmaschinen, zu den richtigen Abschnitten zu springen. Sie ändert nicht, wie Ihre Website für Besucher aussieht, macht aber einen großen Unterschied darin, wie Ihre Website hinter den Kulissen entdeckt und verstanden wird."
-
-#: inc/api/analyzer.php:707
-msgid "Without a sitemap, search engines might miss some of your pages or take longer to find new ones. That can slow down how quickly your updates appear in search results. With a sitemap, they get a clear overview of your content and can index it faster and more accurately — which can help improve visibility."
-msgstr "Ohne eine Sitemap könnten Suchmaschinen einige Ihrer Seiten übersehen oder länger brauchen, um neue zu finden. Das kann verlangsamen, wie schnell Ihre Aktualisierungen in den Suchergebnissen erscheinen. Mit einer Sitemap erhalten sie einen klaren Überblick über Ihre Inhalte und können diese schneller und genauer indexieren – was die Sichtbarkeit verbessern kann."
-
-#: inc/api/analyzer.php:710
-msgid "Check that your sitemap is active and accessible. You can usually visit it at a link like yourdomain.com/sitemap.xml. If it opens and shows a list of links (even if it looks a bit technical), that means it’s working."
-msgstr "Überprüfen Sie, ob Ihre Sitemap aktiv und zugänglich ist. Normalerweise können Sie sie unter einem Link wie yourdomain.com/sitemap.xml aufrufen. Wenn sie sich öffnet und eine Liste von Links zeigt (auch wenn sie etwas technisch aussieht), bedeutet das, dass sie funktioniert."
-
-#: inc/api/analyzer.php:712
-msgid "If you’ve connected tools like Google Search Console, you can also submit the sitemap there — but that’s optional. The key is to make sure it’s available and up to date so search engines can do their job properly."
-msgstr "Wenn Sie Tools wie die Google Search Console verbunden haben, können Sie die Sitemap dort auch einreichen – das ist aber optional. Wichtig ist, dass sie verfügbar und aktuell ist, damit Suchmaschinen ihre Arbeit richtig machen können."
 
 #: inc/api/onboarding.php:89
 msgid "Type of the website."
@@ -4925,7 +4862,7 @@ msgid "Site does not correctly redirect between www and non-www versions."
 msgstr "Die Website leitet nicht korrekt zwischen www- und Nicht-www-Versionen weiter."
 
 #. translators: %s is the list of active plugins
-#: inc/api/analyzer.php:542
+#: inc/api/analyzer.php:561
 #, php-format
 msgid "Another SEO plugin, %s, detected on the site."
 msgstr "Ein weiteres SEO-Plugin, %s, wurde auf der Website erkannt."
@@ -5557,7 +5494,7 @@ msgid "Done"
 msgstr "Fertig"
 
 #: inc/analyzer/utils.php:252
-#: inc/api/analyzer.php:1311
+#: inc/api/analyzer.php:1479
 msgid "The link is broken."
 msgstr "Der Link ist defekt."
 
@@ -5608,36 +5545,36 @@ msgstr "Status:"
 msgid "Failed to check link"
 msgstr "Fehler beim Überprüfen des Links"
 
-#: inc/admin/bulk-actions.php:218
+#: inc/admin/bulk-actions.php:231
 msgid "SureRank Settings"
 msgstr "SureRank Einstellungen"
 
-#: inc/admin/bulk-actions.php:219
+#: inc/admin/bulk-actions.php:232
 msgid "Set to index"
 msgstr "Auf Index setzen"
 
-#: inc/admin/bulk-actions.php:220
+#: inc/admin/bulk-actions.php:233
 msgid "Set to noindex"
 msgstr "Auf noindex setzen"
 
-#: inc/admin/bulk-actions.php:221
+#: inc/admin/bulk-actions.php:234
 msgid "Set to follow"
 msgstr "Auf follow setzen"
 
-#: inc/admin/bulk-actions.php:222
+#: inc/admin/bulk-actions.php:235
 msgid "Set to nofollow"
 msgstr "Auf nofollow setzen"
 
-#: inc/admin/bulk-actions.php:223
+#: inc/admin/bulk-actions.php:236
 msgid "Set to archive"
 msgstr "Auf Archiv setzen"
 
-#: inc/admin/bulk-actions.php:224
+#: inc/admin/bulk-actions.php:237
 msgid "Set to noarchive"
 msgstr "Auf noarchive setzen"
 
 #. translators: %1$d: number of items updated, %2$s: action performed
-#: inc/admin/bulk-actions.php:177
+#: inc/admin/bulk-actions.php:190
 #, php-format
 msgid "%1$d item %2$s."
 msgid_plural "%1$d items %2$s."
@@ -6060,11 +5997,11 @@ msgstr "Fehler beim Abrufen der Anhang-URL."
 msgid "Image downloaded and saved successfully."
 msgstr "Bild erfolgreich heruntergeladen und gespeichert."
 
-#: inc/meta-variables/post.php:92
+#: inc/meta-variables/post.php:93
 msgid "Archive Title"
 msgstr "Archiv-Titel"
 
-#: inc/meta-variables/post.php:93
+#: inc/meta-variables/post.php:94
 msgid "The title of the current archive. Example \"Day/Month/Year Archives: \" or \"Author Archives: \""
 msgstr "Der Titel des aktuellen Archivs. Beispiel: \"Day/Month/Year-Archive:\" oder \"Autor-Archive:\""
 
@@ -7047,7 +6984,9 @@ msgstr "Derzeit kann kein Inhalt generiert werden. Bitte versuchen Sie es erneut
 msgid "Click here to contact support."
 msgstr "Klicken Sie hier, um den Support zu kontaktieren."
 
-#: inc/api/analyzer.php:451
+#: inc/api/analyzer.php:465
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
 msgid "Connect Now"
 msgstr "Jetzt verbinden"
 
@@ -7262,7 +7201,7 @@ msgstr "Weiterleitungen"
 msgid "Get Pro ↗"
 msgstr "Get Pro ↗"
 
-#: inc/admin/search-console-widget.php:57
+#: inc/admin/search-console-widget.php:56
 msgid "SureRank Website Insights"
 msgstr "SureRank Website Insights"
 
@@ -7605,24 +7544,29 @@ msgstr "Beschreiben Sie, was Sie tun"
 msgid "Please describe what you do in a few sentences. This description will be used for content generation and other purposes."
 msgstr "Bitte beschreiben Sie in wenigen Sätzen, was Sie tun. Diese Beschreibung wird für die Inhaltserstellung und andere Zwecke verwendet."
 
+#: build/admin-dashboard/index.js:1
 #: build/admin-onboarding/index.js:1
 #, js-format
 msgid "%s is required"
 msgstr "%s ist erforderlich"
 
+#: build/admin-dashboard/index.js:1
 #: build/admin-onboarding/index.js:1
 #, js-format
 msgid "%1$s must be a %2$s"
 msgstr "%1$s muss ein %2$s sein"
 
+#: build/admin-dashboard/index.js:1
 #: build/admin-onboarding/index.js:1
 msgid "Please enter a valid email address"
 msgstr "Bitte geben Sie eine gültige E-Mail-Adresse ein"
 
+#: build/admin-dashboard/index.js:1
 #: build/admin-onboarding/index.js:1
 msgid "Please enter a valid URL"
 msgstr "Bitte geben Sie eine gültige URL ein"
 
+#: build/admin-dashboard/index.js:1
 #: build/admin-onboarding/index.js:1
 msgid "This field is required"
 msgstr "Dieses Feld ist erforderlich"
@@ -7638,11 +7582,6 @@ msgstr "Verbinden Sie Google Search Console, um Such-Insights freizuschalten und
 #: build/search-console-widget/index.js:1
 msgid "Connect to Google Search Console"
 msgstr "Mit Google Search Console verbinden"
-
-#: build/search-console-widget/index.js:1
-#, js-format
-msgid "Traffic from last %d days"
-msgstr "Verkehr der letzten %d Tage"
 
 #: build/search-console-widget/index.js:1
 msgid "View More"
@@ -7746,3 +7685,442 @@ msgstr "Automatisch grundlegenden Alt-Text für Bilder hinzufügen, die keinen h
 #: build/admin-onboarding/index.js:1
 msgid "Generate SEO-friendly image alt text automatically with SureRank AI to improve accessibility and boost your image search visibility."
 msgstr "Automatisch SEO-freundlichen Bild-Alt-Text mit SureRank AI generieren, um die Zugänglichkeit zu verbessern und die Sichtbarkeit in der Bildsuche zu erhöhen."
+
+#: inc/api/analyzer.php:134
+#: inc/api/analyzer.php:167
+msgid "SEO checks retrieved."
+msgstr "SEO-Prüfungen abgerufen."
+
+#: inc/api/analyzer.php:150
+msgid "Invalid Term ID."
+msgstr "Ungültige Term-ID."
+
+#: inc/api/analyzer.php:537
+msgid "Other SEO Plugin Banner"
+msgstr "Andere SEO-Plugin-Banner"
+
+#: inc/api/analyzer.php:540
+msgid "SEO Plugin Conflicts"
+msgstr "Konflikte bei SEO-Plugins"
+
+#: inc/api/analyzer.php:542
+msgid "SEO plugins decide how your site appears in search results by managing titles, descriptions, and structured information. They help search engines understand your content, but also make your site easier for people to find."
+msgstr "SEO-Plugins bestimmen, wie Ihre Website in den Suchergebnissen erscheint, indem sie Titel, Beschreibungen und strukturierte Informationen verwalten. Sie helfen Suchmaschinen, Ihre Inhalte zu verstehen, machen Ihre Website aber auch leichter auffindbar für Menschen."
+
+#: inc/api/analyzer.php:569
+msgid "Having more than one SEO plugin active can create confusion. Each plugin might try to change the same things, sending mixed signals to search engines. This can affect how clearly your site appears in search results and make it harder for visitors to find what they’re looking for."
+msgstr "Mehr als ein aktives SEO-Plugin kann Verwirrung stiften. Jedes Plugin könnte versuchen, dieselben Dinge zu ändern, was widersprüchliche Signale an Suchmaschinen sendet. Dies kann beeinflussen, wie klar Ihre Website in den Suchergebnissen erscheint und es Besuchern erschweren, das Gesuchte zu finden."
+
+#: inc/api/analyzer.php:571
+msgid "How to keep things smooth:"
+msgstr "So bleibt alles reibungslos:"
+
+#: inc/api/analyzer.php:573
+msgid "Use only one SEO plugin at a time to keep your settings clean and consistent."
+msgstr "Verwenden Sie nur ein SEO-Plugin gleichzeitig, um Ihre Einstellungen sauber und konsistent zu halten."
+
+#: inc/api/analyzer.php:574
+msgid "Let that plugin handle everything in one place, so there’s no overlap or conflict."
+msgstr "Lassen Sie dieses Plugin alles an einem Ort verwalten, damit keine Überschneidungen oder Konflikte entstehen."
+
+#: inc/api/analyzer.php:575
+msgid "Check your plugin settings regularly to make sure nothing is accidentally duplicated."
+msgstr "Überprüfen Sie regelmäßig Ihre Plugin-Einstellungen, um sicherzustellen, dass nichts versehentlich dupliziert wird."
+
+#: inc/api/analyzer.php:580
+#: inc/api/analyzer.php:693
+#: inc/api/analyzer.php:818
+msgid "Example"
+msgstr "Beispiel"
+
+#: inc/api/analyzer.php:582
+msgid "If two plugins try to set your homepage description differently, search engines may receive mixed information, resulting in inconsistent search results or snippets."
+msgstr "Wenn zwei Plugins versuchen, die Beschreibung Ihrer Startseite unterschiedlich zu setzen, erhalten Suchmaschinen möglicherweise widersprüchliche Informationen, was zu inkonsistenten Suchergebnissen oder Snippets führt."
+
+#: inc/api/analyzer.php:586
+#: inc/api/analyzer.php:702
+#: inc/api/analyzer.php:821
+msgid "Where to update it"
+msgstr "Wo es aktualisiert werden kann"
+
+#: inc/api/analyzer.php:592
+msgid "You can review your active plugins from your WordPress plugins page and deactivate extras. Then manage all your SEO settings from your main SEO plugin for a clear and single source of truth."
+msgstr "Sie können Ihre aktiven Plugins auf Ihrer WordPress-Plugins-Seite überprüfen und zusätzliche deaktivieren. Dann verwalten Sie alle Ihre SEO-Einstellungen über Ihr Haupt-SEO-Plugin für eine klare und einheitliche Quelle der Wahrheit."
+
+#: inc/api/analyzer.php:596
+#: inc/api/analyzer.php:705
+#: inc/api/analyzer.php:824
+msgid "How SureRank helps"
+msgstr "Wie SureRank hilft"
+
+#: inc/api/analyzer.php:598
+msgid "SureRank keeps your SEO setup simple and reliable. It explains why using a single plugin matters, helping you maintain clarity for both search engines and your visitors, without unnecessary confusion."
+msgstr "SureRank hält Ihre SEO-Einrichtung einfach und zuverlässig. Es erklärt, warum die Verwendung eines einzelnen Plugins wichtig ist, und hilft Ihnen, Klarheit für Suchmaschinen und Besucher zu bewahren, ohne unnötige Verwirrung."
+
+#: inc/api/analyzer.php:663
+msgid "Robots.txt File"
+msgstr "Robots.txt-Datei"
+
+#: inc/api/analyzer.php:665
+msgid "Your site has a small file called robots.txt that acts like a guide for search engines, showing them where they’re welcome to explore and where they should stay away. Think of it as a polite set of instructions for visitors who want to browse your site."
+msgstr "Ihre Website hat eine kleine Datei namens robots.txt, die wie eine Anleitung für Suchmaschinen wirkt, ihnen zeigt, wo sie willkommen sind, zu erkunden, und wo sie sich fernhalten sollten. Man kann sie sich als höfliche Anweisungen für Besucher vorstellen, die Ihre Website durchsuchen möchten."
+
+#: inc/api/analyzer.php:676
+msgid "If the robots.txt file is missing or set up incorrectly, search engines might skip pages they should see, or spend time on pages that aren’t important. A proper file helps your site get noticed efficiently and ensures the content that matters most is visible to both search engines and people."
+msgstr "Wenn die robots.txt-Datei fehlt oder falsch eingerichtet ist, könnten Suchmaschinen Seiten überspringen, die sie sehen sollten, oder Zeit auf unwichtigen Seiten verbringen. Eine richtige Datei hilft Ihrer Website, effizient bemerkt zu werden, und stellt sicher, dass die wichtigsten Inhalte sowohl für Suchmaschinen als auch für Menschen sichtbar sind."
+
+#: inc/api/analyzer.php:680
+#: inc/api/analyzer.php:808
+msgid "How to keep things smooth"
+msgstr "So behalten Sie einen reibungslosen Ablauf bei"
+
+#: inc/api/analyzer.php:684
+msgid "Check your robots.txt by visiting yoursite.com/robots.txt , if it opens with some rules, it’s active."
+msgstr "Überprüfen Sie Ihre robots.txt, indem Sie yoursite.com/robots.txt besuchen. Wenn sie mit einigen Regeln geöffnet wird, ist sie aktiv."
+
+#: inc/api/analyzer.php:685
+msgid "Make sure it doesn’t block pages you want visitors to find."
+msgstr "Stellen Sie sicher, dass sie keine Seiten blockiert, die Besucher finden sollen."
+
+#: inc/api/analyzer.php:686
+msgid "Even if the rules look complicated, having the file is better than not having one."
+msgstr "Auch wenn die Regeln kompliziert aussehen, ist es besser, die Datei zu haben, als keine zu besitzen."
+
+#: inc/api/analyzer.php:687
+msgid "Use the built-in robots.txt editor in SureRank to view or adjust the file safely."
+msgstr "Verwenden Sie den integrierten robots.txt-Editor in SureRank, um die Datei sicher anzuzeigen oder anzupassen."
+
+#: inc/api/analyzer.php:700
+msgid "If your robots.txt accidentally blocks your “Shop” or “Pricing” pages, search engines won’t see them, and people searching for your products or services might never find them."
+msgstr "Wenn Ihre robots.txt versehentlich Ihre „Shop“- oder „Preise“-Seiten blockiert, sehen Suchmaschinen sie nicht, und Personen, die nach Ihren Produkten oder Dienstleistungen suchen, könnten sie nie finden."
+
+#: inc/api/analyzer.php:703
+msgid "The robots.txt file can be edited directly from the SureRank settings using the built-in editor."
+msgstr "Die robots.txt-Datei kann direkt in den SureRank-Einstellungen mit dem integrierten Editor bearbeitet werden."
+
+#: inc/api/analyzer.php:706
+msgid "SureRank automatically creates a working robots.txt file and lets you manage it directly within the plugin. This keeps your site clear for search engines and ensures important pages are always discoverable."
+msgstr "SureRank erstellt automatisch eine funktionierende robots.txt-Datei und ermöglicht es Ihnen, sie direkt im Plugin zu verwalten. So bleibt Ihre Website für Suchmaschinen übersichtlich und wichtige Seiten sind immer auffindbar."
+
+#: inc/api/analyzer.php:791
+msgid "Sitemap"
+msgstr "Sitemap"
+
+#: inc/api/analyzer.php:793
+msgid "A sitemap is like a guide or floor plan for your website that helps search engines explore it efficiently. It lists your important pages and shows search engines the path to follow, making sure nothing essential gets missed. Think of it as a chapter list in a book — it doesn’t change how your site looks to visitors, but it helps search engines understand your content quickly and clearly."
+msgstr "Eine Sitemap ist wie ein Leitfaden oder Grundriss für Ihre Website, der Suchmaschinen bei der effizienten Erkundung hilft. Sie listet Ihre wichtigen Seiten auf und zeigt den Suchmaschinen den Weg, dem sie folgen sollen, damit nichts Wesentliches übersehen wird. Stellen Sie es sich wie eine Kapitelübersicht in einem Buch vor — es ändert nichts an der Art, wie Ihre Website für Besucher aussieht, aber es hilft Suchmaschinen, Ihre Inhalte schnell und klar zu verstehen."
+
+#: inc/api/analyzer.php:802
+msgid "why this matters"
+msgstr "warum das wichtig ist"
+
+#: inc/api/analyzer.php:804
+msgid "Without a sitemap, search engines might overlook some pages or take longer to notice updates. This can slow down how quickly your new content appears in search results. A well-maintained sitemap gives search engines a clear overview of your site, helping your content get indexed faster and more accurately, which improves visibility."
+msgstr "Ohne eine Sitemap könnten Suchmaschinen einige Seiten übersehen oder länger brauchen, um Aktualisierungen zu bemerken. Das kann die Geschwindigkeit verlangsamen, mit der Ihre neuen Inhalte in den Suchergebnissen erscheinen. Eine gut gepflegte Sitemap gibt Suchmaschinen einen klaren Überblick über Ihre Website, was dazu beiträgt, dass Ihre Inhalte schneller und genauer indexiert werden, und verbessert die Sichtbarkeit."
+
+#: inc/api/analyzer.php:811
+msgid "Make sure your sitemap is active and accessible by visiting yoursite.com/sitemap.xml."
+msgstr "Stellen Sie sicher, dass Ihre Sitemap aktiv und zugänglich ist, indem Sie yoursite.com/sitemap.xml besuchen."
+
+#: inc/api/analyzer.php:812
+msgid "Even if it looks technical, having a list of your pages means search engines know where to go."
+msgstr "Auch wenn es technisch aussieht, bedeutet eine Liste Ihrer Seiten, dass Suchmaschinen wissen, wohin sie gehen sollen."
+
+#: inc/api/analyzer.php:813
+msgid "Keep the sitemap up to date whenever you add new pages or make major changes"
+msgstr "Halten Sie die Sitemap aktuell, wann immer Sie neue Seiten hinzufügen oder größere Änderungen vornehmen"
+
+#: inc/api/analyzer.php:814
+msgid "Use the built-in sitemap management in SureRank to create and maintain it automatically."
+msgstr "Verwenden Sie die integrierte Sitemap-Verwaltung in SureRank, um sie automatisch zu erstellen und zu pflegen."
+
+#: inc/api/analyzer.php:819
+msgid "If you add a new blog post but don’t have a sitemap, search engines might take longer to find it. With a sitemap, your new post appears in search results more quickly, helping readers discover your content sooner."
+msgstr "Wenn Sie einen neuen Blogbeitrag hinzufügen, aber keine Sitemap haben, könnten Suchmaschinen länger brauchen, um ihn zu finden. Mit einer Sitemap erscheint Ihr neuer Beitrag schneller in den Suchergebnissen, was den Lesern hilft, Ihre Inhalte früher zu entdecken."
+
+#: inc/api/analyzer.php:822
+msgid "You can manage and update your sitemap directly from the SureRank settings using the built-in sitemap tool."
+msgstr "Sie können Ihre Sitemap direkt in den SureRank-Einstellungen mit dem integrierten Sitemap-Tool verwalten und aktualisieren."
+
+#: inc/api/analyzer.php:825
+msgid "SureRank automatically generates and updates your sitemap, so search engines always have a clear path to your important content. This keeps your site organized and ensures nothing valuable gets overlooked, without requiring extra work from you."
+msgstr "SureRank erstellt und aktualisiert Ihre Sitemap automatisch, sodass Suchmaschinen immer einen klaren Weg zu Ihren wichtigen Inhalten haben. Dies hält Ihre Website organisiert und stellt sicher, dass nichts Wertvolles übersehen wird, ohne dass Sie zusätzlichen Aufwand haben."
+
+#: inc/api/analyzer.php:1788
+#: inc/api/analyzer.php:1822
+msgid "No cached checks found."
+msgstr "Keine zwischengespeicherten Prüfungen gefunden."
+
+#: inc/modules/email-reports/api.php:130
+msgid "Recipient email is required when enabled."
+msgstr "Empfänger-E-Mail ist erforderlich, wenn aktiviert."
+
+#: inc/modules/email-reports/api.php:149
+msgid "Email summary settings saved successfully."
+msgstr "E-Mail-Zusammenfassungseinstellungen erfolgreich gespeichert."
+
+#: inc/modules/email-reports/api.php:172
+msgid "Please provide a valid email address."
+msgstr "Bitte geben Sie eine gültige E-Mail-Adresse ein."
+
+#: inc/modules/email-reports/api.php:183
+msgid "Failed to send test email. Please check your email configuration."
+msgstr "Fehler beim Senden der Test-E-Mail. Bitte überprüfen Sie Ihre E-Mail-Konfiguration."
+
+#. translators: %s: Recipient email address
+#: inc/modules/email-reports/api.php:192
+#, php-format
+msgid "Test email sent successfully to %s."
+msgstr "Test-E-Mail erfolgreich an %s gesendet."
+
+#: inc/modules/email-reports/controller.php:102
+msgid "Once Weekly"
+msgstr "Wöchentlich"
+
+#. translators: 1: Start date, 2: End date
+#: inc/modules/email-reports/controller.php:328
+#, php-format
+msgid "SEO Summary of last week - %1$s to %2$s"
+msgstr "SEO-Zusammenfassung der letzten Woche - %1$s bis %2$s"
+
+#. translators: %s: Site name
+#: inc/modules/email-reports/controller.php:429
+#: inc/modules/email-reports/controller.php:692
+#, php-format
+msgid "%s Logo"
+msgstr "%s Logo"
+
+#: inc/modules/email-reports/controller.php:436
+msgid "SEO Weekly Summary of Your Website"
+msgstr "Wöchentliche SEO-Zusammenfassung Ihrer Website"
+
+#: inc/modules/email-reports/controller.php:463
+msgid "Your Website Performance (Last 7 Days)"
+msgstr "Leistung Ihrer Website (Letzte 7 Tage)"
+
+#: inc/modules/email-reports/controller.php:488
+msgid "Site Clicks"
+msgstr "Seitenaufrufe"
+
+#: inc/modules/email-reports/controller.php:489
+msgid "Total Impressions"
+msgstr "Gesamtimpressionen"
+
+#: inc/modules/email-reports/controller.php:490
+msgid "Average Position"
+msgstr "Durchschnittliche Position"
+
+#: inc/modules/email-reports/controller.php:561
+msgid "Top Ranked Posts"
+msgstr "Top-Rang-Posts"
+
+#: inc/modules/email-reports/controller.php:565
+msgid "Posts"
+msgstr "Beiträge"
+
+#: inc/modules/email-reports/controller.php:610
+msgid "View Full Analysis"
+msgstr "Vollständige Analyse anzeigen"
+
+#: inc/modules/email-reports/controller.php:626
+msgid "Want to see SEO + traffic + sales in one dashboard?"
+msgstr "Möchten Sie SEO + Traffic + Verkäufe in einem Dashboard sehen?"
+
+#: inc/modules/email-reports/controller.php:627
+msgid "See the data that matters, all in one clean, customizable dashboard. Track your site's traffic, sales, and form activity without the clutter."
+msgstr "Sehen Sie die Daten, die wichtig sind, alles in einem sauberen, anpassbaren Dashboard. Verfolgen Sie den Traffic, die Verkäufe und die Formularaktivität Ihrer Website ohne Unordnung."
+
+#: inc/modules/email-reports/controller.php:629
+msgid "Explore"
+msgstr "Erkunden"
+
+#: inc/modules/email-reports/controller.php:890
+msgid "Home"
+msgstr "Startseite"
+
+#: inc/modules/email-reports/utils.php:70
+msgid "Settings must be an array."
+msgstr "Einstellungen müssen ein Array sein."
+
+#: inc/modules/email-reports/utils.php:74
+msgid "Enabled must be a boolean."
+msgstr "Aktiviert muss ein Boolean sein."
+
+#: inc/modules/email-reports/utils.php:78
+msgid "Recipient email must be a valid email address."
+msgstr "Empfänger-E-Mail muss eine gültige E-Mail-Adresse sein."
+
+#: inc/modules/email-reports/utils.php:82
+msgid "Day of week must be a valid day."
+msgstr "Wochentag muss ein gültiger Tag sein."
+
+#. translators: %s is replaced with the custom field label.
+#: inc/schema/custom-fields.php:107
+#, php-format
+msgid "Custom Field: %s"
+msgstr "Benutzerdefiniertes Feld: %s"
+
+#: inc/schema/variables.php:219
+msgid "Website Type"
+msgstr "Webseitentyp"
+
+#: inc/schema/variables.php:221
+msgid "Business Description"
+msgstr "Geschäftsbeschreibung"
+
+#: inc/schema/variables.php:224
+msgid "Website Owner Phone"
+msgstr "Telefon des Website-Besitzers"
+
+#: inc/schema/variables.php:226
+msgid "About Page ID"
+msgstr "ID der Über-Uns-Seite"
+
+#: inc/schema/variables.php:227
+msgid "Contact Page ID"
+msgstr "ID der Kontaktseite"
+
+#. translators: %s is replaced with the custom field label.
+#: inc/traits/custom-field.php:59
+#, php-format
+msgid "Custom field: %s"
+msgstr "Benutzerdefiniertes Feld: %s"
+
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
+msgid "Google Indexing"
+msgstr "Google-Indexierung"
+
+#: build/admin-dashboard/index.js:1
+msgid "Automatically notify Google when your content is published or updated. Get your pages indexed faster with Google Indexing API integration and ensure your latest content appears in search results."
+msgstr "Benachrichtigen Sie Google automatisch, wenn Ihre Inhalte veröffentlicht oder aktualisiert werden. Lassen Sie Ihre Seiten schneller indexieren mit der Google Indexing API-Integration und stellen Sie sicher, dass Ihre neuesten Inhalte in den Suchergebnissen erscheinen."
+
+#: build/admin-dashboard/index.js:1
+msgid "Unlock Google Indexing API for faster indexing"
+msgstr "Google Indexing API für schnellere Indexierung freischalten"
+
+#: build/admin-dashboard/index.js:1
+msgid "Upgrade to SureRank Pro or Business and let Google know about your new or updated content instantly."
+msgstr "Auf SureRank Pro oder Business upgraden und Google sofort über Ihre neuen oder aktualisierten Inhalte informieren."
+
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
+msgid "Email Summary"
+msgstr "E-Mail-Zusammenfassung"
+
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
+msgid "Send Email To"
+msgstr "E-Mail senden an"
+
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
+msgid "You have unsaved changes. Are you sure you want to leave?"
+msgstr "Sie haben ungespeicherte Änderungen. Sind Sie sicher, dass Sie verlassen möchten?"
+
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
+msgid "Failed to save email reports settings."
+msgstr "Fehler beim Speichern der E-Mail-Berichteinstellungen."
+
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
+msgid "Settings saved successfully!"
+msgstr "Einstellungen erfolgreich gespeichert!"
+
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
+msgid "An unexpected error occurred while saving the settings. Please try again later."
+msgstr "Beim Speichern der Einstellungen ist ein unerwarteter Fehler aufgetreten. Bitte versuchen Sie es später erneut."
+
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
+msgid "Email SEO performance reports for your website, helping you track rankings and improvements without manual work."
+msgstr "Senden Sie SEO-Leistungsberichte per E-Mail für Ihre Website, um Rankings und Verbesserungen ohne manuellen Aufwand zu verfolgen."
+
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
+msgid "Failed to send test email."
+msgstr "Fehler beim Senden der Test-E-Mail."
+
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
+msgid "Test email sent successfully"
+msgstr "Test-E-Mail erfolgreich gesendet"
+
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
+msgid "Test email sent successfully!"
+msgstr "Test-E-Mail erfolgreich gesendet!"
+
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
+msgid "Please check your email configuration and try again."
+msgstr "Bitte überprüfen Sie Ihre E-Mail-Konfiguration und versuchen Sie es erneut."
+
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
+msgid "Schedule Summary"
+msgstr "Zusammenfassung des Zeitplans"
+
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
+msgid "Connect Google Search Console to Enable Email Summary"
+msgstr "Verbinden Sie Google Search Console, um die E-Mail-Zusammenfassung zu aktivieren"
+
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
+msgid "Email summary uses GSC data to show your site’s search performance. Connect now to unlock and configure report settings."
+msgstr "Die E-Mail-Zusammenfassung verwendet GSC-Daten, um die Suchleistung Ihrer Website anzuzeigen. Verbinden Sie sich jetzt, um Berichts-Einstellungen freizuschalten und zu konfigurieren."
+
+#: build/search-console-widget/index.js:1
+msgid "Traffic from last few days"
+msgstr "Verkehr der letzten Tage"
+
+#: build/seo-popup/index.js:1
+#, js-format
+msgid "Enter a custom field variable like %custom_field.field_name% or a direct image URL."
+msgstr "Geben Sie eine benutzerdefinierte Feldvariable wie %custom_field.field_name% oder eine direkte Bild-URL ein."
+
+#: build/seo-popup/index.js:1
+msgid "Custom Field"
+msgstr "Benutzerdefiniertes Feld"
+
+#: build/seo-popup/index.js:1
+#, js-format
+msgid "Enter image URL or %custom_field.field_name%"
+msgstr "Geben Sie eine Bild-URL oder %custom_field.field_name% ein"
+
+#: build/seo-popup/index.js:1
+msgid "Type @ to view variable suggestions or enter a direct URL"
+msgstr "Geben Sie @ ein, um Variablen-Vorschläge anzuzeigen, oder eine direkte URL"
+
+#: build/seo-popup/index.js:1
+msgid "These settings help search engines understand how to treat your page in search results. Enabling \"No Index\" will prevent the page from appearing in search results. \"No Follow\" tells search engines not to follow any links on the page, and \"No Archive\" prevents search engines from storing a cached version of the page."
+msgstr "Diese Einstellungen helfen Suchmaschinen zu verstehen, wie Ihre Seite in den Suchergebnissen behandelt werden soll. Das Aktivieren von \"No Index\" verhindert, dass die Seite in den Suchergebnissen erscheint. \"No Follow\" weist Suchmaschinen an, keinen Links auf der Seite zu folgen, und \"No Archive\" verhindert, dass Suchmaschinen eine zwischengespeicherte Version der Seite speichern."
+
+#: build/seo-popup/index.js:1
+msgid "Toggle general SEO settings"
+msgstr "Allgemeine SEO-Einstellungen umschalten"
+
+#: build/seo-popup/index.js:1
+msgid "Toggle social media settings"
+msgstr "Soziale-Media-Einstellungen umschalten"
+
+#: build/seo-popup/index.js:1
+msgid "Toggle advanced SEO settings"
+msgstr "Erweiterte SEO-Einstellungen umschalten"
+
+#: build/seo-popup/index.js:1
+msgid "Toggle schema markup settings"
+msgstr "Schema-Markup-Einstellungen umschalten"
+
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
+msgid "Test Email"
+msgstr "Test-E-Mail"
+
+#: build/admin-dashboard/index.js:1
+#: build/admin-onboarding/index.js:1
+msgid "Sending…"
+msgstr "Senden…"

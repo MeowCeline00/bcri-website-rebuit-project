@@ -198,11 +198,26 @@ class Controller {
 	 * @return array<string, mixed>|array<int, array<string, mixed>>
 	 */
 	public function get_clicks_and_impressions( $request ) {
+		$start_date = $this->get_start_date( $request );
+		$end_date   = $this->get_end_date( $request );
+
+		return $this->get_clicks_and_impressions_data( $start_date, $end_date );
+	}
+
+	/**
+	 * Get Clicks and Impressions Data
+	 *
+	 * @since 1.6.0
+	 * @param string $start_date Start date (Y-m-d).
+	 * @param string $end_date   End date (Y-m-d).
+	 * @return array<string, mixed>|array<int, array<string, mixed>>
+	 */
+	public function get_clicks_and_impressions_data( $start_date, $end_date ) {
 		$site_url = $this->get_user_site_url();
 
 		$current_body = [
-			'startDate' => $this->get_start_date( $request ),
-			'endDate'   => $this->get_end_date( $request ),
+			'startDate' => $start_date,
+			'endDate'   => $end_date,
 			'dataState' => 'ALL',
 		];
 
@@ -329,11 +344,26 @@ class Controller {
 	 * @return array<string, mixed>|array<int, array<string, mixed>>
 	 */
 	public function get_content_performance( $request ) {
+		$start_date = $this->get_start_date( $request );
+		$end_date   = $this->get_end_date( $request );
+
+		return $this->get_content_performance_data( $start_date, $end_date );
+	}
+
+	/**
+	 * Get Content Performance Data
+	 *
+	 * @since 1.6.0
+	 * @param string $start_date Start date (Y-m-d).
+	 * @param string $end_date   End date (Y-m-d).
+	 * @return array<string, mixed>|array<int, array<string, mixed>>
+	 */
+	public function get_content_performance_data( $start_date, $end_date ) {
 		$site_url = $this->get_user_site_url();
 
 		$current_body = [
-			'startDate'  => $this->get_start_date( $request ),
-			'endDate'    => $this->get_end_date( $request ),
+			'startDate'  => $start_date,
+			'endDate'    => $end_date,
 			'dimensions' => [ 'page' ],
 			'rowLimit'   => '500',
 			'dataState'  => 'ALL',
@@ -590,9 +620,7 @@ class Controller {
 	 * @return string The formatted site URL.
 	 */
 	private function get_site_url( $site_url ) {
-		if ( strpos( $site_url, 'sc-domain' ) !== false ) {
-			$site_url = $site_url;
-		} else {
+		if ( strpos( $site_url, 'sc-domain' ) === false ) {
 			$site_url = urlencode( $site_url );
 		}
 		return $site_url;

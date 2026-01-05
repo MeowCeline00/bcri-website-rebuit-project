@@ -74,14 +74,14 @@ class Helper {
 	 * @return array<string, mixed>|array<int, string>|string|array<string>|array<string,string>
 	 */
 	public static function get_saved_business_details( string $key ) {
-		$details = get_option( 'zipwp_user_business_details', array() );
+		$details = get_option( 'zipwp_user_business_details', [] );
 
 		if ( ! is_array( $details ) ) {
-			$details = array();
+			$details = [];
 		}
 
 		if ( ! empty( $key ) ) {
-			return isset( $details[ $key ] ) ? $details[ $key ] : '';
+			return $details[ $key ] ?? '';
 		}
 
 		return $details;

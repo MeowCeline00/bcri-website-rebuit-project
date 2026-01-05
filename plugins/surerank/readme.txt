@@ -5,7 +5,7 @@ Tags: seo, wordpress seo, xml sitemap, schema, google search console
 Requires at least: 6.8
 Tested up to: 6.9
 Requires PHP: 8.0
-Stable tag: 1.5.1
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -294,6 +294,18 @@ Brainstorm Force
 
 
 == Changelog ==
+### 1.6.1 - 23-December-2025 ###
+* Improvement: Removed default title prefixes from taxonomy, archive, and post type archive pages.
+* Fix: Fixed an issue where onboarding settings were not updated correctly in an edge case.
+
+### 1.6.0 - 22-December-2025 ###
+* New: Introduced Email Summary with site performance insights from Google Search Console.
+* Improvement: Improved user experience in SureRank Meta box and other additional components.
+* Improvement: Optimized Page SEO checks in the SEO bar.
+* Improvement: Added custom field support (text and image) for ACF, SCF, Pods, and Metabox in meta templates, schemas, and social settings.
+* Fix: Fixed an issue where schema was not displaying in metabox when the display condition was set to the front page.
+
+
 
 ### 1.5.1 - 09-December-2025 ###
 * Improvement: Enhanced content generation to provide more accurate and relevant results.

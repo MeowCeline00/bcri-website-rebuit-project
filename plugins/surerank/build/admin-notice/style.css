@@ -509,6 +509,9 @@
 #surerank-root .-mt-0\.5, .surerank-root .-mt-0\.5 {
 	margin-top: -0.125rem;
 }
+#surerank-root .-mt-1, .surerank-root .-mt-1 {
+	margin-top: -0.25rem;
+}
 #surerank-root .-mt-2, .surerank-root .-mt-2 {
 	margin-top: -0.5rem;
 }
@@ -847,6 +850,9 @@
 #surerank-root .h-\[600px\], .surerank-root .h-\[600px\] {
 	height: 600px;
 }
+#surerank-root .h-\[7px\], .surerank-root .h-\[7px\] {
+	height: 7px;
+}
 #surerank-root .h-auto, .surerank-root .h-auto {
 	height: auto;
 }
@@ -1080,6 +1086,9 @@
 }
 #surerank-root .w-\[4\.375rem\], .surerank-root .w-\[4\.375rem\] {
 	width: 4.375rem;
+}
+#surerank-root .w-\[7px\], .surerank-root .w-\[7px\] {
+	width: 7px;
 }
 #surerank-root .w-\[calc\(100\%\+0\.75rem\)\], .surerank-root .w-\[calc\(100\%\+0\.75rem\)\] {
 	width: calc(100% + 0.75rem);
@@ -2489,9 +2498,6 @@
 #surerank-root .pb-8, .surerank-root .pb-8 {
 	padding-bottom: 2rem;
 }
-#surerank-root .pl-0, .surerank-root .pl-0 {
-	padding-left: 0px;
-}
 #surerank-root .pl-1, .surerank-root .pl-1 {
 	padding-left: 0.25rem;
 }
@@ -2569,6 +2575,9 @@
 }
 #surerank-root .pt-5, .surerank-root .pt-5 {
 	padding-top: 1.25rem;
+}
+#surerank-root .pt-6, .surerank-root .pt-6 {
+	padding-top: 1.5rem;
 }
 #surerank-root .text-left, .surerank-root .text-left {
 	text-align: left;
@@ -3213,9 +3222,6 @@
 #surerank-root .ease-linear, .surerank-root .ease-linear {
 	transition-timing-function: linear;
 }
-#surerank-root .\[box-shadow\:none\], .surerank-root .\[box-shadow\:none\] {
-	box-shadow: none;
-}
 #surerank-root .\[clip-path\:inset\(0_0_0_0_round_6px\)\], .surerank-root .\[clip-path\:inset\(0_0_0_0_round_6px\)\] {
 	clip-path: inset(0 0 0 0 round 6px);
 }
@@ -3388,6 +3394,10 @@
 	content: var(--tw-content);
 	display: block;
 }
+#surerank-root .after\:inline-block::after, .surerank-root .after\:inline-block::after {
+	content: var(--tw-content);
+	display: inline-block;
+}
 #surerank-root .after\:h-full::after, .surerank-root .after\:h-full::after {
 	content: var(--tw-content);
 	height: 100%;
@@ -3401,6 +3411,11 @@
 	background-color: rgb(0 0 0 / 0.4);
 }
 #surerank-root .after\:text-field-required::after, .surerank-root .after\:text-field-required::after {
+	content: var(--tw-content);
+	--tw-text-opacity: 1;
+	color: rgb(220 38 38 / var(--tw-text-opacity, 1));
+}
+#surerank-root .after\:text-text-error::after, .surerank-root .after\:text-text-error::after {
 	content: var(--tw-content);
 	--tw-text-opacity: 1;
 	color: rgb(220 38 38 / var(--tw-text-opacity, 1));
@@ -3421,6 +3436,10 @@
 #surerank-root .first\:mt-0:first-child, .surerank-root .first\:mt-0:first-child {
 	margin-top: 0px;
 }
+#surerank-root .first\:rounded-b-none:first-child, .surerank-root .first\:rounded-b-none:first-child {
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+}
 #surerank-root .first\:rounded-bl:first-child, .surerank-root .first\:rounded-bl:first-child {
 	border-bottom-left-radius: 0.25rem;
 }
@@ -3439,6 +3458,10 @@
 }
 #surerank-root .last\:mb-0:last-child, .surerank-root .last\:mb-0:last-child {
 	margin-bottom: 0px;
+}
+#surerank-root .last\:rounded-t-none:last-child, .surerank-root .last\:rounded-t-none:last-child {
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
 }
 #surerank-root .last\:rounded-br:last-child, .surerank-root .last\:rounded-br:last-child {
 	border-bottom-right-radius: 0.25rem;
@@ -4483,6 +4506,28 @@
 	#surerank-root .md\:justify-self-stretch, .surerank-root .md\:justify-self-stretch {
 		justify-self: stretch;
 	}
+	#surerank-root .md\:first\:rounded-l-sm:first-child, .surerank-root .md\:first\:rounded-l-sm:first-child {
+		border-top-left-radius: 0.125rem;
+		border-bottom-left-radius: 0.125rem;
+	}
+	#surerank-root .md\:first\:rounded-r-none:first-child, .surerank-root .md\:first\:rounded-r-none:first-child {
+		border-top-right-radius: 0px;
+		border-bottom-right-radius: 0px;
+	}
+	#surerank-root .md\:last\:rounded-l-none:last-child, .surerank-root .md\:last\:rounded-l-none:last-child {
+		border-top-left-radius: 0px;
+		border-bottom-left-radius: 0px;
+	}
+	#surerank-root .md\:last\:rounded-r-sm:last-child, .surerank-root .md\:last\:rounded-r-sm:last-child {
+		border-top-right-radius: 0.125rem;
+		border-bottom-right-radius: 0.125rem;
+	}
+	#surerank-root .md\:last\:border-l-0:last-child, .surerank-root .md\:last\:border-l-0:last-child {
+		border-left-width: 0px;
+	}
+	#surerank-root .md\:last\:border-t-0\.5:last-child, .surerank-root .md\:last\:border-t-0\.5:last-child {
+		border-top-width: 0.5px;
+	}
 }
 @media (min-width: 1024px) {
 	#surerank-root .lg\:order-1, .surerank-root .lg\:order-1 {
@@ -5208,9 +5253,6 @@
 	--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
 	--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
 	box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
-}
-#surerank-root .\[\&_button\]\:h-full button, .surerank-root .\[\&_button\]\:h-full button {
-	height: 100%;
 }
 #surerank-root .\[\&_div\]\:font-normal div, .surerank-root .\[\&_div\]\:font-normal div {
 	font-weight: 400;

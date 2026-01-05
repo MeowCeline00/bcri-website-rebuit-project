@@ -152,9 +152,23 @@ class BulkActions {
 	 */
 	public function admin_notices(): void {
 		if (
-			! isset( $_GET['surerank_bulk_action'], $_GET['surerank_updated'], $_GET['surerank_nonce'] ) ||
+			! isset( $_GET['surerank_bulk_action'], $_GET['surerank_nonce'] ) ||
 			! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['surerank_nonce'] ) ), 'surerank_bulk_action_nonce' )
 		) {
+			return;
+		}
+
+		$action = sanitize_text_field( wp_unslash( $_GET['surerank_bulk_action'] ) );
+
+		// Check for error message first.
+		if ( isset( $_GET['surerank_error'] ) ) {
+			$error_message = sanitize_text_field( wp_unslash( $_GET['surerank_error'] ) );
+			printf(
+				'<div class="notice notice-error is-dismissible"><p>%s</p></div>',
+				esc_html( rawurldecode( $error_message ) )
+			);
+
+			$this->clear_bulk_action_url_parameters();
 			return;
 		}
 
@@ -163,7 +177,6 @@ class BulkActions {
 			return;
 		}
 
-		$action        = sanitize_text_field( wp_unslash( $_GET['surerank_bulk_action'] ) );
 		$action_labels = $this->get_bulk_action_labels();
 
 		if ( ! isset( $action_labels[ $action ] ) ) {

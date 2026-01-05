@@ -13,6 +13,8 @@ import {
 	ArrowUpDown,
 	ExternalLink,
 	CheckCheck,
+	Waypoints,
+	Mail,
 	Image,
 } from 'lucide-react';
 import { applyFilters } from '@wordpress/hooks';
@@ -29,6 +31,7 @@ import { PAGE_CONTENT as ADVANCED_PAGE_CONTENT } from '@AdminGeneral/general/hom
 import { PAGE_CONTENT as SOCIAL_ACCOUNTS_PAGE_CONTENT } from '@AdminGeneral/social/account/account';
 import { PAGE_CONTENT as TITLE_AND_DESCRIPTION_PAGE_CONTENT } from '@AdminGeneral/general/title-and-description/title-and-description';
 import { PAGE_CONTENT as ROBOTS_TXT_PAGE_CONTENT } from '@AdminGeneral/advanced/tools/robots-txt-editor/robots-txt-editor';
+import { PAGE_CONTENT as EMAIL_REPORTS_PAGE_CONTENT } from '@AdminGeneral/advanced/email-reports/email-reports';
 import {
 	ENABLE_GOOGLE_CONSOLE,
 	ENABLE_SCHEMAS,
@@ -183,6 +186,13 @@ export const getNavLinks = () => {
 					migratable: true,
 				},
 				{
+					path: '/advanced/email-reports',
+					label: __( 'Email Summary', 'surerank' ),
+					icon: Mail,
+					pageContent: EMAIL_REPORTS_PAGE_CONTENT,
+					migratable: false,
+				},
+				{
 					path: '/advanced/instant-indexing',
 					label: __( 'Instant Indexing', 'surerank' ),
 					icon: CheckCheck,
@@ -193,6 +203,21 @@ export const getNavLinks = () => {
 						},
 						{
 							path: '/advanced/instant-indexing/logs',
+							label: __( 'Logs', 'surerank' ),
+						},
+					],
+				},
+				{
+					path: '/advanced/google-indexing',
+					label: __( 'Google Indexing', 'surerank' ),
+					icon: Waypoints,
+					submenu: [
+						{
+							path: '/advanced/google-indexing/settings',
+							label: __( 'Settings', 'surerank' ),
+						},
+						{
+							path: '/advanced/google-indexing/logs',
 							label: __( 'Logs', 'surerank' ),
 						},
 					],

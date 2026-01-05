@@ -4,7 +4,7 @@ Tags: elementor, elementor addon, elementor widget, elementor template, header f
 Requires at least: 5.0  
 Tested up to: 6.9
 Requires PHP: 7.4  
-Stable tag: 2.7.0
+Stable tag: 2.7.1
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -299,6 +299,9 @@ You can report the issue through our [Bug Bounty Program](https://brainstormforc
 ---
 
 == Changelog ==
+= 2.7.1 =
+- Improvement: Compatibility with latest Elementor and Elementor Pro 3.34 version.
+
 = 2.7.0 =
 - New: Added Counter Widget – Enables animated number counters with customizable styling options.
 

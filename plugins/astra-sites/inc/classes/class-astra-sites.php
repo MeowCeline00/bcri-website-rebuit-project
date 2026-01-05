@@ -2275,7 +2275,10 @@ if ( ! class_exists( 'Astra_Sites' ) ) :
 		 */
 		public function get_original_memory_limit() {
 			// This will fetch the original memory_limit from the server (php.ini).
-			$memory_limit = get_cfg_var( 'memory_limit' );
+			$memory_limit = false;
+			if ( function_exists( 'get_cfg_var' ) ) {
+				$memory_limit = get_cfg_var( 'memory_limit' );
+			}
 		
 			// If get_cfg_var() fails, try accessing PHP configuration directly.
 			if ( ! $memory_limit ) {

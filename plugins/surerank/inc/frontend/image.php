@@ -151,6 +151,19 @@ class Image {
 	}
 
 	/**
+	 * Validates image file extension
+	 *
+	 * @param string $url Image URL.
+	 * @return bool Whether extension is valid
+	 * @since 1.0.0
+	 */
+	public function is_valid_image_extension( string $url ) {
+		$valid_extensions = [ 'jpg', 'jpeg', 'png', 'gif', 'webp', 'avif' ];
+		$extension        = strtolower( pathinfo( $url, PATHINFO_EXTENSION ) );
+		return ! empty( $extension ) && in_array( $extension, $valid_extensions, true );
+	}
+
+	/**
 	 * Extracts first valid image from content
 	 *
 	 * @param string $content The content to search.
@@ -250,19 +263,6 @@ class Image {
 		}
 
 		return true;
-	}
-
-	/**
-	 * Validates image file extension
-	 *
-	 * @param string $url Image URL.
-	 * @return bool Whether extension is valid
-	 * @since 1.0.0
-	 */
-	public function is_valid_image_extension( string $url ) {
-		$valid_extensions = [ 'jpg', 'jpeg', 'png', 'gif', 'webp', 'avif' ];
-		$extension        = strtolower( pathinfo( $url, PATHINFO_EXTENSION ) );
-		return ! empty( $extension ) && in_array( $extension, $valid_extensions, true );
 	}
 
 	/**

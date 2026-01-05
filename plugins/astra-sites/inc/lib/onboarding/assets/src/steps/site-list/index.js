@@ -509,7 +509,7 @@ const SiteList = () => {
 						{ /* Back to the top */ }
 						<div
 							ref={ backToTopBtn }
-							className="hidden absolute right-20 bottom-28 ml-auto"
+							className="hidden absolute right-20 bottom-40 ml-auto"
 						>
 							<button
 								type="button"

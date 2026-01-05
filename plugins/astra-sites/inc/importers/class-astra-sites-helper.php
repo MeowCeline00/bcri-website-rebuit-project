@@ -326,7 +326,7 @@ if ( ! class_exists( 'Astra_Sites_Helper' ) ) :
 			}
 
 			if ( wp_doing_ajax() ) {
-				$response = empty( $data ) ? null : $data;
+				$response = empty( $data ) ? array() : $data;
 				wp_send_json_success( $response );
 			}
 		}

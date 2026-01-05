@@ -2,7 +2,6 @@ import PageContentWrapper from '@AdminComponents/page-content-wrapper';
 import { __ } from '@wordpress/i18n';
 import withSuspense from '@AdminComponents/hoc/with-suspense';
 import GeneratePageContent from '@Functions/page-content-generator';
-import { createLazyRoute } from '@tanstack/react-router';
 import { applyFilters } from '@wordpress/hooks';
 
 // Base feature toggles
@@ -100,9 +99,5 @@ const DisableFeatures = () => {
 		</PageContentWrapper>
 	);
 };
-
-export const LazyRoute = createLazyRoute( '/tools/manage-features' )( {
-	component: withSuspense( DisableFeatures ),
-} );
 
 export default withSuspense( DisableFeatures );

@@ -338,6 +338,43 @@ if ( class_exists( 'WP_CLI_Command' ) && ! class_exists( 'Astra_Sites_WP_CLI' ) 
 			if ( isset( $demo_data['astra-site-widgets-data'] ) && ! empty( $demo_data['astra-site-widgets-data'] ) ) {
 				WP_CLI::line( __( 'Importing Widgets..', 'astra-sites' ) );
 				
+				if ( file_exists( ABSPATH . 'wp-content/themes/astra/functions.php' ) ) {
+					require_once ABSPATH . 'wp-content/themes/astra/functions.php';
+				}
+
+				// Initialize Astra Builder Widget Controller.
+				try {
+					if ( class_exists( 'Astra_Builder_Widget_Controller' ) && class_exists( 'Astra_Builder_Helper' ) ) {
+						$widget_controller = \Astra_Builder_Widget_Controller::get_instance();
+						if ( method_exists( $widget_controller, 'widget_init' ) ) {
+							// Check if header/footer builder is active.
+							$is_builder_active = property_exists( 'Astra_Builder_Helper', 'is_header_footer_builder_active' ) ? Astra_Builder_Helper::$is_header_footer_builder_active : true;
+							
+							if ( false !== $is_builder_active ) {
+								// Use fallback values to reduce dependency on Astra_Builder_Helper.
+								$num_of_footer_widgets = property_exists( 'Astra_Builder_Helper', 'num_of_footer_widgets' ) ? Astra_Builder_Helper::$num_of_footer_widgets : 4;
+								$num_of_header_widgets = property_exists( 'Astra_Builder_Helper', 'num_of_header_widgets' ) ? Astra_Builder_Helper::$num_of_header_widgets : 2;
+								$pro_exist             = defined( 'ASTRA_EXT_VER' );
+								$component_limit       = $pro_exist && property_exists( 'Astra_Builder_Helper', 'component_limit' ) ? Astra_Builder_Helper::$component_limit : max( $num_of_footer_widgets, $num_of_header_widgets );
+
+								for ( $index = 1; $index <= ( $pro_exist ? $component_limit : $num_of_footer_widgets ); $index++ ) {
+									$widget_controller->register_sidebar( $index, 'footer' );
+								}
+
+								for ( $index = 1; $index <= ( $pro_exist ? $component_limit : $num_of_header_widgets ); $index++ ) {
+									$widget_controller->register_sidebar( $index, 'header' );
+								}
+							}
+						}
+					}
+				} catch ( \Exception $e ) {
+					// translators: %s is the error.
+					WP_CLI::line( sprintf( __( 'Warning: Failed to initialize Astra Builder Widget Controller. Error: %s', 'astra-sites' ), $e->getMessage() ) );
+				} catch ( \Error $e ) {
+					// translators: %s is the error.
+					WP_CLI::line( sprintf( __( 'Warning: Fatal error encountered while initializing Astra Builder Widget Controller. Error: %s', 'astra-sites' ), $e->getMessage() ) );
+				}
+
 				// Ensure the widgets_init action is fired.
 				if ( function_exists( 'wp_widgets_init' ) ) {
 					wp_widgets_init();

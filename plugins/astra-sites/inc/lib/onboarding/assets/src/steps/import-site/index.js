@@ -1669,19 +1669,25 @@ const ImportSite = () => {
 					break;
 
 				case 'complete':
+					evtSource.close();
 					if ( false === eventData.error ) {
-						evtSource.close();
 						dispatch( {
 							type: 'set',
 							xmlImportDone: true,
 						} );
 					} else {
+						const errorMsg =
+							eventData.error ||
+							astraSitesVars?.xml_import_interrupted_error;
+						const solutionMsg = eventData.error
+							? astraSitesVars?.process_failed_secondary
+							: astraSitesVars?.xml_import_interrupted_secondary;
 						report(
 							astraSitesVars?.xml_import_interrupted_primary,
 							'',
-							astraSitesVars?.xml_import_interrupted_error,
+							errorMsg,
 							'',
-							astraSitesVars?.xml_import_interrupted_secondary
+							solutionMsg
 						);
 					}
 					break;
@@ -1697,7 +1703,7 @@ const ImportSite = () => {
 						'astra-sites'
 					),
 					'',
-					error
+					astraSitesVars?.xml_import_interrupted_primary
 				);
 			}
 		};

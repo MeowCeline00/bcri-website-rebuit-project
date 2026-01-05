@@ -10,11 +10,11 @@
 namespace SureRank\Inc\API;
 
 use SureRank\Inc\Admin\Sync;
+use SureRank\Inc\Functions\Cache;
 use SureRank\Inc\Functions\Cron;
 use SureRank\Inc\Functions\Helper;
 use SureRank\Inc\Functions\Send_Json;
 use SureRank\Inc\Traits\Get_Instance;
-use SureRank\Inc\Functions\Cache;
 use WP_REST_Request;
 use WP_REST_Server;
 

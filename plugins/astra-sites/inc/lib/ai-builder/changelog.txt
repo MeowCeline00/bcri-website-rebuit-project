@@ -1,3 +1,9 @@
+v1.2.67 - 16th December 2025
+- New: Added confirmation modal when proceeding without selecting images in the select-images step.
+- Improvement: Enhanced page builder selection to respect and order builders based on supported page builders filter.
+- Improvement: Added specific handling for unauthorized ZipWP API responses with user-friendly error messages and filter to customize the message.
+- Fix: Resolved an issue where empty or invalid error messages were displayed in error modals.
+
 v1.2.66 - 5th December 2025
 - New: Added switch team and disconnect AI links in the Zip Plan info modal.
 - Fix: Resolved an issue where the search box stopped working after clearing the keyword and searching again.

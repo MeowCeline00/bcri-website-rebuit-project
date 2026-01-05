@@ -219,6 +219,17 @@ export const stringValueToFormatJSON = (
 					...mentionObjectStructure,
 					data: { ...option },
 				} );
+			} else {
+				// If option not found, render as plain text (e.g., %custom_field.field_name%)
+				value.root.children[ 0 ].children.push( {
+					detail: 0,
+					format: 0,
+					mode: 'normal',
+					style: '',
+					text: item,
+					type: 'text',
+					version: 1,
+				} );
 			}
 		} else {
 			value.root.children[ 0 ].children.push( {

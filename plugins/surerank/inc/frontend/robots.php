@@ -50,10 +50,9 @@ class Robots {
 		$public   = absint( get_option( 'blog_public' ) );
 		$default  = __( '# SureRank will generate robots.txt automatically.', 'surerank' ) . "\n";
 		$default .= "User-Agent: *\n";
-		$default .= ( 0 === $public ) ? "Disallow: /wp-admin/\n Allow: /wp-admin/admin-ajax.php\n" : "Disallow: /wp-admin/\n";
+		$default .= 0 === $public ? "Disallow: /wp-admin/\n Allow: /wp-admin/admin-ajax.php\n" : "Disallow: /wp-admin/\n";
 
-		$default = apply_filters( 'robots_txt', $default, $public );    
-		return $default;
+		return apply_filters( 'robots_txt', $default, $public );
 	}
 
 	/**
@@ -158,6 +157,26 @@ class Robots {
 	}
 
 	/**
+	 * Check of specified page type exists
+	 *
+	 * @since 1.0.0
+	 * @param array<int, string> $types page types.
+	 * @return bool
+	 */
+	public function is_specified_page_type( $types = [] ): bool {
+		foreach ( $types as $type ) {
+			if ( $this->is_empty_taxonomy() ) {
+				return true;
+			}
+
+			if ( $this->matches_page_type( $type ) ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
 	 * Add sitemap directive to robots.txt
 	 *
 	 * @since 1.5.0
@@ -176,26 +195,6 @@ class Robots {
 			}
 		}
 		return (string) $output;
-	}
-
-	/**
-	 * Check of specified page type exists
-	 *
-	 * @since 1.0.0
-	 * @param array<int, string> $types page types.
-	 * @return bool
-	 */
-	public function is_specified_page_type( $types = [] ): bool {
-		foreach ( $types as $type ) {
-			if ( $this->is_empty_taxonomy() ) {
-				return true;
-			}
-
-			if ( $this->matches_page_type( $type ) ) {
-				return true;
-			}
-		}
-		return false;
 	}
 
 	/**

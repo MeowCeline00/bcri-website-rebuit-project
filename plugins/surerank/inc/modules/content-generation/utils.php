@@ -187,7 +187,7 @@ class Utils {
 	 * @param array<string, mixed> $request_data Request data to send.
 	 * @param string               $route        API route (e.g., 'surerank/generate/content').
 	 * @param int                  $timeout      Request timeout in seconds (default: 30).
-	 * @return array<string, mixed>|WP_Error API response or WP_Error.
+	 * @return array<string, mixed>|\WP_Error API response or WP_Error.
 	 */
 	public function send_api_request( $request_data, $route = 'surerank/generate/content', $timeout = 30 ) {
 		$auth_token = self::get_auth_token();
@@ -207,7 +207,7 @@ class Utils {
 		/**
 		* The API request response.
 		*
-		* @var array<string, mixed>|WP_Error $response
+		* @var array<string, mixed>|\WP_Error $response
 		*/
 		$response = Requests::post(
 			$url,

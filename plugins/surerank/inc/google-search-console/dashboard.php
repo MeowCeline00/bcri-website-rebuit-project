@@ -10,7 +10,6 @@
 namespace SureRank\Inc\GoogleSearchConsole;
 
 use SureRank\Inc\API\Api_Base;
-use SureRank\Inc\Functions\Helper;
 use SureRank\Inc\Functions\Send_Json;
 use SureRank\Inc\Traits\Get_Instance;
 use WP_REST_Request;

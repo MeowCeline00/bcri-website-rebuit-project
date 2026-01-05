@@ -1,7 +1,6 @@
 import { __, sprintf } from '@wordpress/i18n';
 import { Container, Skeleton, Text, LineChart } from '@bsf/force-ui';
-import { ExternalLink } from '@wordpress/components';
-import { ArrowDown, ArrowUp } from 'lucide-react';
+import { ArrowDown, ArrowUp, ArrowUpRight } from 'lucide-react';
 import {
 	cn,
 	formatNumber,
@@ -10,7 +9,6 @@ import {
 	getMetricValues,
 } from '@/functions/utils';
 import { useWidgetState } from './context/widget-context';
-import { DEFAULT_DATE_RANGE } from './constants';
 import { InfoTooltip } from '@AdminComponents/tooltip';
 
 /**
@@ -39,7 +37,7 @@ const ClicksAndImpressions = ( { item, isLoading } ) => {
 	return (
 		<Container.Item
 			key={ item.label }
-			className="px-3 py-3 space-y-2 w-full h-full bg-background-primary shadow-sm rounded-sm border-0.5 border-solid border-[#C3C4C7]"
+			className="px-3 py-3 space-y-2 w-full h-full bg-background-primary shadow-sm rounded-sm first:rounded-b-none md:first:rounded-l-sm md:first:rounded-r-none last:rounded-t-none md:last:rounded-r-sm md:last:rounded-l-none last:border-t-0 md:last:border-t-0.5 md:last:border-l-0 border-0.5 border-solid border-[#C3C4C7]"
 		>
 			<Container
 				align="center"
@@ -107,7 +105,7 @@ const TrafficDisplay = () => {
 	return (
 		<>
 			<Container direction="column" className="gap-2">
-				<div className="p-2 w-full bg-background-primary shadow-sm rounded-sm border-0.5 border-solid border-[#C3C4C7]">
+				<div className="p-2 w-full bg-background-primary rounded-sm">
 					<Container
 						gap="none"
 						justify="between"
@@ -121,13 +119,9 @@ const TrafficDisplay = () => {
 								weight={ 600 }
 								className="!m-0 !text-base !font-semibold"
 							>
-								{ sprintf(
-									// translators: %d is the number of days.
-									__(
-										'Traffic from last %d days',
-										'surerank'
-									),
-									DEFAULT_DATE_RANGE
+								{ __(
+									'Traffic from last few days',
+									'surerank'
 								) }
 							</Text>
 							<InfoTooltip
@@ -138,12 +132,14 @@ const TrafficDisplay = () => {
 								) }
 							/>
 						</div>
-						<ExternalLink
-							className="text-xs font-semibold [&>span]:no-underline [&:hover>:first-child]:underline"
+						<a
+							className="text-xs font-semibold [&>span]:no-underline [&:hover>:first-child]:underline flex items-center gap-1 no-underline"
 							href={ settingsPageURL }
+							target="_self"
 						>
 							{ __( 'View More', 'surerank' ) }
-						</ExternalLink>
+							<ArrowUpRight width={ 14 } height={ 14 } />
+						</a>
 					</Container>
 					{ isLoading && (
 						<Skeleton
@@ -218,7 +214,7 @@ const TrafficDisplay = () => {
 					) }
 				</div>
 				<Container
-					className="w-full gap-2 grid grid-cols-1 md:grid-cols-2"
+					className="w-full grid grid-cols-1 md:grid-cols-2 gap-0"
 					align="stretch"
 				>
 					{ clicksData.map( ( item ) => (

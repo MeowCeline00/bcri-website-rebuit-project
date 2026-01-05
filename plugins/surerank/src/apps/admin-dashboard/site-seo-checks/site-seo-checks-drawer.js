@@ -84,7 +84,7 @@ const CheckOverview = ( { selectedItem } ) => {
 					if ( isURL( item ) ) {
 						return (
 							<li
-								className="m-0 text-text-primary mb-0.5"
+								className="m-0 text-text-secondary text-sm mb-0.5"
 								key={ item }
 							>
 								<Button
@@ -102,7 +102,7 @@ const CheckOverview = ( { selectedItem } ) => {
 					}
 					return (
 						<li
-							className="m-0 text-text-primary mb-0.5"
+							className="m-0 text-text-secondary text-sm mb-0.5"
 							key={ item }
 							dangerouslySetInnerHTML={ {
 								__html: DOMPurify.sanitize( item ),
@@ -111,7 +111,7 @@ const CheckOverview = ( { selectedItem } ) => {
 					);
 				} );
 				return (
-					<ul className="my-0 ml-2 mr-0 text-text-primary list-disc list-inside">
+					<ul className="my-0 ml-2 mr-0 text-text-secondary list-disc list-inside">
 						{ listContent }
 					</ul>
 				);
@@ -161,7 +161,7 @@ const CheckOverview = ( { selectedItem } ) => {
 
 						const purifiedItem = DOMPurify.sanitize( item );
 						const itemClassName =
-							'm-0 text-text-primary text-sm font-normal [&_a]:no-underline [&_a]:ring-0';
+							'm-0 text-text-secondary text-sm font-normal [&_a]:no-underline [&_a]:ring-0';
 
 						if ( shouldWrapInParagraph( purifiedItem ) ) {
 							return (
@@ -196,7 +196,7 @@ const CheckOverview = ( { selectedItem } ) => {
 
 	return (
 		<>
-			<div className="px-2 space-y-0.5 w-full border border-border-subtle border-solid rounded-md bg-background-secondary">
+			<div className="px-2 space-y-0.5 w-full border border-border-subtle border-dashed rounded-md bg-background-secondary">
 				{ renderDescription( selectedItem?.description ) || (
 					<Text color="secondary" className="m-0">
 						{ __(

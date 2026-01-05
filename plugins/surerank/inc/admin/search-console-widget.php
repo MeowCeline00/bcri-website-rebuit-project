@@ -15,7 +15,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 use SureRank\Inc\Functions\Settings;
 use SureRank\Inc\GoogleSearchConsole\Auth;
 use SureRank\Inc\GoogleSearchConsole\Controller;
-use SureRank\Inc\Modules\Nudges\Utils;
 use SureRank\Inc\Traits\Enqueue;
 use SureRank\Inc\Traits\Get_Instance;
 

@@ -25,6 +25,7 @@ import Dropdown from '../components/dropdown';
 import Heading from '../components/heading';
 import ImagePreview from '../components/image-preview';
 import NavigationButtons from '../components/navigation-buttons';
+import SkipImagesModal from '../components/skip-images-modal';
 import SuggestedKeywords from '../components/suggested-keywords';
 import Tile from '../components/tile';
 import UploadImage from '../components/upload-image';
@@ -272,6 +273,7 @@ const Images = () => {
 
 	const [ openSuggestedKeywords, setOpenSuggestedKeywords ] =
 		useState( false );
+	const [ openSkipModal, setOpenSkipModal ] = useState( false );
 	const [ referenceRef, popperRef ] = usePopper( {
 		placement: 'bottom',
 		modifiers: [ { name: 'offset', options: { offset: [ 0, 0 ] } } ],
@@ -685,6 +687,12 @@ const Images = () => {
 	const handleClickNext =
 		( skip = false ) =>
 		async () => {
+			// Show modal if user clicks Next without selecting images
+			if ( ! skip && ! selectedImages.length ) {
+				setOpenSkipModal( true );
+				return;
+			}
+
 			await handleSaveDetails( selectedImages, skip );
 			clearSessionStorage( USER_KEYWORD );
 			nextStep();
@@ -692,6 +700,13 @@ const Images = () => {
 				setWebsiteImagesAIStep( previouslySelected.current ?? [] );
 			}
 		};
+
+	const handleConfirmSkip = async () => {
+		await handleSaveDetails( selectedImages, true );
+		clearSessionStorage( USER_KEYWORD );
+		nextStep();
+		setWebsiteImagesAIStep( previouslySelected.current ?? [] );
+	};
 
 	const handleImageSearch = ( data ) => {
 		setKeyword( data.keyword );
@@ -1138,6 +1153,11 @@ const Images = () => {
 						  } ) }
 				/>
 			</div>
+			<SkipImagesModal
+				open={ openSkipModal }
+				setOpen={ setOpenSkipModal }
+				onConfirmSkip={ handleConfirmSkip }
+			/>
 		</div>
 	);
 };

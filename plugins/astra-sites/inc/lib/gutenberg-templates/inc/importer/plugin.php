@@ -610,18 +610,22 @@ class Plugin {
 		$color_palettes = array();
 		$is_astra_theme = class_exists( 'Astra_Global_Palette' );
 
+		// If Astra 4.8.0+ color compatibility is enabled, remap the palette indexes.
+		// Swap color positions: 4 ↔ 5 and 6 ↔ 7 to match the new palette order.
+		$reorganize = class_exists( '\Astra_Dynamic_CSS' ) && is_callable( '\Astra_Dynamic_CSS::astra_4_8_0_compatibility' ) && \Astra_Dynamic_CSS::astra_4_8_0_compatibility();
+
 		if ( 'block' === $block_type ) {
 			$mapping_palette = array(
-				'style-1' => array( 0, 1, 2, 3, 5, 5, 6, 7, 8 ),
-				'style-2' => array( 0, 1, 2, 3, 4, 5, 6, 7, 8 ),
-				'style-3' => array( 3, 2, 5, 4, 0, 1, 6, 7, 8 ),
+				'style-1' => $reorganize ? array( 0, 1, 2, 3, 4, 5, 7, 6, 8 ) : array( 0, 1, 2, 3, 5, 4, 6, 7, 8 ),
+				'style-2' => $reorganize ? array( 0, 1, 2, 3, 5, 4, 7, 6, 8 ) : array( 0, 1, 2, 3, 4, 5, 6, 7, 8 ),
+				'style-3' => $reorganize ? array( 3, 2, 4, 5, 0, 1, 7, 0, 8 ) : array( 3, 2, 5, 4, 0, 1, 6, 0, 8 ),
 			);
 
 			$color_palettes = ! $is_astra_theme ? $this->get_block_palette_colors()[ $style ]['colors'] : $color_palettes;
 		} else {
 			$mapping_palette = array(
-				'style-1' => array( 0, 1, 2, 3, 4, 5, 6, 7, 8 ),
-				'style-2' => array( 0, 1, 5, 4, 3, 2, 6, 7, 8 ),
+				'style-1' => $reorganize ? array( 0, 1, 2, 3, 5, 4, 7, 6, 8 ) : array( 0, 1, 2, 3, 4, 5, 6, 7, 8 ),
+				'style-2' => $reorganize ? array( 0, 1, 4, 5, 3, 2, 7, 6, 8 ) : array( 0, 1, 5, 4, 3, 2, 6, 7, 8 ),
 			);
 
 			$color_palettes = ! $is_astra_theme ? $this->get_page_palette_colors()[ $style ]['colors'] : $color_palettes;
@@ -1420,33 +1424,48 @@ class Plugin {
 			$default_palette_color = $astra_palette_colors['palettes'][ $astra_palette_colors['currentPalette'] ];
 		}
 
+		$reorganize = class_exists( '\Astra_Dynamic_CSS' ) && is_callable( '\Astra_Dynamic_CSS::astra_4_8_0_compatibility' ) && \Astra_Dynamic_CSS::astra_4_8_0_compatibility();
+
 		$palette_one = $default_palette_color;
+
+		// Reorganize palette indexes for Astra 4.8.0+ compatibility.
+		if ( $reorganize ) {
+			// Swap color positions: 4 ↔ 5.
+			$temp           = $palette_one[4];
+			$palette_one[4] = $palette_one[5];
+			$palette_one[5] = $temp;
+
+			// Swap color positions: 6 ↔ 7.
+			$temp           = $palette_one[6];
+			$palette_one[6] = $palette_one[7];
+			$palette_one[7] = $temp;
+		}
 
 		$palette_two = array(
 			$default_palette_color[0],
 			$default_palette_color[1],
-			$default_palette_color[5],
-			$default_palette_color[4],
+			$default_palette_color[ $reorganize ? 4 : 5 ],
+			$default_palette_color[ $reorganize ? 5 : 4 ],
 			$default_palette_color[3],
 			$default_palette_color[2],
-			$default_palette_color[6],
-			$default_palette_color[7],
+			$default_palette_color[ $reorganize ? 7 : 6 ],
+			$default_palette_color[ $reorganize ? 6 : 7 ],
 			$default_palette_color[8],
 		);
 
 		$color_palettes = array(
 			'style-1' =>
 				array(
-					'slug' => 'style-1',
-					'title' => 'Light',
-					'default_color' => $default_palette_color[4],
-					'colors' => $palette_one,
+					'slug'          => 'style-1',
+					'title'         => __( 'Light', 'astra-sites' ),
+					'default_color' => $default_palette_color[ $reorganize ? 5 : 4 ],
+					'colors'        => $palette_one,
 				),
 			'style-2' => array(
-				'slug' => 'style-2',
-				'title' => 'Dark',
+				'slug'          => 'style-2',
+				'title'         => __( 'Dark', 'astra-sites' ),
 				'default_color' => '#1E293B',
-				'colors' => $palette_two,
+				'colors'        => $palette_two,
 			),
 		);
 
@@ -1477,52 +1496,66 @@ class Plugin {
 			$default_palette_color = $astra_palette_colors['palettes'][ $astra_palette_colors['currentPalette'] ];
 		}
 
+		$reorganize = class_exists( '\Astra_Dynamic_CSS' ) && is_callable( '\Astra_Dynamic_CSS::astra_4_8_0_compatibility' ) && \Astra_Dynamic_CSS::astra_4_8_0_compatibility();
+
 		$palette_one = array(
 			$default_palette_color[0],
 			$default_palette_color[1],
 			$default_palette_color[2],
 			$default_palette_color[3],
-			$default_palette_color[5],
-			$default_palette_color[5],
-			$default_palette_color[6],
-			$default_palette_color[7],
+			$default_palette_color[ $reorganize ? 4 : 5 ],
+			$default_palette_color[ $reorganize ? 5 : 4 ],
+			$default_palette_color[ $reorganize ? 7 : 6 ],
+			$default_palette_color[ $reorganize ? 6 : 7 ],
 			$default_palette_color[8],
 		);
 
 		$palette_two = $default_palette_color;
 
+		// Reorganize palette indexes for Astra 4.8.0+ compatibility.
+		if ( $reorganize ) {
+			// Swap color positions: 4 ↔ 5.
+			$temp           = $palette_two[4];
+			$palette_two[4] = $palette_two[5];
+			$palette_two[5] = $temp;
+
+			// Swap color positions: 6 ↔ 7.
+			$temp           = $palette_two[6];
+			$palette_two[6] = $palette_two[7];
+			$palette_two[7] = $temp;
+		}
+
 		$palette_three = array(
 			$default_palette_color[3],
 			$default_palette_color[2],
-			$default_palette_color[5],
-			$default_palette_color[4],
+			$default_palette_color[ $reorganize ? 4 : 5 ],
+			$default_palette_color[ $reorganize ? 5 : 4 ],
 			$default_palette_color[0],
 			$default_palette_color[1],
-			$default_palette_color[6],
-			$default_palette_color[7],
+			$default_palette_color[ $reorganize ? 7 : 6 ],
+			$default_palette_color[0],
 			$default_palette_color[8],
 		);
-
 
 		$color_palettes = array(
 			'style-1' =>
 				array(
-					'slug' => 'style-1',
-					'title' => 'Light',
-					'default_color' => $default_palette_color[5],
-					'colors' => $palette_one,
+					'slug'          => 'style-1',
+					'title'         => __( 'Light', 'astra-sites' ),
+					'default_color' => $default_palette_color[ $reorganize ? 4 : 5 ],
+					'colors'        => $palette_one,
 				),
 			'style-2' => array(
-				'slug' => 'style-2',
-				'title' => 'Dark',
-				'default_color' => $default_palette_color[4],
-				'colors' => $palette_two,
+				'slug'          => 'style-2',
+				'title'         => __( 'Dark', 'astra-sites' ),
+				'default_color' => $default_palette_color[ $reorganize ? 5 : 4 ],
+				'colors'        => $palette_two,
 			),
 			'style-3' => array(
-				'slug' => 'style-3',
-				'title' => 'Highlight',
+				'slug'          => 'style-3',
+				'title'         => __( 'Highlight', 'astra-sites' ),
 				'default_color' => $default_palette_color[0],
-				'colors' => $palette_three,
+				'colors'        => $palette_three,
 			),
 		);
 

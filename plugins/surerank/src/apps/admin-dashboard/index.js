@@ -38,6 +38,9 @@ import ImportExportSettingsRoute from '@AdminGeneral/advanced/tools/import-expor
 import RedirectionManager from '@AdminDashboard/link-manager/redirection-manager';
 import InstantIndexingSettings from '@AdminDashboard/instant-indexing/settings';
 import InstantIndexingLogs from '@AdminDashboard/instant-indexing/logs';
+import EmailReportsRoute from '@AdminGeneral/advanced/email-reports';
+import GoogleIndexingSettings from '@AdminDashboard/google-indexing/settings';
+import GoogleIndexingLogs from '@AdminDashboard/google-indexing/logs';
 
 // Define toast globally for PRO plugin.
 if ( window && ! window?.toast ) {
@@ -77,6 +80,7 @@ const generalAndAdvancedRoutes = [
 			createChildRoute( '/following', RobotInstructionsRoute ),
 			createChildRoute( '/archiving', RobotInstructionsRoute ),
 		] ),
+		createChildRoute( '/email-reports', EmailReportsRoute ),
 		createChildRoute( '/sitemaps', SitemapsRoute ),
 		createChildRoute( '/image-seo', ImageSeoRoute ),
 		// Conditionally include schema route
@@ -122,6 +126,18 @@ const instantIndexingRoutes = [
 	] ),
 ];
 
+// Google Indexing routes
+const googleIndexingRoutes = [
+	createRoute( '/advanced/google-indexing', null, [
+		createChildRoute( '/settings', GoogleIndexingSettings, {
+			fullWidth: false,
+		} ),
+		createChildRoute( '/logs', GoogleIndexingLogs, {
+			fullWidth: false,
+		} ),
+	] ),
+];
+
 // Tools routes
 const toolsRoutes = [
 	createRoute( '/tools', null, [
@@ -139,6 +155,7 @@ const baseRoutes = [
 	...dashboardRoutes,
 	...generalAndAdvancedRoutes,
 	...instantIndexingRoutes,
+	...googleIndexingRoutes,
 	...linkManagerRoutes,
 	...toolsRoutes,
 	...siteSeoAnalysisRoutes,

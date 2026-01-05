@@ -1,5 +1,6 @@
 import { pick } from 'lodash';
 import { select } from '@wordpress/data';
+
 import { STORE_NAME } from './constants';
 import * as actionTypes from './action-types';
 import {
@@ -207,8 +208,57 @@ export const setPageSeoChecksByIdAndType = (
 	checks,
 	error = null
 ) => {
+	const { categorizedChecks, sequence } = categorizeChecksList( checks );
+
+	return {
+		type: actionTypes.SET_PAGE_SEO_CHECKS_BY_ID_AND_TYPE,
+		payload: {
+			postId,
+			postType,
+			checks: categorizedChecks,
+			sequence,
+			error,
+		},
+	};
+};
+
+export const setBatchPageSeoChecks = ( data, type = 'post' ) => {
+	const processedData = {};
+	Object.entries( data ).forEach( ( [ id, itemData ] ) => {
+		const checks = itemData.checks || {};
+		const processedChecks = Object.entries( checks ).map(
+			( [ key, value ] ) => ( {
+				...value,
+				id: key,
+				title:
+					value?.message ||
+					key
+						.replace( /_/g, ' ' )
+						.replace( /\b\w/g, ( c ) => c.toUpperCase() ),
+				data: value?.description,
+				showImages: key === 'image_alt_text',
+			} )
+		);
+
+		const { categorizedChecks, sequence } =
+			categorizeChecksList( processedChecks );
+
+		processedData[ id ] = {
+			postType: type,
+			checks: categorizedChecks,
+			sequence,
+			error: null,
+		};
+	} );
+
+	return {
+		type: actionTypes.SET_BATCH_PAGE_SEO_CHECKS,
+		payload: processedData,
+	};
+};
+
+const categorizeChecksList = ( checks ) => {
 	const sequence = [];
-	// Filter checks and reorganize them
 	const categorizedChecks = checks.reduce(
 		( acc, check ) => {
 			// For preserving the order of the checks
@@ -241,16 +291,7 @@ export const setPageSeoChecksByIdAndType = (
 		}
 	);
 
-	return {
-		type: actionTypes.SET_PAGE_SEO_CHECKS_BY_ID_AND_TYPE,
-		payload: {
-			postId,
-			postType,
-			checks: categorizedChecks,
-			sequence,
-			error,
-		},
-	};
+	return { categorizedChecks, sequence };
 };
 
 function* handleSeoBarCheckIgnoreUpdate(

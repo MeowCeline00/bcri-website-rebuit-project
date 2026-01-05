@@ -55,6 +55,7 @@ class Schemas {
 		add_action( 'surerank_print_meta', [ $this, 'print_schema_data' ], 10 );
 		add_action( 'wp', [ $this, 'set_schema_data' ], 1 );
 		Products::get_instance();
+		Custom_Fields::get_instance();
 	}
 
 	/**

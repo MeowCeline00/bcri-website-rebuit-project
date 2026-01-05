@@ -67,6 +67,7 @@ export const initialState = {
 			enabled: false,
 			compulsory: false,
 			icon: 'ecommerce',
+			plugins: [ 'woocommerce', 'surecart' ],
 		},
 		{
 			title: __( 'SEO & Search Visibility', 'astra-sites' ),
@@ -78,6 +79,7 @@ export const initialState = {
 			enabled: true,
 			compulsory: false,
 			icon: 'arrow-trending-up',
+			plugins: [ 'surerank' ],
 		},
 		// Will be added back.
 		// {
@@ -87,6 +89,7 @@ export const initialState = {
 		// 	enabled: false,
 		// 	compulsory: false,
 		// 	icon: 'squares-plus',
+		// 	plugins: [ 'suretriggers' ],
 		// },
 		// Removing
 		// {
@@ -99,6 +102,7 @@ export const initialState = {
 		// 	enabled: false,
 		// 	compulsory: false,
 		// 	icon: 'calendar',
+		// 	plugins: [ 'latepoint' ],
 		// },
 		{
 			title: __( 'Website Emails & SMTP', 'astra-sites' ),
@@ -110,6 +114,7 @@ export const initialState = {
 			enabled: false,
 			compulsory: false,
 			icon: 'envelope',
+			plugins: [ 'suremail' ],
 		},
 		{
 			title: __( 'Free Live Chat', 'astra-sites' ),
@@ -121,6 +126,7 @@ export const initialState = {
 			enabled: false,
 			compulsory: false,
 			icon: 'live-chat',
+			plugins: [ 'wp-live-chat-support' ],
 		},
 	],
 	formDetails: {

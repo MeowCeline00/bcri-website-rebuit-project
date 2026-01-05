@@ -166,7 +166,7 @@ const SiteType = () => {
 				Object.keys( customTemplateData ).length > 0,
 			icon: customTemplateData?.icon ? (
 				<span
-					className="w-12 h-12 text-accent-st-secondary stroke-1"
+					className="size-12 text-accent-st-secondary stroke-1 [&>svg]:size-full"
 					dangerouslySetInnerHTML={ {
 						__html: customTemplateData?.icon,
 					} }

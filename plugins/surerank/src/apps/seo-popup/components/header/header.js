@@ -1,62 +1,11 @@
-import { useDispatch, useSelect } from '@wordpress/data';
 import { SureRankLogo } from '@/global/components/icons';
-import { Button, Tabs } from '@bsf/force-ui';
+import { Button } from '@bsf/force-ui';
 import { X } from 'lucide-react';
-import { STORE_NAME } from '@/store/constants';
-import { TABS } from '@SeoPopup/modal/tabs';
-import { cn } from '@/functions/utils';
 import { createPortal, memo, useEffect, useState } from '@wordpress/element';
 import PageCheckStatusIndicator from '@AdminComponents/page-check-status-indicator';
 import { usePageCheckStatus } from '@SeoPopup/hooks';
 
 /* global MutationObserver */
-
-const SeoPopupTabs = () => {
-	const { updateAppSettings } = useDispatch( STORE_NAME );
-	const { currentTab, currentScreen } = useSelect( ( select ) =>
-		select( STORE_NAME ).getAppSettings()
-	);
-
-	// Hide tabs when in fixItForMe screen
-	if ( currentScreen !== 'settings' ) {
-		return null;
-	}
-
-	const tabs = Object.values( TABS ?? {} ).filter( ( tab ) => !! tab?.slug );
-
-	const handleChangeTab = ( { value: { slug } } ) => {
-		if ( currentTab === slug || currentScreen !== 'settings' ) {
-			return;
-		}
-		updateAppSettings( {
-			currentTab: slug,
-			previousTab: currentTab || '',
-		} );
-	};
-
-	return (
-		<Tabs.Group
-			className="h-full [&_button]:h-full border-0"
-			size="sm"
-			variant="underline"
-			activeItem={ currentTab }
-			onChange={ handleChangeTab }
-		>
-			{ tabs.map( ( tab ) => (
-				<Tabs.Tab
-					className={ cn(
-						'font-medium [box-shadow:none]',
-						tab?.className
-					) }
-					key={ tab.slug }
-					slug={ tab.slug }
-					text={ tab.label }
-					icon={ tab.icon }
-				/>
-			) ) }
-		</Tabs.Group>
-	);
-};
 
 const PageChecksStatus = () => {
 	const [ host, setHost ] = useState( null );
@@ -123,9 +72,7 @@ const Header = ( { onClose } ) => {
 			<div className="flex items-center py-3.5 px-4">
 				<SureRankLogo width={ 32 } height={ 20 } />
 			</div>
-			<div className="h-full flex items-center mr-auto gap-2">
-				<SeoPopupTabs />
-			</div>
+			<div className="h-full flex items-center mr-auto gap-2"></div>
 			<div className="flex items-center py-3.5 px-4 gap-2">
 				<Button
 					variant="ghost"

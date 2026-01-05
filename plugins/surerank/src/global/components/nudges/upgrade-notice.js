@@ -16,6 +16,7 @@ import UpgradeButton from './upgrade-button';
  * @param {string}   props.position      - Icon position ('left' | 'right') (default: 'right')
  * @param {string}   props.className     - Additional CSS classes
  * @param {string}   props.variant       - Color variant ('blue' | 'green' | 'purple') (default: 'blue')
+ * @param {string}   props.plan          - Plan name (default: 'starter')
  * @param {string}   props.utmMedium     - UTM medium parameter for tracking (e.g., 'surerank_schema')
  * @return {JSX.Element} UpgradeNotice component
  */
@@ -30,6 +31,7 @@ const UpgradeNotice = ( {
 	position = 'right',
 	className = '',
 	variant = 'blue',
+	plan,
 	utmMedium,
 	...props
 } ) => {
@@ -40,7 +42,7 @@ const UpgradeNotice = ( {
 	};
 
 	// Don't render if Pro is active
-	if ( isProActive() ) {
+	if ( isProActive( plan ) ) {
 		return null;
 	}
 

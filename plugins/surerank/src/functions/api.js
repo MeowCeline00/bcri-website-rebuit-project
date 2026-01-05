@@ -193,3 +193,42 @@ export const generateContent = ( type, postId, isTaxonomy ) => {
 		data,
 	} );
 };
+
+/**
+ * Save email reports settings
+ * @param {Object}  settings                - The email reports settings to save.
+ * @param {boolean} settings.enabled        - Whether email reports are enabled.
+ * @param {string}  settings.recipientEmail - The recipient email address.
+ * @param {string}  settings.dayOfWeek      - The day of the week for reports.
+ */
+export const saveEmailReportsSettings = ( settings ) => {
+	return apiFetch( {
+		path: `${ API_BASE_URL }/email-reports/settings`,
+		method: 'POST',
+		data: settings,
+	} );
+};
+
+/**
+ * Get email reports settings
+ * @return {Promise<Object>} The email reports settings.
+ */
+export const getEmailReportsSettings = () => {
+	return apiFetch( {
+		path: `${ API_BASE_URL }/email-reports/settings`,
+		method: 'GET',
+	} );
+};
+
+/**
+ * Send test email report
+ * @param {string} recipientEmail - The recipient email address.
+ * @return {Promise<Object>} The response from the API.
+ */
+export const sendTestEmailReport = ( recipientEmail ) => {
+	return apiFetch( {
+		path: `${ API_BASE_URL }/email-reports/send-test`,
+		method: 'POST',
+		data: { recipientEmail },
+	} );
+};

@@ -237,7 +237,11 @@ if ( ! class_exists( 'ST_Batch_Processing_Gutenberg' ) ) :
 			}
 
 			foreach ( $surecart_id_map as $old_id => $new_id ) {
+				// Replace shortcode format.
 				$content = str_replace( '[sc_form id="' . $old_id . '"]', '[sc_form id="' . $new_id . '"]', $content );
+
+				// Replace Gutenberg checkout form block format (handles both {"id":X} and {"id":X,).
+				$content = str_replace( '<!-- wp:surecart/checkout-form {"id":' . $old_id, '<!-- wp:surecart/checkout-form {"id":' . $new_id, $content );
 			}
 
 			return $content;
