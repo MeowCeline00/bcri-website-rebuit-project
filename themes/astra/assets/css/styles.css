@@ -242,3 +242,153 @@
 .ast-above-header-bar .ast-header-social-wrap a:active svg {
 	fill: #C9982E !important;
 }
+
+/* Desktop consistency: keep header + menus identical on wide screens. */
+@media (min-width: 922px) {
+	:root {
+		--bcr-header-max-width: var(--ast-normal-container-width, 1240px);
+	}
+
+	/* Prevent header rows from stretching too wide. */
+	.ast-above-header-bar .ast-builder-grid-row-container,
+	.ast-primary-header-bar .ast-builder-grid-row-container {
+		max-width: var(--bcr-header-max-width);
+		margin-left: auto !important;
+		margin-right: auto !important;
+		padding-left: 20px !important;
+		padding-right: 20px !important;
+	}
+
+	/* Keep vertical alignment/height consistent across desktop widths. */
+	.ast-above-header-bar .ast-builder-grid-row,
+	.ast-primary-header-bar .ast-builder-grid-row {
+		max-width: var(--bcr-header-max-width);
+		margin-left: auto;
+		margin-right: auto;
+		width: 100%;
+		align-items: center !important;
+	}
+
+	.ast-above-header-bar,
+	.ast-primary-header-bar {
+		min-height: 72px;
+	}
+
+	/* Menu typography + spacing to match the desktop design. */
+	.ast-primary-header-bar {
+		min-height: 80px;
+		padding-top: 0 !important;
+		padding-bottom: 0 !important;
+	}
+
+	.ast-above-header-bar {
+		min-height: 52px;
+		padding-top: 0 !important;
+		padding-bottom: 0 !important;
+	}
+
+	/* Remove extra vertical padding from Astra on desktop. */
+	.ast-above-header-bar .ast-builder-grid-row-container,
+	.ast-primary-header-bar .ast-builder-grid-row-container,
+	#ast-fixed-header .ast-above-header-bar .ast-builder-grid-row-container,
+	#ast-fixed-header .ast-primary-header-bar .ast-builder-grid-row-container {
+		padding-top: 0 !important;
+		padding-bottom: 0 !important;
+	}
+
+	.ast-primary-header-bar .main-header-menu > .menu-item > .menu-link,
+	.ast-primary-header-bar .ast-builder-menu-1 .menu-item > .menu-link,
+	.ast-primary-header-bar .ast-builder-menu-2 .menu-item > .menu-link,
+	.ast-above-header-bar .ast-builder-menu .menu-item > a {
+		padding-top: 0 !important;
+		padding-bottom: 0 !important;
+	}
+
+	/* Ensure vertical centering of logo + menus (fix extra bottom space). */
+	.ast-above-header-bar .ast-builder-grid-row,
+	.ast-primary-header-bar .ast-builder-grid-row {
+		padding-top: 0 !important;
+		padding-bottom: 0 !important;
+		align-content: center !important;
+	}
+
+	.ast-above-header-bar .site-header-section,
+	.ast-primary-header-bar .site-header-section,
+	.ast-above-header-bar .ast-builder-layout-element,
+	.ast-primary-header-bar .ast-builder-layout-element,
+	.ast-primary-header-bar .main-header-bar-navigation {
+		align-self: center !important;
+	}
+
+	.ast-primary-header-bar .main-header-menu,
+	.ast-above-header-bar .main-header-menu {
+		margin-top: 0 !important;
+		margin-bottom: 0 !important;
+		padding-top: 0 !important;
+		padding-bottom: 0 !important;
+	}
+
+	.ast-primary-header-bar .main-header-menu > .menu-item,
+	.ast-above-header-bar .main-header-menu > .menu-item {
+		display: flex;
+		align-items: center;
+	}
+
+	.ast-primary-header-bar .main-header-menu > .menu-item > .menu-link,
+	.ast-above-header-bar .main-header-menu > .menu-item > .menu-link {
+		display: inline-flex;
+		align-items: center;
+	}
+
+	.ast-primary-header-bar .main-header-bar-navigation,
+	.ast-primary-header-bar .ast-builder-menu {
+		justify-content: flex-end !important;
+	}
+
+	.ast-primary-header-bar .main-header-menu > .menu-item > .menu-link,
+	.ast-primary-header-bar .ast-builder-menu-1 .menu-item > .menu-link,
+	.ast-primary-header-bar .ast-builder-menu-2 .menu-item > .menu-link {
+		text-transform: uppercase !important;
+		letter-spacing: 0.04em;
+		font-weight: 700 !important;
+		font-size: 18px;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	.ast-primary-header-bar .main-header-menu > .menu-item,
+	.ast-primary-header-bar .ast-builder-menu-1 .menu-item,
+	.ast-primary-header-bar .ast-builder-menu-2 .menu-item {
+		margin: 0 22px !important;
+	}
+
+	.ast-primary-header-bar .main-header-menu > .menu-item:last-child,
+	.ast-primary-header-bar .ast-builder-menu-1 .menu-item:last-child,
+	.ast-primary-header-bar .ast-builder-menu-2 .menu-item:last-child {
+		margin-right: 0 !important;
+	}
+
+	.ast-primary-header-bar .main-header-menu > .menu-item:first-child,
+	.ast-primary-header-bar .ast-builder-menu-1 .menu-item:first-child,
+	.ast-primary-header-bar .ast-builder-menu-2 .menu-item:first-child {
+		margin-left: 0 !important;
+	}
+
+	/* Above header (top row) menu spacing/size. */
+	.ast-above-header-bar .ast-builder-menu .menu-item > a {
+		font-size: 18px;
+		font-weight: 600;
+	}
+
+	.ast-above-header-bar .ast-builder-menu .menu-item {
+		margin: 0 18px !important;
+	}
+
+	.ast-above-header-bar .ast-builder-menu .menu-item:first-child {
+		margin-left: 0 !important;
+	}
+
+	.ast-above-header-bar .ast-builder-menu .menu-item:last-child {
+		margin-right: 0 !important;
+	}
+}
