@@ -159,3 +159,86 @@
 		padding-top: 260px !important;
 	}
 }
+
+/* BC Research: Header styling to match design */
+.ast-above-header-bar,
+.ast-above-header-bar .ast-builder-grid-row-container {
+	background-color: #00788A !important;
+}
+
+.ast-primary-header-bar,
+.ast-primary-header-bar .ast-builder-grid-row-container {
+	background-color: #ffffff !important;
+}
+
+/* Hide the (unused) third header row so the header is 2 blocks. */
+.ast-below-header-bar,
+.ast-below-header-bar .ast-builder-grid-row-container,
+.ast-below-header-wrap,
+.site-below-header-wrap {
+	display: none !important;
+	height: 0 !important;
+	min-height: 0 !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	border: 0 !important;
+}
+
+/* Override Astra Transparent Header backgrounds. */
+.ast-theme-transparent-header .ast-above-header-bar,
+.ast-theme-transparent-header .ast-above-header-bar .ast-builder-grid-row-container {
+	background-color: #00788A !important;
+}
+
+.ast-theme-transparent-header .ast-primary-header-bar,
+.ast-theme-transparent-header .ast-primary-header-bar .ast-builder-grid-row-container {
+	background-color: #ffffff !important;
+}
+
+/* Default menu/link colors per header row. */
+.ast-above-header-bar .ast-builder-menu a,
+.ast-above-header-bar .ast-header-social-wrap a,
+.ast-above-header-bar .ast-header-social-wrap svg {
+	color: #ffffff !important;
+	fill: #ffffff !important;
+}
+
+.ast-primary-header-bar .ast-builder-menu a {
+	color: #000000 !important;
+}
+
+/* Hover/focus state. */
+.ast-above-header-bar .ast-builder-menu a:hover,
+.ast-above-header-bar .ast-builder-menu a:focus,
+.ast-above-header-bar .ast-builder-menu a:focus-visible,
+.ast-primary-header-bar .ast-builder-menu a:hover,
+.ast-primary-header-bar .ast-builder-menu a:focus,
+.ast-primary-header-bar .ast-builder-menu a:focus-visible,
+.ast-above-header-bar .ast-header-social-wrap a:hover,
+.ast-above-header-bar .ast-header-social-wrap a:focus,
+.ast-above-header-bar .ast-header-social-wrap a:focus-visible {
+	color: #C9A75E !important;
+}
+
+.ast-above-header-bar .ast-header-social-wrap a:hover svg,
+.ast-above-header-bar .ast-header-social-wrap a:focus svg,
+.ast-above-header-bar .ast-header-social-wrap a:focus-visible svg {
+	fill: #C9A75E !important;
+}
+
+/* "Clicked" state (current page/menu item + active press). */
+.ast-above-header-bar .ast-builder-menu a:active,
+.ast-primary-header-bar .ast-builder-menu a:active,
+.ast-above-header-bar .ast-header-social-wrap a:active,
+.ast-above-header-bar .ast-builder-menu .current-menu-item > a,
+.ast-above-header-bar .ast-builder-menu .current-menu-ancestor > a,
+.ast-above-header-bar .ast-builder-menu .current_page_item > a,
+.ast-primary-header-bar .ast-builder-menu .current-menu-item > a,
+.ast-primary-header-bar .ast-builder-menu .current-menu-ancestor > a,
+.ast-primary-header-bar .ast-builder-menu .current_page_item > a {
+	color: #C9982E !important;
+}
+
+.ast-above-header-bar .ast-header-social-wrap a:active svg {
+	fill: #C9982E !important;
+}
