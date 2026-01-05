@@ -9,7 +9,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+    exit; // Exit if accessed directly.
 }
 
 /**
@@ -23,7 +23,6 @@ define( 'ASTRA_THEME_ORG_VERSION', file_exists( ASTRA_THEME_DIR . 'inc/w-org-ver
 
 /**
  * Minimum Version requirement of the Astra Pro addon.
- * This constant will be used to display the notice asking user to update the Astra addon to the version defined below.
  */
 define( 'ASTRA_EXT_MIN_VER', '4.11.6' );
 
@@ -31,7 +30,7 @@ define( 'ASTRA_EXT_MIN_VER', '4.11.6' );
  * Load in-house compatibility.
  */
 if ( ASTRA_THEME_ORG_VERSION ) {
-	require_once ASTRA_THEME_DIR . 'inc/w-org-version.php';
+    require_once ASTRA_THEME_DIR . 'inc/w-org-version.php';
 }
 
 /**
@@ -45,12 +44,6 @@ require_once ASTRA_THEME_DIR . 'inc/core/class-astra-icons.php';
 define( 'ASTRA_WEBSITE_BASE_URL', 'https://wpastra.com' );
 
 /**
- * Deprecate constants in future versions as they are no longer used in the codebase.
- */
-define( 'ASTRA_PRO_UPGRADE_URL', ASTRA_THEME_ORG_VERSION ? astra_get_pro_url( '/pricing/', 'free-theme', 'dashboard', 'upgrade' ) : 'https://woocommerce.com/products/astra-pro/' );
-define( 'ASTRA_PRO_CUSTOMIZER_UPGRADE_URL', ASTRA_THEME_ORG_VERSION ? astra_get_pro_url( '/pricing/', 'free-theme', 'customizer', 'upgrade' ) : 'https://woocommerce.com/products/astra-pro/' );
-
-/**
  * Update theme
  */
 require_once ASTRA_THEME_DIR . 'inc/theme-update/astra-update-functions.php';
@@ -61,7 +54,7 @@ require_once ASTRA_THEME_DIR . 'inc/theme-update/class-astra-theme-background-up
  */
 require_once ASTRA_THEME_DIR . 'inc/customizer/class-astra-font-families.php';
 if ( is_admin() ) {
-	require_once ASTRA_THEME_DIR . 'inc/customizer/class-astra-fonts-data.php';
+    require_once ASTRA_THEME_DIR . 'inc/customizer/class-astra-fonts-data.php';
 }
 
 require_once ASTRA_THEME_DIR . 'inc/lib/webfont/class-astra-webfont-loader.php';
@@ -82,84 +75,46 @@ require_once ASTRA_THEME_DIR . 'inc/dynamic-css/dark-mode.php';
 require_once ASTRA_THEME_DIR . 'inc/class-astra-dynamic-css.php';
 require_once ASTRA_THEME_DIR . 'inc/class-astra-global-palette.php';
 
-// Enable NPS Survey only if the starter templates version is < 4.3.7 or > 4.4.4 to prevent fatal error.
 if ( ! defined( 'ASTRA_SITES_VER' ) || version_compare( ASTRA_SITES_VER, '4.3.7', '<' ) || version_compare( ASTRA_SITES_VER, '4.4.4', '>' ) ) {
-	// NPS Survey Integration
-	require_once ASTRA_THEME_DIR . 'inc/lib/class-astra-nps-notice.php';
-	require_once ASTRA_THEME_DIR . 'inc/lib/class-astra-nps-survey.php';
+    require_once ASTRA_THEME_DIR . 'inc/lib/class-astra-nps-notice.php';
+    require_once ASTRA_THEME_DIR . 'inc/lib/class-astra-nps-survey.php';
 }
 
-/**
- * Custom template tags for this theme.
- */
 require_once ASTRA_THEME_DIR . 'inc/core/class-astra-attr.php';
 require_once ASTRA_THEME_DIR . 'inc/template-tags.php';
-
 require_once ASTRA_THEME_DIR . 'inc/widgets.php';
 require_once ASTRA_THEME_DIR . 'inc/core/theme-hooks.php';
 require_once ASTRA_THEME_DIR . 'inc/admin-functions.php';
 require_once ASTRA_THEME_DIR . 'inc/class-astra-memory-limit-notice.php';
 require_once ASTRA_THEME_DIR . 'inc/core/sidebar-manager.php';
 
-/**
- * Markup Functions
- */
 require_once ASTRA_THEME_DIR . 'inc/markup-extras.php';
 require_once ASTRA_THEME_DIR . 'inc/extras.php';
 require_once ASTRA_THEME_DIR . 'inc/blog/blog-config.php';
 require_once ASTRA_THEME_DIR . 'inc/blog/blog.php';
 require_once ASTRA_THEME_DIR . 'inc/blog/single-blog.php';
 
-/**
- * Markup Files
- */
 require_once ASTRA_THEME_DIR . 'inc/template-parts.php';
 require_once ASTRA_THEME_DIR . 'inc/class-astra-loop.php';
 require_once ASTRA_THEME_DIR . 'inc/class-astra-mobile-header.php';
-
-/**
- * Functions and definitions.
- */
 require_once ASTRA_THEME_DIR . 'inc/class-astra-after-setup-theme.php';
-
-// Required files.
 require_once ASTRA_THEME_DIR . 'inc/core/class-astra-admin-helper.php';
-
 require_once ASTRA_THEME_DIR . 'inc/schema/class-astra-schema.php';
-
-/* Setup API */
 require_once ASTRA_THEME_DIR . 'admin/includes/class-astra-api-init.php';
 
 if ( is_admin() ) {
-	/**
-	 * Admin Menu Settings
-	 */
-	require_once ASTRA_THEME_DIR . 'inc/core/class-astra-admin-settings.php';
-	require_once ASTRA_THEME_DIR . 'admin/class-astra-admin-loader.php';
-	require_once ASTRA_THEME_DIR . 'inc/lib/astra-notices/class-astra-notices.php';
+    require_once ASTRA_THEME_DIR . 'inc/core/class-astra-admin-settings.php';
+    require_once ASTRA_THEME_DIR . 'admin/class-astra-admin-loader.php';
+    require_once ASTRA_THEME_DIR . 'inc/lib/astra-notices/class-astra-notices.php';
 }
 
-/**
- * Metabox additions.
- */
 require_once ASTRA_THEME_DIR . 'inc/metabox/class-astra-meta-boxes.php';
 require_once ASTRA_THEME_DIR . 'inc/metabox/class-astra-meta-box-operations.php';
 require_once ASTRA_THEME_DIR . 'inc/metabox/class-astra-elementor-editor-settings.php';
-
-/**
- * Customizer additions.
- */
 require_once ASTRA_THEME_DIR . 'inc/customizer/class-astra-customizer.php';
-
-/**
- * Astra Modules.
- */
 require_once ASTRA_THEME_DIR . 'inc/modules/posts-structures/class-astra-post-structures.php';
 require_once ASTRA_THEME_DIR . 'inc/modules/related-posts/class-astra-related-posts.php';
 
-/**
- * Compatibility
- */
 require_once ASTRA_THEME_DIR . 'inc/compatibility/class-astra-gutenberg.php';
 require_once ASTRA_THEME_DIR . 'inc/compatibility/class-astra-jetpack.php';
 require_once ASTRA_THEME_DIR . 'inc/compatibility/woocommerce/class-astra-woocommerce.php';
@@ -186,23 +141,125 @@ require_once ASTRA_THEME_DIR . 'inc/addons/scroll-to-top/class-astra-scroll-to-t
 require_once ASTRA_THEME_DIR . 'inc/addons/heading-colors/class-astra-heading-colors.php';
 require_once ASTRA_THEME_DIR . 'inc/builder/class-astra-builder-loader.php';
 
-// Elementor Compatibility requires PHP 5.4 for namespaces.
 if ( version_compare( PHP_VERSION, '5.4', '>=' ) ) {
-	require_once ASTRA_THEME_DIR . 'inc/compatibility/class-astra-elementor.php';
-	require_once ASTRA_THEME_DIR . 'inc/compatibility/class-astra-elementor-pro.php';
-	require_once ASTRA_THEME_DIR . 'inc/compatibility/class-astra-web-stories.php';
+    require_once ASTRA_THEME_DIR . 'inc/compatibility/class-astra-elementor.php';
+    require_once ASTRA_THEME_DIR . 'inc/compatibility/class-astra-elementor-pro.php';
+    require_once ASTRA_THEME_DIR . 'inc/compatibility/class-astra-web-stories.php';
 }
 
-// Beaver Themer compatibility requires PHP 5.3 for anonymous functions.
 if ( version_compare( PHP_VERSION, '5.3', '>=' ) ) {
-	require_once ASTRA_THEME_DIR . 'inc/compatibility/class-astra-beaver-themer.php';
+    require_once ASTRA_THEME_DIR . 'inc/compatibility/class-astra-beaver-themer.php';
 }
 
 require_once ASTRA_THEME_DIR . 'inc/core/markup/class-astra-markup.php';
 
-/**
- * Load deprecated functions
- */
 require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-filters.php';
 require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-hooks.php';
 require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-functions.php';
+
+/**
+ * BC Research: Custom Responsive SVG Footer
+ * Ensures content fits within the teal path area and prevents overlapping body content.
+ */
+add_action( 'wp_enqueue_scripts', 'bcr_footer_background_svg_css', 100 );
+function bcr_footer_background_svg_css() {
+    $svg_url = esc_url( ASTRA_THEME_URI . 'assets/svg/footer-background.svg' );
+
+    $css = "
+/* --- Base Footer Logic --- */
+#colophon.site-footer {
+    position: relative;
+    overflow: hidden;
+    background-color: transparent !important;
+    display: flex;
+    flex-direction: column;
+}
+
+#colophon.site-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    aspect-ratio: 1440 / 936;
+    background-image: url('{$svg_url}');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* --- Content Containment --- */
+#colophon.site-footer .site-primary-footer-wrap {
+    position: relative;
+    z-index: 2;
+    background-color: #00788A !important;
+    /* This clip-path ensures the top of the teal box follows the SVG shape */
+    clip-path: polygon(0 252.8px, 728px 252.8px, 100% 0, 100% 100%, 0 100%);
+    
+    /* Calculate dynamic padding to push text below the slope on all screens */
+    /* Math: (252.8 / 1440) * 100 = ~17.5vw. We use 22vw for a safety buffer */
+    padding-top: clamp(200px, 22vw, 500px) !important;
+    padding-bottom: 80px;
+}
+
+/* Ensure body blocks above the footer are visible and not covered */
+.site-content, #content {
+    position: relative;
+    z-index: 5;
+}
+
+#colophon.site-footer .site-above-footer-wrap,
+#colophon.site-footer .ast-builder-grid-row-container,
+#colophon.site-footer .ast-footer-overlay {
+    background: transparent !important;
+}
+
+#colophon.site-footer .site-below-footer-wrap,
+#colophon.site-footer .ast-small-footer {
+    position: relative;
+    z-index: 3;
+    background-color: #025F6D !important;
+    margin-top: auto;
+}
+
+/* --- Mobile Fixes --- */
+@media (max-width: 921px) {
+    #colophon.site-footer .site-footer-primary-section-inner,
+    #colophon.site-footer .footer-widget-area {
+        text-align: center !important;
+        justify-content: center !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center !important;
+    }
+
+    #colophon.site-footer .site-primary-footer-wrap {
+        clip-path: polygon(0 150px, 50% 150px, 100% 0, 100% 100%, 0 100%);
+        padding-top: 300px !important; 
+    }
+
+    #colophon.site-footer::before {
+        width: 350%; 
+        top: -20px;
+    }
+}
+
+@media (max-width: 544px) {
+    #colophon.site-footer .site-primary-footer-wrap {
+        padding-top: 260px !important; 
+    }
+}
+";
+
+    if ( wp_style_is( 'astra-theme-css', 'enqueued' ) ) {
+        wp_add_inline_style( 'astra-theme-css', $css );
+        return;
+    }
+
+    wp_register_style( 'bcr-footer-bg', false, array(), ASTRA_THEME_VERSION );
+    wp_enqueue_style( 'bcr-footer-bg' );
+    wp_add_inline_style( 'bcr-footer-bg', $css );
+}
