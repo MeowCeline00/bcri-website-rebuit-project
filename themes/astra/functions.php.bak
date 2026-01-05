@@ -163,10 +163,103 @@ require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-functions.php';
  */
 add_action( 'wp_enqueue_scripts', 'bcr_footer_background_svg_css', 100 );
 function bcr_footer_background_svg_css() {
-	wp_enqueue_style(
-		'bcr-footer-styles',
-		ASTRA_THEME_URI . 'assets/css/styles.css',
-		array( 'astra-theme-css' ),
-		ASTRA_THEME_VERSION
-	);
+    $svg_url = esc_url( ASTRA_THEME_URI . 'assets/svg/footer-background.svg' );
+
+    $css = "
+/* --- Base Footer Logic --- */
+#colophon.site-footer {
+    position: relative;
+    overflow: hidden;
+    background-color: transparent !important;
+    display: flex;
+    flex-direction: column;
+}
+
+#colophon.site-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    aspect-ratio: 1440 / 936;
+    background-image: url('{$svg_url}');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* --- Content Containment --- */
+#colophon.site-footer .site-primary-footer-wrap {
+    position: relative;
+    z-index: 2;
+    background-color: #00788A !important;
+    /* This clip-path ensures the top of the teal box follows the SVG shape */
+    clip-path: polygon(0 252.8px, 728px 252.8px, 100% 0, 100% 100%, 0 100%);
+    
+    /* Calculate dynamic padding to push text below the slope on all screens */
+    /* Math: (252.8 / 1440) * 100 = ~17.5vw. We use 22vw for a safety buffer */
+    padding-top: clamp(200px, 22vw, 500px) !important;
+    padding-bottom: 80px;
+}
+
+/* Ensure body blocks above the footer are visible and not covered */
+.site-content, #content {
+    position: relative;
+    z-index: 5;
+}
+
+#colophon.site-footer .site-above-footer-wrap,
+#colophon.site-footer .ast-builder-grid-row-container,
+#colophon.site-footer .ast-footer-overlay {
+    background: transparent !important;
+}
+
+#colophon.site-footer .site-below-footer-wrap,
+#colophon.site-footer .ast-small-footer {
+    position: relative;
+    z-index: 3;
+    background-color: #025F6D !important;
+    margin-top: auto;
+}
+
+/* --- Mobile Fixes --- */
+@media (max-width: 921px) {
+    #colophon.site-footer .site-footer-primary-section-inner,
+    #colophon.site-footer .footer-widget-area {
+        text-align: center !important;
+        justify-content: center !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center !important;
+    }
+
+    #colophon.site-footer .site-primary-footer-wrap {
+        clip-path: polygon(0 150px, 50% 150px, 100% 0, 100% 100%, 0 100%);
+        padding-top: 300px !important; 
+    }
+
+    #colophon.site-footer::before {
+        width: 350%; 
+        top: -20px;
+    }
+}
+
+@media (max-width: 544px) {
+    #colophon.site-footer .site-primary-footer-wrap {
+        padding-top: 260px !important; 
+    }
+}
+";
+
+    if ( wp_style_is( 'astra-theme-css', 'enqueued' ) ) {
+        wp_add_inline_style( 'astra-theme-css', $css );
+        return;
+    }
+
+    wp_register_style( 'bcr-footer-bg', false, array(), ASTRA_THEME_VERSION );
+    wp_enqueue_style( 'bcr-footer-bg' );
+    wp_add_inline_style( 'bcr-footer-bg', $css );
 }

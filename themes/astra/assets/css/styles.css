@@ -1,0 +1,161 @@
+/* BC Research: Custom Responsive SVG Footer */
+
+/* --- Base Footer Logic --- */
+#colophon.site-footer {
+	position: relative;
+	overflow: hidden;
+	background-color: transparent !important;
+	display: flex;
+	flex-direction: column;
+}
+
+#colophon.site-footer::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100%;
+	aspect-ratio: 1440 / 936;
+	background-image: url('../svg/footer-background.svg');
+	background-size: cover;
+	background-position: top center;
+	background-repeat: no-repeat;
+	z-index: 0;
+	pointer-events: none;
+}
+
+/* --- Content Containment --- */
+#colophon.site-footer .site-primary-footer-wrap {
+	position: relative;
+	z-index: 2;
+	background-color: #00788A !important;
+	clip-path: polygon(0 252.8px, 728px 252.8px, 100% 0, 100% 100%, 0 100%);
+	padding-top: clamp(200px, 22vw, 500px) !important;
+	padding-bottom: 80px;
+}
+
+/* --- Footer Text + Column Alignment --- */
+#colophon.site-footer h5,
+#colophon.site-footer .widget-title {
+	color: #ffffff !important;
+}
+
+#colophon.site-footer,
+#colophon.site-footer a {
+	color: #ffffff;
+}
+
+#colophon.site-footer .site-primary-footer-wrap .ast-builder-grid-row,
+#colophon.site-footer .site-primary-footer-wrap .site-footer-section {
+	align-items: flex-start !important;
+}
+
+/* Desktop: make each column's content left-aligned consistently */
+@media (min-width: 922px) {
+	#colophon.site-footer .site-primary-footer-wrap .ast-builder-grid-row {
+		justify-items: start;
+	}
+
+	#colophon.site-footer .site-primary-footer-wrap .site-footer-section,
+	#colophon.site-footer .site-primary-footer-wrap .footer-widget-area,
+	#colophon.site-footer .site-primary-footer-wrap .footer-widget-area-inner,
+	#colophon.site-footer .site-primary-footer-wrap .ast-builder-layout-element {
+		text-align: left !important;
+		justify-content: flex-start !important;
+	}
+
+	#colophon.site-footer .site-primary-footer-wrap .site-footer-section > * {
+		width: 100%;
+	}
+
+	#colophon.site-footer .site-primary-footer-wrap .widget,
+	#colophon.site-footer .site-primary-footer-wrap .footer-widget-area,
+	#colophon.site-footer .site-primary-footer-wrap .ast-footer-html-1,
+	#colophon.site-footer .site-primary-footer-wrap .ast-footer-html-2 {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	#colophon.site-footer .site-primary-footer-wrap .menu,
+	#colophon.site-footer .site-primary-footer-wrap .widget_nav_menu ul,
+	#colophon.site-footer .site-primary-footer-wrap ul.menu {
+		display: block;
+		width: 100%;
+	}
+
+	#colophon.site-footer .site-primary-footer-wrap h5,
+	#colophon.site-footer .site-primary-footer-wrap .widget-title {
+		margin-bottom: 24px;
+	}
+
+	#colophon.site-footer .site-primary-footer-wrap h5 + *,
+	#colophon.site-footer .site-primary-footer-wrap .widget-title + * {
+		margin-top: 0;
+	}
+}
+
+/* Normalize default list/text spacing so all 3 columns start on the same left edge */
+#colophon.site-footer .site-primary-footer-wrap ul,
+#colophon.site-footer .site-primary-footer-wrap ol {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#colophon.site-footer .site-primary-footer-wrap li {
+	margin: 0 0 14px 0;
+}
+
+#colophon.site-footer .site-primary-footer-wrap p {
+	margin-top: 0;
+}
+
+/* Ensure body blocks above the footer are visible and not covered */
+.site-content,
+#content {
+	position: relative;
+	z-index: 5;
+}
+
+#colophon.site-footer .site-above-footer-wrap,
+#colophon.site-footer .ast-builder-grid-row-container,
+#colophon.site-footer .ast-footer-overlay {
+	background: transparent !important;
+}
+
+#colophon.site-footer .site-below-footer-wrap,
+#colophon.site-footer .ast-small-footer {
+	position: relative;
+	z-index: 3;
+	background-color: #025F6D !important;
+	margin-top: auto;
+}
+
+/* --- Mobile Fixes --- */
+@media (max-width: 921px) {
+	#colophon.site-footer .site-footer-primary-section-inner,
+	#colophon.site-footer .footer-widget-area {
+		text-align: center !important;
+		justify-content: center !important;
+		display: flex;
+		flex-direction: column;
+		align-items: center !important;
+	}
+
+	#colophon.site-footer .site-primary-footer-wrap {
+		clip-path: polygon(0 150px, 50% 150px, 100% 0, 100% 100%, 0 100%);
+		padding-top: 300px !important;
+	}
+
+	#colophon.site-footer::before {
+		width: 350%;
+		top: -20px;
+	}
+}
+
+@media (max-width: 544px) {
+	#colophon.site-footer .site-primary-footer-wrap {
+		padding-top: 260px !important;
+	}
+}
