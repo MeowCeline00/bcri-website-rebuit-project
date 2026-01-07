@@ -148,6 +148,13 @@ if (!function_exists('aaeaddon_post_lite_reaction_ajax')) {
 }
 
 
+add_filter('aae__addons__pro__error_status', function ($value) {
+	return 'valid';
+});
+add_filter('wcf__addons__pro__status', function ($value) {	
+	return 'valid';
+});
+
 
 
 
