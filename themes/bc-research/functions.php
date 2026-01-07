@@ -11,6 +11,7 @@ add_action('after_setup_theme', function () {
 
   register_nav_menus([
     'primary' => 'Primary Menu',
+    'utility' => 'Utility Menu',
     'footer'  => 'Footer Menu',
   ]);
 });
