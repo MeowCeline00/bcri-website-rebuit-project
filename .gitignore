@@ -1,0 +1,10 @@
+# All-in-One WP Migration backups
+ai1wm-backups/
+*.wpress
+
+# WordPress uploads (usually not tracked)
+uploads/
+
+# WP auto-generated update folders
+upgrade/
+upgrade-temp-backup/
