@@ -30,7 +30,7 @@ if (!defined('ABSPATH')) exit;
             <li class="menu-item"><a href="/resources">Resources</a></li>
             <li class="menu-item"><a href="/news">News</a></li>
             <li class="menu-item"><a href="/contact">Contact</a></li>
-            <li class="menu-item"><a class="utility-icon" href="https://www.linkedin.com">in</a></li>
+            <li class="menu-item"><a class="utility-icon" href="https://www.linkedin.com" aria-label="LinkedIn">in</a></li>
           </ul>
         <?php endif; ?>
       </nav>
