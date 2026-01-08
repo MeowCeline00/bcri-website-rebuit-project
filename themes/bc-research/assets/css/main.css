@@ -631,6 +631,18 @@ p {
 
   .site-footer__contact {
     grid-column: 1 / -1;
+    justify-self: stretch;
+    max-width: none;
+    padding-left: 0;
+  }
+
+  .site-footer__contact-item {
+    grid-template-columns: 20px 1fr;
+  }
+
+  .site-footer__cta,
+  .site-footer__linkedin {
+    align-self: flex-start;
   }
 }
 
@@ -671,5 +683,13 @@ p {
 
   .site-footer__grid {
     grid-template-columns: 1fr;
+  }
+
+  .site-footer__contact {
+    align-items: flex-start;
+  }
+
+  .site-footer__contact-item {
+    gap: 10px;
   }
 }
