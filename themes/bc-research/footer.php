@@ -20,8 +20,10 @@ if (!defined('ABSPATH')) exit;
       <div class="site-footer__col">
         <ul class="site-footer__list">
           <li><a href="/">Home</a></li>
+        </ul>
+        <h4 class="site-footer__heading">About Us</h4>
+        <ul class="site-footer__list">
           <li><a href="/about">About</a></li>
-          <li><a href="/about-us">About Us</a></li>
           <li><a href="https://www.noram-eng.com" target="_blank" rel="noopener">NORAM Group</a></li>
           <li><a href="/our-people">Our People</a></li>
           <li><a href="/news">News</a></li>

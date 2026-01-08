@@ -42,3 +42,18 @@ add_action('wp_enqueue_scripts', function () {
     true
   );
 });
+
+add_filter('nav_menu_link_attributes', function ($atts, $item, $args) {
+  if (!in_array($args->theme_location, ['primary', 'utility'], true)) {
+    return $atts;
+  }
+
+  if (!empty($item->classes) && in_array('menu-item-has-children', $item->classes, true)) {
+    $atts['href'] = '#';
+    $atts['role'] = 'button';
+    $atts['aria-haspopup'] = 'true';
+    $atts['aria-expanded'] = 'false';
+  }
+
+  return $atts;
+}, 10, 3);
