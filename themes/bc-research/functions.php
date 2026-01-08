@@ -21,9 +21,16 @@ add_action('wp_enqueue_scripts', function () {
   $ver = wp_get_theme()->get('Version');
 
   wp_enqueue_style(
+    'bootstrap-icons',
+    'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css',
+    [],
+    '1.11.3'
+  );
+
+  wp_enqueue_style(
     'bc-research-style',
     get_template_directory_uri() . '/assets/css/main.css',
-    [],
+    ['bootstrap-icons'],
     $ver
   );
 
