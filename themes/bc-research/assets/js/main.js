@@ -11,6 +11,8 @@
   });
 
   const submenuParents = nav.querySelectorAll('.menu-item-has-children > a');
+  const submenuItems = nav.querySelectorAll('.menu-item-has-children');
+  const isDesktop = () => window.innerWidth > 1024;
   const closeSubmenus = (exceptLink = null) => {
     submenuParents.forEach((otherLink) => {
       if (exceptLink && otherLink === exceptLink) return;
@@ -25,6 +27,7 @@
   submenuParents.forEach((link) => {
     link.addEventListener('click', (event) => {
       event.preventDefault();
+      if (isDesktop()) return;
       closeSubmenus(link);
       const item = link.closest('.menu-item-has-children');
       const isOpen = item.classList.toggle('submenu-open');
@@ -32,8 +35,25 @@
     });
 
     link.addEventListener('mouseenter', () => {
+      if (!isDesktop()) return;
       closeSubmenus(link);
+      const item = link.closest('.menu-item-has-children');
+      item.classList.add('submenu-open');
+      link.setAttribute('aria-expanded', 'true');
     });
+  });
+
+  let closeTimer;
+  header.addEventListener('mouseleave', () => {
+    if (!isDesktop()) return;
+    clearTimeout(closeTimer);
+    closeTimer = setTimeout(() => {
+      closeSubmenus();
+    }, 150);
+  });
+
+  header.addEventListener('mouseenter', () => {
+    clearTimeout(closeTimer);
   });
 
   nav.querySelectorAll('.sub-menu a').forEach((sublink) => {
@@ -43,6 +63,7 @@
   });
 
   nav.addEventListener('click', (event) => {
+    if (isDesktop()) return;
     const isParentLink = event.target.closest('.menu-item-has-children > a');
     const isSubmenu = event.target.closest('.sub-menu');
     if (!isParentLink && !isSubmenu) {
@@ -51,6 +72,7 @@
   });
 
   document.addEventListener('click', (event) => {
+    if (isDesktop()) return;
     if (!nav.contains(event.target)) {
       closeSubmenus();
     }
