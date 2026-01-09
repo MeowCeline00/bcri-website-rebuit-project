@@ -4,6 +4,9 @@ if (!defined('ABSPATH')) exit;
 ?>
 </div>
 
+<?php if (function_exists('elementor_theme_do_location') && elementor_theme_do_location('footer')) : ?>
+  <?php /* Elementor Pro footer */ ?>
+<?php else : ?>
 <footer class="site-footer">
   <div class="site-footer__content">
     <div class="site-footer__logo-row">
@@ -91,6 +94,7 @@ if (!defined('ABSPATH')) exit;
     </div>
   </div>
 </footer>
+<?php endif; ?>
 
 <div class="site-footer__copyright">
   © 2026 BC Research Inc. All Rights Reserved

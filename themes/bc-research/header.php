@@ -12,6 +12,9 @@ if (!defined('ABSPATH')) exit;
 <?php wp_body_open(); ?>
 <a class="skip-link" href="#content">Skip to content</a>
 
+<?php if (function_exists('elementor_theme_do_location') && elementor_theme_do_location('header')) : ?>
+  <?php /* Elementor Pro header */ ?>
+<?php else : ?>
 <header class="site-header">
   <div class="site-header__top">
     <div class="site-header__inner">
@@ -80,5 +83,6 @@ if (!defined('ABSPATH')) exit;
     </div>
   </div>
 </header>
+<?php endif; ?>
 
 <div id="content" class="site-content">
