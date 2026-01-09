@@ -9,31 +9,31 @@
   --bc-font-body: var(--e-global-typography-text-font-family, "Inter", "Segoe UI", Arial, sans-serif);
 
   /* Headings (your custom settings) */
-  --bc-h1: 2rem;
-  --bc-h2: 1.7rem;
-  --bc-h3: 1.5rem;
-  --bc-h4: 1.3rem;
-  --bc-h5: 1.15rem;
+  --bc-h1: clamp(1.75rem, 1.4rem + 1vw, 2rem);
+  --bc-h2: clamp(1.5rem, 1.25rem + 0.8vw, 1.7rem);
+  --bc-h3: clamp(1.3rem, 1.1rem + 0.6vw, 1.5rem);
+  --bc-h4: clamp(1.1rem, 0.95rem + 0.4vw, 1.3rem);
+  --bc-h5: clamp(1rem, 0.9rem + 0.3vw, 1.15rem);
 
   /* Body / text */
-  --bc-body: 1rem;
-  --bc-lead: 1.125rem;
-  --bc-body-sm: 0.9375rem;
-  --bc-caption: 0.8125rem;
+  --bc-body: clamp(0.95rem, 0.9rem + 0.2vw, 1rem);
+  --bc-lead: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+  --bc-body-sm: clamp(0.875rem, 0.825rem + 0.15vw, 0.9375rem);
+  --bc-caption: clamp(0.75rem, 0.7rem + 0.15vw, 0.8125rem);
 
   /* Nav / UI */
-  --bc-nav: 0.9375rem;
-  --bc-utility: 0.875rem;
-  --bc-dropdown: 0.875rem;
+  --bc-nav: clamp(0.875rem, 0.8rem + 0.2vw, 0.9375rem);
+  --bc-utility: clamp(0.8125rem, 0.75rem + 0.2vw, 0.875rem);
+  --bc-dropdown: clamp(0.8125rem, 0.75rem + 0.2vw, 0.875rem);
 
   /* Buttons */
-  --bc-btn: 1rem;
-  --bc-btn-sm: 0.9375rem;
+  --bc-btn: clamp(0.9375rem, 0.875rem + 0.2vw, 1rem);
+  --bc-btn-sm: clamp(0.875rem, 0.825rem + 0.2vw, 0.9375rem);
 
   /* Cards */
-  --bc-card-title: 1.15rem;
-  --bc-card-body: 0.9375rem;
-  --bc-meta: 0.8125rem;
+  --bc-card-title: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+  --bc-card-body: clamp(0.875rem, 0.825rem + 0.2vw, 0.9375rem);
+  --bc-meta: clamp(0.75rem, 0.7rem + 0.15vw, 0.8125rem);
 
 
   /* Legacy tokens mapped */
