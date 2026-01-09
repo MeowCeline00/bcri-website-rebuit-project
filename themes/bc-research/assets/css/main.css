@@ -7,24 +7,53 @@
   /* Typography system */
   --bc-font-display: var(--e-global-typography-primary-font-family, "Sora", "Segoe UI", Arial, sans-serif);
   --bc-font-body: var(--e-global-typography-text-font-family, "Inter", "Segoe UI", Arial, sans-serif);
-  --bc-h1-hero: 40px;
-  --bc-h1-body: 40px;
-  --bc-h2-body: 36px;
-  --bc-h3-card: 32px;
-  --bc-subheader: 20px;
-  --bc-intro-body: 26px;
-  --bc-h4-card: 24px;
-  --bc-aqua-subtitle: 24px;
-  --bc-learnmore-card: 20px;
-  --bc-date-card: 20px;
-  --bc-feature-desc: 20px;
-  --bc-button-text: 18px;
-  --bc-nav-text: 16px;
-  --bc-body-card: 16px;
-  --bc-footer-copyright: 28px;
-  --bc-body-paragraph: 16px;
-  --bc-tag-text: 14px;
-  --bc-caption: 13px;
+
+  /* Headings (your custom settings) */
+  --bc-h1: 2rem;
+  --bc-h2: 1.7rem;
+  --bc-h3: 1.5rem;
+  --bc-h4: 1.3rem;
+  --bc-h5: 1.15rem;
+
+  /* Body / text */
+  --bc-body: 1rem;
+  --bc-lead: 1.125rem;
+  --bc-body-sm: 0.9375rem;
+  --bc-caption: 0.8125rem;
+
+  /* Nav / UI */
+  --bc-nav: 0.9375rem;
+  --bc-utility: 0.875rem;
+  --bc-dropdown: 0.875rem;
+
+  /* Buttons */
+  --bc-btn: 1rem;
+  --bc-btn-sm: 0.9375rem;
+
+  /* Cards */
+  --bc-card-title: 1.15rem;
+  --bc-card-body: 0.9375rem;
+  --bc-meta: 0.8125rem;
+
+
+  /* Legacy tokens mapped */
+  --bc-h1-hero: var(--bc-h1);
+  --bc-h1-body: var(--bc-h1);
+  --bc-h2-body: var(--bc-h2);
+  --bc-h3-card: var(--bc-h3);
+  --bc-subheader: var(--bc-h4);
+  --bc-intro-body: var(--bc-lead);
+  --bc-h4-card: var(--bc-h4);
+  --bc-aqua-subtitle: var(--bc-h4);
+  --bc-learnmore-card: var(--bc-body);
+  --bc-date-card: var(--bc-body);
+  --bc-feature-desc: var(--bc-body);
+  --bc-button-text: var(--bc-btn);
+  --bc-nav-text: var(--bc-nav);
+  --bc-body-card: var(--bc-card-body);
+  --bc-footer-copyright: var(--bc-h3);
+  --bc-body-paragraph: var(--bc-body);
+  --bc-tag-text: var(--bc-utility);
 
   /* Color system */
   --bc-brand-teal: var(--e-global-color-primary, #00788a);
@@ -171,11 +200,13 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 56px;
+  min-height: clamp(44px, 3.3vw, 48px);
 }
 
 .site-header__utility {
   margin-left: auto;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .utility-menu {
@@ -184,6 +215,7 @@ p {
   padding: 0;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 40px;
   font-family: var(--bc-font-body);
   font-weight: 500;
@@ -246,8 +278,18 @@ p {
 }
 
 .site-header__main .site-header__inner {
-  min-height: 88px;
+  min-height: clamp(78px, 6.2vw, 89px);
   position: relative;
+}
+
+@media (min-width: 1441px) {
+  .site-header__inner {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 }
 
 .site-header__brand {
@@ -346,7 +388,7 @@ p {
 }
 
 .menu-item-has-children > a {
-  padding-right: 16px;
+  padding-right: 0;
 }
 
 .menu-item-has-children > a::before {
@@ -446,6 +488,64 @@ p {
   padding-left: 0 !important;
   padding-right: 0 !important;
   padding-top: 0 !important;
+}
+
+.elementor-24 .elementor-element.elementor-element-377e583 {
+  --min-height: clamp(560px, 80vh, 720px);
+}
+
+@media (max-width: 1024px) {
+  .elementor-24 .elementor-element.elementor-element-377e583 {
+    --min-height: auto;
+    min-height: auto;
+    padding-bottom: clamp(12px, 3vw, 24px);
+  }
+
+  .elementor-24 .elementor-element.elementor-element-5b68a58 {
+    min-height: clamp(280px, 45vh, 420px);
+    background-position: center 30%;
+  }
+
+  .elementor-24 .elementor-element.elementor-element-0adfed7 .elementor-heading-title {
+    font-size: clamp(18px, 2.4vw, 22px);
+    line-height: 1.25;
+  }
+
+  .elementor-24 .elementor-element.elementor-element-ff22bca .elementor-heading-title {
+    font-size: clamp(22px, 3.2vw, 28px);
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 767px) {
+  .elementor-24 .elementor-element.elementor-element-377e583 {
+    --min-height: auto;
+    min-height: auto;
+    padding-bottom: 0;
+  }
+
+  .elementor-24 .elementor-element.elementor-element-5b68a58 {
+    min-height: clamp(240px, 40vh, 360px);
+    background-position: center 25%;
+  }
+
+  .elementor-24 .elementor-element.elementor-element-0adfed7 .elementor-heading-title {
+    font-size: clamp(16px, 4vw, 20px);
+  }
+
+  .elementor-24 .elementor-element.elementor-element-ff22bca .elementor-heading-title {
+    font-size: clamp(20px, 5vw, 26px);
+    line-height: 1.2;
+  }
+
+  .elementor-24 .elementor-element.elementor-element-a7a61cc {
+    position: relative;
+    z-index: 2;
+    transform: translateY(-16px);
+    margin-top: 0;
+    padding: 0;
+  }
 }
 
 .site-footer__content {
