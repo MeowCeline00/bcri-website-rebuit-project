@@ -490,6 +490,12 @@ p {
   padding-top: 0 !important;
 }
 
+.elementor-24 .elementor-element.elementor-element-a7a61cc .elementor-widget-text-editor p {
+  font-size: var(--bc-card-body);
+  line-height: 1.55;
+  margin: 0;
+}
+
 .elementor-24 .elementor-element.elementor-element-377e583 {
   --min-height: clamp(560px, 80vh, 720px);
 }
