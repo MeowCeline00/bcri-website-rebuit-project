@@ -1,0 +1,129 @@
+/* Front page alignment fixes for the hero cards row. */
+.elementor-24 .elementor-element.elementor-element-a7a61cc {
+  align-items: stretch;
+  --card-icon-height: 72px;
+  --card-title-height: 4.6em;
+  --card-desc-height: 10.8em;
+  --card-link-height: 2.6em;
+  --card-row-gap: 12px;
+  --divider-top: 24px;
+  --divider-bottom: 20px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.elementor-24 .elementor-element.elementor-element-a7a61cc > .elementor-element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  gap: var(--card-row-gap);
+}
+
+.elementor-24 .elementor-element.elementor-element-a7a61cc .elementor-widget-icon {
+  min-height: var(--card-icon-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.elementor-24 .elementor-element.elementor-element-a7a61cc .elementor-widget-heading {
+  margin: 0;
+  min-height: var(--card-title-height);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.elementor-24 .elementor-element.elementor-element-a7a61cc .elementor-widget-heading .elementor-heading-title {
+  line-height: 1.2;
+}
+
+.elementor-24 .elementor-element.elementor-element-a7a61cc .elementor-widget-text-editor {
+  min-height: var(--card-desc-height);
+}
+
+.elementor-24 .elementor-element.elementor-element-a7a61cc .elementor-widget-text-editor p {
+  margin: 0;
+}
+
+.elementor-24 .elementor-element.elementor-element-a7a61cc > .elementor-element > .elementor-element:last-child {
+  margin-top: auto;
+  min-height: var(--card-link-height);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* Replace uneven borders with consistent dividers drawn on the container. */
+.elementor-24 .elementor-element.elementor-element-a7a61cc > .elementor-element {
+  border: 0;
+}
+
+.elementor-24 .elementor-element.elementor-element-a7a61cc {
+  --divider-color: rgba(201, 152, 46, 0.7);
+  background-image:
+    linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent var(--divider-top),
+      var(--divider-color) var(--divider-top),
+      var(--divider-color) calc(100% - var(--divider-bottom)),
+      transparent calc(100% - var(--divider-bottom))
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent var(--divider-top),
+      var(--divider-color) var(--divider-top),
+      var(--divider-color) calc(100% - var(--divider-bottom)),
+      transparent calc(100% - var(--divider-bottom))
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent var(--divider-top),
+      var(--divider-color) var(--divider-top),
+      var(--divider-color) calc(100% - var(--divider-bottom)),
+      transparent calc(100% - var(--divider-bottom))
+    );
+  background-repeat: no-repeat;
+  background-size: 2px 100%;
+  background-position:
+    calc(25% - 1px) 0,
+    calc(50% - 1px) 0,
+    calc(75% - 1px) 0;
+}
+
+@media (max-width: 1200px) {
+  .elementor-24 .elementor-element.elementor-element-a7a61cc {
+    --card-title-height: 5.6em;
+    --card-desc-height: 14.5em;
+    --card-link-height: 2.8em;
+    --card-row-gap: 12px;
+    --divider-top: 22px;
+    --divider-bottom: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .elementor-24 .elementor-element.elementor-element-a7a61cc {
+    --card-icon-height: 64px;
+    --card-title-height: 6.8em;
+    --card-desc-height: 16.8em;
+    --card-link-height: 3em;
+    --card-row-gap: 10px;
+    --divider-top: 18px;
+    --divider-bottom: 18px;
+  }
+
+  .elementor-24 .elementor-element.elementor-element-a7a61cc .elementor-widget-heading .elementor-heading-title {
+    font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  }
+
+  .elementor-24 .elementor-element.elementor-element-a7a61cc .elementor-widget-text-editor {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}
