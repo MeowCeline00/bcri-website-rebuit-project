@@ -19,6 +19,8 @@ add_action('after_setup_theme', function () {
 // Enqueue assets
 add_action('wp_enqueue_scripts', function () {
   $ver = wp_get_theme()->get('Version');
+  $theme_dir = get_template_directory();
+  $theme_uri = get_template_directory_uri();
 
   wp_enqueue_style(
     'bootstrap-icons',
@@ -29,14 +31,39 @@ add_action('wp_enqueue_scripts', function () {
 
   wp_enqueue_style(
     'bc-research-style',
-    get_template_directory_uri() . '/assets/css/main.css',
+    $theme_uri . '/assets/css/main.css',
     ['bootstrap-icons'],
     $ver
   );
 
+  if (is_front_page()) {
+    wp_enqueue_style(
+      'bc-research-front-page',
+      $theme_uri . '/assets/css/front-page.css',
+      ['bc-research-style'],
+      $ver
+    );
+  }
+
+  if (is_page()) {
+    $page_id = get_queried_object_id();
+    $page_slug = $page_id ? get_post_field('post_name', $page_id) : '';
+    if (!empty($page_slug)) {
+      $page_css_rel = '/assets/css/page-' . $page_slug . '.css';
+      if (file_exists($theme_dir . $page_css_rel)) {
+        wp_enqueue_style(
+          'bc-research-page-' . $page_slug,
+          $theme_uri . $page_css_rel,
+          ['bc-research-style'],
+          $ver
+        );
+      }
+    }
+  }
+
   wp_enqueue_script(
     'bc-research-js',
-    get_template_directory_uri() . '/assets/js/main.js',
+    $theme_uri . '/assets/js/main.js',
     [],
     $ver,
     true
