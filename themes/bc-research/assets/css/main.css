@@ -401,7 +401,7 @@ p {
   padding: 18px 20px;
   position: absolute;
   left: 0;
-  top: calc(100% + 25px);
+  top: calc(100% + 24px);
   min-width: 260px;
   background: #fff;
   border: 1px solid var(--bc-divider);
