@@ -1,4 +1,15 @@
 /* Front page alignment fixes for the hero cards row. */
+.elementor-24 .elementor-element.elementor-element-b25f96b {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.elementor-24 .elementor-element.elementor-element-31bb7bf {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .elementor-24 .elementor-element.elementor-element-a7a61cc {
   align-items: stretch;
   --card-icon-height: 72px;
