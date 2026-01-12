@@ -77,4 +77,28 @@
       closeSubmenus();
     }
   });
+
+  const postCards = document.querySelectorAll('.elementor-post__card');
+  postCards.forEach((card) => {
+    const link = card.querySelector('a[href]');
+    if (!link) return;
+
+    card.addEventListener('click', (event) => {
+      if (event.target.closest('a')) return;
+      link.click();
+    });
+
+    card.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      link.click();
+    });
+
+    if (!card.hasAttribute('tabindex')) {
+      card.tabIndex = 0;
+    }
+    if (!card.hasAttribute('role')) {
+      card.setAttribute('role', 'link');
+    }
+  });
 })();
