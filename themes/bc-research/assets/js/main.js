@@ -131,3 +131,59 @@
     }
   });
 })();
+
+
+
+
+// Services flip stack (scroll-driven)
+document.addEventListener("DOMContentLoaded", () => {
+  const stack = document.querySelector(".flip-stack");
+  if (!stack) return;
+
+  const cards = Array.from(stack.querySelectorAll(".flip-card"));
+  if (!cards.length) return;
+
+  // Ensure z-index even if Elementor changes DOM order
+  cards.forEach((c, i) => (c.style.zIndex = String(i + 1)));
+
+  const setActive = (idx) => {
+    cards.forEach((card, i) => {
+      // Stack feel: keep all previous cards active
+      card.classList.toggle("is-active", i <= idx);
+
+      // Dots inside each card: highlight current step
+      const dots = Array.from(card.querySelectorAll(".card-dot"));
+      dots.forEach((dot, d) => dot.classList.toggle("is-active", d === idx));
+    });
+  };
+
+  // Decide which card index is current based on scroll progress inside the stack
+  const updateFromScroll = () => {
+    const rect = stack.getBoundingClientRect();
+
+    // How much of the stack has scrolled past the top?
+    const total = rect.height - window.innerHeight;
+    const passed = Math.min(Math.max(-rect.top, 0), total);
+
+    const progress = total > 0 ? passed / total : 0; // 0..1
+    const idx = Math.min(cards.length - 1, Math.floor(progress * cards.length));
+
+    setActive(idx);
+  };
+
+  // Smooth updates
+  let ticking = false;
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      updateFromScroll();
+      ticking = false;
+    });
+  };
+
+  // Init + listeners
+  updateFromScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", updateFromScroll);
+});
