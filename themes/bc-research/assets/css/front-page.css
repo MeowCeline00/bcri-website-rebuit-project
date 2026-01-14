@@ -71,6 +71,34 @@
   margin: 0;
 }
 
+.elementor-24 .elementor-element.elementor-element-a694b2b > .elementor-element {
+  justify-content: center;
+  align-items: center;
+}
+
+.elementor-24 .elementor-element.elementor-element-a694b2b .elementor-widget-heading,
+.elementor-24 .elementor-element.elementor-element-a694b2b .elementor-widget-text-editor {
+  width: 100%;
+}
+
+.elementor-24 .elementor-element.elementor-element-a694b2b .elementor-widget-heading {
+  min-height: 2.8em;
+}
+
+.elementor-24 .elementor-element.elementor-element-a694b2b .elementor-widget-text-editor {
+  min-height: 4.6em;
+}
+
+.elementor-24 .elementor-element.elementor-element-a694b2b .elementor-widget-text-editor p,
+.elementor-24 .elementor-element.elementor-element-a694b2b .elementor-widget-text-editor span {
+  display: block;
+  margin: 0;
+}
+
+.elementor-24 .elementor-element.elementor-element-a694b2b .elementor-widget-text-editor br {
+  display: none;
+}
+
 .elementor-24 .elementor-element.elementor-element-a7a61cc > .elementor-element > .elementor-element:last-child {
   display: flex;
   align-items: center;
@@ -133,18 +161,6 @@
     calc(75% - 1px) 0;
 }
 
-/* Keep the Our Progress flags at the current desktop layout across viewports. */
-.elementor-24 .progress-grid {
-  --progress-card-width: 204px;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: var(--progress-card-width);
-  grid-template-columns: repeat(5, var(--progress-card-width));
-  column-gap: 10px;
-  row-gap: 0;
-  overflow-x: auto;
-}
-
 @media (max-width: 1200px) {
   .elementor-24 .elementor-element.elementor-element-a7a61cc {
     --card-title-height: 5.6em;
@@ -165,13 +181,7 @@
     --card-row-gap: 10px;
     --divider-top: 18px;
     --divider-bottom: 18px;
-    flex-wrap: wrap;
-    row-gap: 24px;
     background-image: none;
-  }
-
-  .elementor-24 .elementor-element.elementor-element-a7a61cc > .elementor-element {
-    flex: 1 1 240px;
   }
 
   .elementor-24 .elementor-element.elementor-element-a7a61cc .elementor-widget-heading .elementor-heading-title {
@@ -182,31 +192,6 @@
     font-size: 0.95rem;
     line-height: 1.5;
   }
-}
-
-@media (max-width: 767px) {
-  .elementor-24 .elementor-element.elementor-element-a7a61cc > .elementor-element {
-    flex-basis: 100%;
-  }
-
-  .elementor-24 .elementor-element.elementor-element-986d9c7,
-  .elementor-24 .elementor-element.elementor-element-04c1c8b,
-  .elementor-24 .elementor-element.elementor-element-a466bee,
-  .elementor-24 .elementor-element.elementor-element-a31433d {
-    margin-bottom: 10px;
-  }
-
-  .elementor-24 .elementor-element.elementor-element-9c5a989,
-  .elementor-24 .elementor-element.elementor-element-6bbef48,
-  .elementor-24 .elementor-element.elementor-element-8e5c42b,
-  .elementor-24 .elementor-element.elementor-element-51b4f9b {
-    justify-content: flex-start;
-    row-gap: 12px;
-  }
-}
-
-.home .elementor-widget-text-editor a[aria-label^="Learn more about"] {
-  padding: 6px 10px;
 }
 
 .home .elementor-posts .elementor-post {
