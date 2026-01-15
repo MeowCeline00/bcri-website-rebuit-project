@@ -115,6 +115,42 @@
   font-weight: 600 !important;
 }
 
+.elementor-36 .elementor-element.elementor-element-5c19b924 .elementor-widget-text-editor a {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-family: "Sora", Sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  color: var(--e-global-color-db2f69e) !important;
+  text-decoration: none !important;
+}
+
+.elementor-36 .elementor-element.elementor-element-5c19b924 .elementor-widget-text-editor a svg {
+  width: 25px !important;
+  height: 25px !important;
+  fill: var(--bc-learnmore-arrow-default) !important;
+  transform: scale(1.15);
+}
+
+.elementor-36 .elementor-element.elementor-element-5c19b924 > .elementor-element > .elementor-element:last-child .elementor-widget-text-editor a {
+  font-family: "Sora", Sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  color: var(--e-global-color-db2f69e) !important;
+  gap: 6px;
+  text-decoration: none;
+}
+
+.elementor-36 .elementor-element.elementor-element-5c19b924 > .elementor-element > .elementor-element:last-child .elementor-widget-text-editor a svg {
+  width: 25px;
+  height: 25px;
+  fill: var(--bc-learnmore-arrow-default);
+  transform: scale(1.15);
+}
+
 /* Replace uneven borders with consistent dividers drawn on the container. */
 .elementor-36 .elementor-element.elementor-element-5c19b924 > .elementor-element {
   border: 0;
