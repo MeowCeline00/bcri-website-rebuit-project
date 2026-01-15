@@ -1,0 +1,178 @@
+/* About page alignment to match the home hero cards row. */
+.elementor-36 .elementor-element.elementor-element-5c19b924 {
+  align-items: stretch;
+  --card-icon-height: 72px;
+  --card-title-height: 4.6em;
+  --card-desc-height: 12.8em;
+  --card-link-height: 2.6em;
+  --card-row-gap: 12px;
+  --divider-top: 24px;
+  --divider-bottom: 20px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.elementor-36 .elementor-element.elementor-element-5c19b924 > .elementor-element {
+  display: grid;
+  grid-template-rows:
+    var(--card-icon-height)
+    var(--card-title-height)
+    var(--card-desc-height)
+    var(--card-link-height);
+  align-items: stretch;
+  justify-items: center;
+  text-align: center;
+  height: 100%;
+  gap: var(--card-row-gap);
+}
+
+.elementor-36 .elementor-element.elementor-element-5c19b924 .elementor-widget-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.elementor-36 .elementor-element.elementor-element-5c19b924 .elementor-widget-heading {
+  margin: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: var(--card-title-height);
+  padding-top: 0;
+  width: 100%;
+}
+
+.elementor-36 .elementor-element.elementor-element-5c19b924 .elementor-widget-heading .elementor-heading-title {
+  line-height: 1.15;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "Sora", Sans-serif;
+  font-size: 1.5vw;
+  font-weight: 700;
+  line-height: 1lh;
+  color: var(--e-global-color-db2f69e);
+}
+
+.elementor-36 .elementor-element.elementor-element-5c19b924 .elementor-widget-text-editor {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+  font-family: "Inter", Sans-serif;
+  font-size: 0.93rem;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 0rem;
+}
+
+.elementor-36 .elementor-element.elementor-element-5c19b924 .elementor-widget-text-editor p {
+  font-size: var(--bc-card-body);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.elementor-36 .elementor-element.elementor-element-5c19b924 > .elementor-element > .elementor-element:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.elementor-36 .elementor-element.elementor-element-5c19b924 > .elementor-element > .elementor-element:last-child .elementor-widget-text-editor {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.elementor-36 .elementor-element.elementor-element-5c19b924 > .elementor-element > .elementor-element:last-child .elementor-widget-text-editor p,
+.elementor-36 .elementor-element.elementor-element-5c19b924 > .elementor-element > .elementor-element:last-child .elementor-widget-text-editor a {
+  min-height: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+}
+
+/* Replace uneven borders with consistent dividers drawn on the container. */
+.elementor-36 .elementor-element.elementor-element-5c19b924 > .elementor-element {
+  border: 0;
+}
+
+.elementor-36 .elementor-element.elementor-element-5c19b924 {
+  --divider-color: rgba(201, 152, 46, 0.7);
+  background-image:
+    linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent var(--divider-top),
+      var(--divider-color) var(--divider-top),
+      var(--divider-color) calc(100% - var(--divider-bottom)),
+      transparent calc(100% - var(--divider-bottom))
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent var(--divider-top),
+      var(--divider-color) var(--divider-top),
+      var(--divider-color) calc(100% - var(--divider-bottom)),
+      transparent calc(100% - var(--divider-bottom))
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent var(--divider-top),
+      var(--divider-color) var(--divider-top),
+      var(--divider-color) calc(100% - var(--divider-bottom)),
+      transparent calc(100% - var(--divider-bottom))
+    );
+  background-repeat: no-repeat;
+  background-size: 2px 100%;
+  background-position:
+    calc(25% - 1px) 0,
+    calc(50% - 1px) 0,
+    calc(75% - 1px) 0;
+}
+
+@media (max-width: 1200px) {
+  .elementor-36 .elementor-element.elementor-element-5c19b924 {
+    --card-title-height: 5.6em;
+    --card-desc-height: 15.5em;
+    --card-link-height: 2.8em;
+    --card-row-gap: 12px;
+    --divider-top: 22px;
+    --divider-bottom: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .elementor-36 .elementor-element.elementor-element-5c19b924 {
+    --card-icon-height: 64px;
+    --card-title-height: 6.8em;
+    --card-desc-height: 19em;
+    --card-link-height: 3em;
+    --card-row-gap: 10px;
+    background-image: none;
+  }
+
+  .elementor-36 .elementor-element.elementor-element-5c19b924 .elementor-widget-heading .elementor-heading-title {
+    font-size: 20px;
+  }
+
+  .elementor-36 .elementor-element.elementor-element-5c19b924 .elementor-widget-text-editor {
+    font-size: 0.93rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .elementor-36 .elementor-element.elementor-element-5c19b924 .elementor-widget-heading .elementor-heading-title {
+    font-size: 18px;
+    line-height: 1.65lh;
+  }
+
+  .elementor-36 .elementor-element.elementor-element-5c19b924 .elementor-widget-text-editor {
+    font-size: 16px;
+    line-height: 1.65lh;
+  }
+}
