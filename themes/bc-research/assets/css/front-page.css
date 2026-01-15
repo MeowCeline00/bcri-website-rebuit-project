@@ -305,97 +305,44 @@
 
 
 
-/* Card must be the positioning anchor */
-.flip-card{
-  position: relative !important;
-  overflow: visible !important; /* prevent clipping */
+
+/* ================================
+   SERVICES CARD — 50 / 50 SPLIT
+   Responsive Addons (RAEL)
+   ================================ */
+
+/* Ensure the card uses flex row */
+.rael-card-inner {
+  display: flex !important;
+  align-items: stretch !important;
+  gap: 0 !important;
 }
 
-/* Force Elementor dots container to stop being a full-width flex row */
-.flip-card > .card-dots.e-con,
-.flip-card > .card-dots.e-con-full,
-.flip-card > .card-dots{
-  position: absolute !important;
-  top: 28px !important;
-  right: 28px !important;
-  left: auto !important;
-  bottom: auto !important;
+/* IMAGE COLUMN — 50% */
+.rael-card-media {
+  flex: 0 0 50% !important;
+  max-width: 50% !important;
+}
 
-  width: auto !important;
-  max-width: none !important;
-  height: auto !important;
-  margin: 0 !important;
-  padding: 0 !important;
+/* Image fills its half */
+.rael-card-media img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block;
+}
+
+/* CONTENT COLUMN — 50% */
+.rael-card-content {
+  flex: 0 0 50% !important;
+  max-width: 50% !important;
 
   display: flex !important;
   flex-direction: column !important;
-  justify-content: flex-start !important;
-  align-items: center !important;
-  gap: 12px !important;
-
-  z-index: 999 !important;
+  justify-content: center !important; /* vertical centering */
 }
 
-/* Remove any flex sizing from the dots container */
-.flip-card > .card-dots{
-  flex: 0 0 auto !important;
-}
-
-/* Each icon widget wrapper should not stretch */
-.flip-card .card-dots .elementor-widget{
-  width: auto !important;
-  margin: 0 !important;
-}
-
-/* Dot appearance: use the widget container as the dot */
-.flip-card .card-dot{
-  width: 12px !important;
-  height: 12px !important;
-  border-radius: 999px !important;
-  background: rgba(0,0,0,0.25) !important;
-  opacity: 0.7 !important;
-}
-
-/* Hide the actual SVG icon (you used bootstrap circle-fill) */
-.flip-card .card-dot svg,
-.flip-card .card-dot i{
-  opacity: 0 !important;
-}
-
-/* Active dot */
-.flip-card .card-dot.is-active{
-  background: #C9982E !important;
-  opacity: 1 !important;
-  transform: scale(1.35);
-}
-
-
-/* Make the icon widget act as a dot */
-.flip-card .card-dots .elementor-widget-icon{
-  width: 12px !important;
-  height: 12px !important;
-  flex: 0 0 12px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-/* The clickable wrapper becomes the circle */
-.flip-card .card-dots .elementor-widget-icon .elementor-icon{
-  width: 12px !important;
-  height: 12px !important;
-  border-radius: 999px !important;
-  background: rgba(0,0,0,0.25) !important;
-  display: block !important;
-}
-
-/* Hide the actual SVG/i so only the background circle shows */
-.flip-card .card-dots .elementor-widget-icon svg,
-.flip-card .card-dots .elementor-widget-icon i{
-  display: none !important;
-}
-
-/* Active state (if you add .is-active on the icon widget container) */
-.flip-card .card-dots .card-dot.is-active .elementor-icon{
-  background: #C9982E !important;
+/* Optional: control internal padding */
+.rael-card-content {
+  padding: 48px !important; /* adjust to match your design */
 }
