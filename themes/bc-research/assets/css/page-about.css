@@ -42,15 +42,23 @@
   width: 100%;
 }
 
+.elementor-36 .elementor-element.elementor-element-5c19b924 .elementor-widget-heading,
+.elementor-36 .elementor-element.elementor-element-5c19b924 .elementor-widget-heading * {
+  font-family: "Sora", Sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.15 !important;
+}
+
 .elementor-36 .elementor-element.elementor-element-5c19b924 .elementor-widget-heading .elementor-heading-title {
-  line-height: 1.15;
   margin-top: 0;
   margin-bottom: 0;
-  font-family: "Sora", Sans-serif;
-  font-size: 1.5vw;
-  font-weight: 700;
-  line-height: 1lh;
-  color: var(--e-global-color-db2f69e);
+  font-family: "Sora", Sans-serif !important;
+  font-size: 1.5vw !important;
+  font-weight: 700 !important;
+  line-height: 1.15 !important;
+  color: var(--e-global-color-db2f69e) !important;
+  text-align: center;
 }
 
 .elementor-36 .elementor-element.elementor-element-5c19b924 .elementor-widget-text-editor {
@@ -60,17 +68,26 @@
   align-items: flex-start;
   justify-content: center;
   text-align: center;
-  font-family: "Inter", Sans-serif;
-  font-size: 0.93rem;
-  font-weight: 600;
+  font-family: "Inter", Sans-serif !important;
+  font-size: var(--bc-card-body) !important;
+  font-weight: 400 !important;
+  line-height: 1.55 !important;
   font-style: normal;
   letter-spacing: 0rem;
 }
 
+.elementor-36 .elementor-element.elementor-element-5c19b924 .elementor-widget-text-editor,
+.elementor-36 .elementor-element.elementor-element-5c19b924 .elementor-widget-text-editor * {
+  font-family: "Inter", Sans-serif !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+}
+
 .elementor-36 .elementor-element.elementor-element-5c19b924 .elementor-widget-text-editor p {
-  font-size: var(--bc-card-body);
-  line-height: 1.55;
-  margin: 0;
+  font-size: var(--bc-card-body) !important;
+  line-height: 1.55 !important;
+  margin: 0 !important;
+  font-weight: 400 !important;
 }
 
 .elementor-36 .elementor-element.elementor-element-5c19b924 > .elementor-element > .elementor-element:last-child {
@@ -93,6 +110,9 @@
   align-items: center;
   justify-content: center;
   line-height: 1.2;
+  font-family: "Sora", Sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
 }
 
 /* Replace uneven borders with consistent dividers drawn on the container. */
@@ -157,22 +177,22 @@
   }
 
   .elementor-36 .elementor-element.elementor-element-5c19b924 .elementor-widget-heading .elementor-heading-title {
-    font-size: 20px;
+    font-size: 20px !important;
   }
 
   .elementor-36 .elementor-element.elementor-element-5c19b924 .elementor-widget-text-editor {
-    font-size: 0.93rem;
+    font-size: 0.93rem !important;
   }
 }
 
 @media (max-width: 767px) {
   .elementor-36 .elementor-element.elementor-element-5c19b924 .elementor-widget-heading .elementor-heading-title {
-    font-size: 18px;
-    line-height: 1.65lh;
+    font-size: 18px !important;
+    line-height: 1.65lh !important;
   }
 
   .elementor-36 .elementor-element.elementor-element-5c19b924 .elementor-widget-text-editor {
-    font-size: 16px;
-    line-height: 1.65lh;
+    font-size: 16px !important;
+    line-height: 1.65lh !important;
   }
 }
