@@ -27,7 +27,7 @@ if (!defined('ABSPATH')) exit;
         <h4 class="site-footer__heading">About Us</h4>
         <ul class="site-footer__list">
           <li><a href="/about">About</a></li>
-          <li><a href="https://www.noram-eng.com" target="_blank" rel="noopener">NORAM Group</a></li>
+          <li><a href="/noram-group/">NORAM Group</a></li>
           <li><a href="/our-people">Our People</a></li>
           <li><a href="/news">News</a></li>
         </ul>
