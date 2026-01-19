@@ -194,6 +194,20 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .elementor-24 .elementor-element.elementor-element-a7a61cc {
+    --card-desc-height: clamp(42em, 50vw, 58em);
+    padding-bottom: clamp(24px, 4vw, 36px);
+  }
+}
+
+@media (max-width: 767px) {
+  .elementor-24 .elementor-element.elementor-element-a7a61cc {
+    --card-desc-height: clamp(48em, 82vw, 68em);
+    padding-bottom: clamp(32px, 6vw, 48px);
+  }
+}
+
 .home .elementor-posts .elementor-post {
   --corner-size: clamp(70px, 8vw, 120px);
   --arrow-size: clamp(24px, 2.43vw, 35px);
