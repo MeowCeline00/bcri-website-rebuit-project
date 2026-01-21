@@ -49,7 +49,7 @@ if (!defined('ABSPATH')) exit;
         </ul>
         <h4 class="site-footer__heading">Services</h4>
         <ul class="site-footer__list">
-          <li><a href="/research-development">Research and Development</a></li>
+          <li><a href="/research-and-development">Research and Development</a></li>
           <li><a href="/piloting">Piloting</a></li>
         </ul>
         <h4 class="site-footer__heading">Resources</h4>
