@@ -7,7 +7,6 @@ use ImageOptimization\Classes\Image\{
 	Image_Optimization_Error_Type,
 	Image_Status
 };
-use ImageOptimization\Modules\Oauth\Classes\Data;
 use ImageOptimization\Modules\Stats\Classes\Optimization_Stats;
 
 use ImageOptimization\Plugin;
@@ -25,11 +24,25 @@ class Optimization_Status {
 	 */
 	public static function get_images_optimization_statuses( array $image_ids ): array {
 		$output = [];
-		$images_left = Plugin::instance()->modules_manager->get_modules( 'connect-manager' )->connect_instance->images_left();
+
+		// @var ImageOptimizer/Modules/ConnectManager/Module
+		$module = Plugin::instance()->modules_manager->get_modules( 'connect-manager' );
+		$images_left = $module->connect_instance->images_left();
+		$is_connected = $module->connect_instance->is_connected() && $module->connect_instance->is_activated();
 
 		foreach ( $image_ids as $image_id ) {
 			$meta = new Image_Meta( $image_id );
 			$data = [];
+
+			if ( ! $is_connected ) {
+				$data['status'] = Image_Status::OPTIMIZATION_FAILED;
+				$data['error_type'] = Image_Optimization_Error_Type::AUTH_ERROR;
+				$data['message'] = esc_html__( 'You need to connect an Elementor account', 'image-optimization' );
+
+				$output[ $image_id ] = $data;
+
+				continue;
+			}
 
 			$status = $meta->get_status();
 
@@ -47,6 +60,7 @@ class Optimization_Status {
 				$error_type = $meta->get_error_type() ?? Image_Optimization_Error_Type::GENERIC;
 				$error_message = Optimization_Error_Message::get_optimization_error_message( $error_type );
 
+				$data['error_type'] = $error_type;
 				$data['message'] = $error_message;
 				$data['images_left'] = $images_left;
 			}
@@ -55,6 +69,7 @@ class Optimization_Status {
 				$error_type = $meta->get_error_type() ?? Image_Optimization_Error_Type::GENERIC;
 				$error_message = Optimization_Error_Message::get_reoptimization_error_message( $error_type );
 
+				$data['error_type'] = $error_type;
 				$data['message'] = $error_message;
 				$data['images_left'] = $images_left;
 			}

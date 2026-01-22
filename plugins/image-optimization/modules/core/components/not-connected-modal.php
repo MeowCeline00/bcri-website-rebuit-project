@@ -35,7 +35,10 @@ class Not_Connected_Modal {
 					<li><?php esc_html_e( 'Convert to AVIF and WebP formats', 'image-optimization' ); ?></li>
 					<li><?php esc_html_e( 'Works across unlimited websites', 'image-optimization' ); ?></li>
 				</ul>
-				<a href="<?php echo admin_url( 'admin.php?page=' . Module::SETTING_BASE_SLUG . '&action=connect' ); ?>" class="image-optimizer__modal--not-connected-connect">
+				<a 
+					href="<?php echo admin_url( 'admin.php?page=' . Module::SETTING_BASE_SLUG . '&action=connect' ); ?>" 
+					class="image-optimizer__modal--not-connected-connect"
+				>
 					<?php esc_html_e( 'Connect to start', 'image-optimization' ); ?>
 				</a>
 			</div>
@@ -69,7 +72,7 @@ class Not_Connected_Modal {
 
 						$connectButton.on( 'click', function (e) {
 							hideModal(e);
-							window.open( $( this ).attr( 'href' ), '_blank' ).focus();
+							window.open( $( this ).attr( 'href' ), '_self' ).focus();
 						} );
 						$closeButton.on( 'click', function (e) {
 							hideModal(e);

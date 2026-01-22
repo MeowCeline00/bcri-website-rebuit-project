@@ -6,7 +6,6 @@ use ImageOptimization\Modules\Optimization\Classes\{
 	Bulk_Optimization_Controller,
 	Route_Base,
 };
-use ImageOptimization\Modules\Oauth\Components\Connect;
 use Throwable;
 use WP_REST_Request;
 use ImageOptimization\Plugin;

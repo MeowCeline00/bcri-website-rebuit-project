@@ -1,7 +1,9 @@
-import { Snackbar } from '@wordpress/components';
+import CloseButton from '@elementor/ui/CloseButton';
+import Snackbar from '@elementor/ui/Snackbar';
+import SnackbarContent from '@elementor/ui/SnackbarContent';
 import { useSettings } from '../hooks/use-settings';
 
-const ReviewNotifications = ( { message } ) => {
+const ReviewNotifications = ( { type, message } ) => {
 	const {
 		showNotification,
 		setShowNotification,
@@ -21,9 +23,15 @@ const ReviewNotifications = ( { message } ) => {
 
 	return (
 		<Snackbar
-			onRemove={ closeNotification }
+			open={ showNotification }
+			autoHideDuration={ type === 'error' ? 10000 : 2000 }
+			onClose={ closeNotification }
+			anchorOrigin={ { vertical: 'bottom', horizontal: 'right' } }
+			sx={ { zIndex: 99999 } }
 		>
-			{ message }
+			<SnackbarContent
+				message={ message }
+				action={ <CloseButton color="inherit" onClick={ closeNotification } /> } />
 		</Snackbar>
 	);
 };

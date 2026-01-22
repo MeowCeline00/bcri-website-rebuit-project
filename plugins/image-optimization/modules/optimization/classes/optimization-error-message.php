@@ -28,6 +28,7 @@ class Optimization_Error_Message {
 			Image_Optimization_Error_Type::FILE_ALREADY_EXISTS => esc_html__( 'File with this name already exists', 'image-optimization' ),
 			Image_Optimization_Error_Type::QUOTA_EXCEEDED => esc_html__( 'Plan quota reached', 'image-optimization' ),
 			Image_Optimization_Error_Type::GENERIC => esc_html__( 'Optimization error', 'image-optimization' ),
+			Image_Optimization_Error_Type::CONNECTION_ERROR => esc_html__( 'Connection error', 'image-optimization' ),
 		];
 
 		if ( isset( $messages[ $error_type ] ) ) {

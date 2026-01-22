@@ -33,9 +33,9 @@ class ControlStates {
 		this.controlWrapper.dataset.imageOptimizationStatus = 'optimized';
 	}
 
-	renderError( { message, imagesLeft, action } ) {
+	renderError( { message, errorType, imagesLeft, allowRetry, action } ) {
 		this.controlWrapper.className = this.mixControlContextClass( SELECTORS.controlErrorClassName );
-		this.controlWrapper.innerHTML = this.getTemplates().errorTemplate( message, imagesLeft );
+		this.controlWrapper.innerHTML = this.getTemplates().errorTemplate( { message, errorType, imagesLeft, allowRetry } );
 
 		this.controlWrapper.dataset.imageOptimizationAction = action;
 		this.controlWrapper.dataset.imageOptimizationStatus = 'error';

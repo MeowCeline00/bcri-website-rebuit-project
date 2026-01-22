@@ -60,7 +60,7 @@ class Birthday_Banner {
 				.io-birthday-banner {
 					overflow: hidden;
 					margin-inline-start: -20px;
-					background: #FF7BE5;
+					background: #ff7be5;
 
 					display: flex;
 					flex-direction: row;

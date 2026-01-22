@@ -3,16 +3,13 @@
 namespace ImageOptimization\Modules\ConnectManager;
 
 use ImageOptimization;
-use ImageOptimization\Classes\{
-	Module_Base,
+use ImageOptimization\Classes\Module_Base;
+
+use ImageOptimization\Modules\ConnectManager\{
+	Classes\Connect_Runner,
+	Components\Legacy_Connect,
+	Components\Connect,
 };
-
-use ImageOptimization\Modules\ConnectManager\Classes\Connect_Runner;
-
-use ImageOptimization\Modules\ConnectManager\Components\Legacy_Connect;
-use ImageOptimization\Modules\ConnectManager\Components\Connect;
-
-use ImageOptimization\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -25,8 +22,6 @@ class Module extends Module_Base {
 
 	/**
 	 * Connect instance
-	 *
-	 * @var connect_instance
 	 */
 	public $connect_instance;
 
@@ -67,7 +62,6 @@ class Module extends Module_Base {
 	 * @return void
 	 */
 	public function load_connect_manager() {
-
 		if ( ImageOptimization\Modules\Connect\Module::is_active() ) {
 			$this->connect_instance = new Connect_Runner( new Connect() );
 		} else {

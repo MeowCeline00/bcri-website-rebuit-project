@@ -24,7 +24,6 @@ final class Manager {
 			'stats',
 			'optimization',
 			'backups',
-			'whats-new',
 			'Deactivation',
 			'reviews',
 		];

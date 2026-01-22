@@ -21,6 +21,10 @@ class ControlMeta {
 		return this.controlNode.dataset?.imageOptimizationStatus || null;
 	}
 
+	getErrorType() {
+		return this.controlNode.dataset?.imageOptimizationErrorType || null;
+	}
+
 	canBeRestored() {
 		const value = this.controlNode.dataset?.imageOptimizationCanBeRestored;
 
@@ -32,7 +36,7 @@ class ControlMeta {
 	}
 
 	allowRetry() {
-		return this.controlNode.dataset?.allowRetry || null;
+		return '1' === this.controlNode.dataset?.imageOptimizationAllowRetry;
 	}
 }
 

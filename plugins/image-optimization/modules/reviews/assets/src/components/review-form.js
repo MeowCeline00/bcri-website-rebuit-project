@@ -1,8 +1,8 @@
-import styled from '@emotion/styled';
-import { Button, Flex } from '@wordpress/components';
+import FormControl from '@elementor/ui/FormControl';
+import Button from '@elementor/ui/Button';
+import Typography from '@elementor/ui/Typography';
 import { __ } from '@wordpress/i18n';
 import useStorage from '../hooks/use-storage';
-import Typography from '../../../../../assets/dev/js/components/typography';
 import { WORDPRESS_REVIEW_LINK } from '../constants';
 
 const ReviewForm = ( { close } ) => {
@@ -21,28 +21,19 @@ const ReviewForm = ( { close } ) => {
 	};
 
 	return (
-		<Flex direction="column">
+		<FormControl fullWidth>
 			<Typography variant="body1" marginBottom={ 1 }>
 				{ __( 'It would mean a lot if you left us a quick review, so others can discover it too.', 'image-optimization' ) }
 			</Typography>
-			<StyledButton
-				variant="primary"
+			<Button
+				color="primary"
+				variant="contained"
 				onClick={ handleSubmit }
 			>
 				{ __( 'Leave a review', 'image-optimization' ) }
-			</StyledButton>
-		</Flex>
+			</Button>
+		</FormControl>
 	);
 };
 
 export default ReviewForm;
-
-const StyledButton = styled( Button )`
-	min-width: 80px;
-	align-self: flex-end;
-	margin-top: 16px;
-	background-color: #515962 !important;
-	align-items: center;
-	justify-content: center;
-	color: #FFF;
-`;

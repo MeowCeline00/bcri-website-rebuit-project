@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { escapeHTML } from '@wordpress/escape-html';
 import { formatFileSize } from '../../utils';
-import { UPGRADE_LINK } from '../../constants';
+import { getErrorButton } from '../common';
 
 const notOptimizedTemplate = () => {
 	return `
@@ -50,7 +50,7 @@ const loadingTemplate = () => {
 	`;
 };
 
-const errorTemplate = ( message, imagesLeft ) => {
+const errorTemplate = ( { message, imagesLeft, errorType, allowRetry } ) => {
 	return `
 		<span class="setting image-optimization-setting">
 			<span class="name image-optimization-control__property">
@@ -76,17 +76,7 @@ const errorTemplate = ( message, imagesLeft ) => {
 			<span class="name image-optimization-control__property"></span>
 
 			<span class="image-optimization-control__property-value image-optimization-control__property-value--button">
-				${ imagesLeft === 0
-		? `<a class="button button-secondary button-large image-optimization-control__button"
-					href="${ UPGRADE_LINK }"
-					target="_blank" rel="noopener noreferrer">
-					${ __( 'Upgrade', 'image-optimization' ) }
-				</a>
-				` : `
-				<button class="button button-secondary button-large button-link-delete image-optimization-control__button image-optimization-control__button--try-again"
-								type="button">
-					${ __( 'Try again', 'image-optimization' ) }
-				</button>` }
+				${ getErrorButton( { imagesLeft, errorType, allowRetry } ) }
 			</span>
 		</span>
 	`;

@@ -2,11 +2,9 @@
 
 namespace ImageOptimization\Modules\Connect;
 
+use ElementorOne\Connect\Facade;
 use ImageOptimization\Classes\Module_Base;
-use ImageOptimization\Modules\Connect\Classes\{
-	Data,
-	Utils,
-};
+use ImageOptimization\Modules\Connect\Classes\Config;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -27,42 +25,34 @@ class Module extends Module_Base {
 		return 'connect';
 	}
 
-	/**
-	 * component_list
-	 * @return string[]
-	 */
-	public static function component_list() : array {
-		return [
-			'Handler',
-		];
-	}
-
-	/**
-	 * routes_list
-	 * @return string[]
-	 */
-	public static function routes_list() : array {
-		return [
-			'Authorize',
-			'Disconnect',
-			'Deactivate',
-			'Deactivate_And_Disconnect',
-			'Version',
-			'Switch_Domain',
-		];
-	}
-
 	public static function is_connected() : bool {
-		return ! ! Data::get_access_token() && Utils::is_valid_home_url();
+		$facade = self::get_connect();
+		$access_token = $facade->data()->get_access_token();
+		
+		return ! ! $access_token && $facade->utils()->is_valid_home_url();
+	}
+
+	public static function get_connect(): ?Facade {
+		return Facade::get( Config::PLUGIN_SLUG);
 	}
 
 	public static function is_active() : bool {
-		// TODO: Add login to check if the function should be active or not.
 		return empty( get_option( 'image_optimizer_client_data' ) );
 	}
 
 	public function __construct() {
-		$this->register_components();
-		$this->register_routes();
+		
+		Facade::make( [
+			'app_name' => Config::APP_NAME,
+			'app_prefix' => Config::APP_PREFIX,
+			'app_rest_namespace' => Config::APP_REST_NAMESPACE,
+			'base_url' => Config::BASE_URL,
+			'admin_page' => Config::ADMIN_PAGE,
+			'app_type' => Config::APP_TYPE,
+			'scopes' => Config::SCOPES,
+			'state_nonce' => Config::STATE_NONCE,
+			'connect_mode' => Config::CONNECT_MODE,
+			'plugin_slug' => Config::PLUGIN_SLUG,
+		] );
 	}
 }

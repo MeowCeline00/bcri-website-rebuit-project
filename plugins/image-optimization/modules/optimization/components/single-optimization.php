@@ -12,6 +12,7 @@ use ImageOptimization\Classes\Image\{
 };
 use ImageOptimization\Classes\Logger;
 use ImageOptimization\Classes\Exceptions\Quota_Exceeded_Error;
+use ImageOptimization\Modules\Connect\Classes\Exceptions\Connection_Error;
 use ImageOptimization\Modules\Optimization\Classes\Exceptions\Image_File_Already_Exists_Error;
 use ImageOptimization\Modules\Optimization\Classes\Optimize_Image;
 use Throwable;
@@ -35,13 +36,18 @@ class Single_Optimization {
 				->set_status( Image_Status::OPTIMIZATION_FAILED )
 				->set_error_type( Image_Optimization_Error_Type::QUOTA_EXCEEDED )
 				->save();
+		} catch ( Connection_Error $ce ) {
+			( new Image_Meta( $image_id ) )
+				->set_status( Image_Status::OPTIMIZATION_FAILED )
+				->set_error_type( Image_Optimization_Error_Type::CONNECTION_ERROR )
+				->save();
 		} catch ( Image_File_Already_Exists_Error $fe ) {
 			( new Image_Meta( $image_id ) )
 				->set_status( Image_Status::OPTIMIZATION_FAILED )
 				->set_error_type( Image_Optimization_Error_Type::FILE_ALREADY_EXISTS )
 				->save();
 		} catch ( Throwable $t ) {
-			Logger::log( Logger::LEVEL_ERROR, 'Optimization error. Reason: ' . $t->getMessage() );
+			Logger::error( 'Single optimization error. Reason: ' . $t->getMessage() );
 
 			Retry::maybe_retry_optimization( $image_id );
 		}
@@ -69,13 +75,18 @@ class Single_Optimization {
 				->set_status( Image_Status::REOPTIMIZING_FAILED )
 				->set_error_type( Image_Optimization_Error_Type::QUOTA_EXCEEDED )
 				->save();
+		} catch ( Connection_Error $ce ) {
+			( new Image_Meta( $image_id ) )
+				->set_status( Image_Status::OPTIMIZATION_FAILED )
+				->set_error_type( Image_Optimization_Error_Type::CONNECTION_ERROR )
+				->save();
 		} catch ( Image_File_Already_Exists_Error $fe ) {
 			( new Image_Meta( $image_id ) )
 				->set_status( Image_Status::REOPTIMIZING_FAILED )
 				->set_error_type( Image_Optimization_Error_Type::FILE_ALREADY_EXISTS )
 				->save();
 		} catch ( Throwable $t ) {
-			Logger::log( Logger::LEVEL_ERROR, 'Reoptimizing error. Reason: ' . $t->getMessage() );
+			Logger::error( 'Single reoptimizing error. Reason: ' . $t->getMessage() );
 
 			Retry::maybe_retry_optimization( $image_id );
 		}

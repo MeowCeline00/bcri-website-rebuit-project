@@ -6,6 +6,8 @@ use ImageOptimization\Classes\Exceptions\Client_Exception;
 use ImageOptimization\Classes\File_Utils;
 use ImageOptimization\Classes\Image\Image;
 use ImageOptimization\Classes\Logger;
+use ImageOptimization\Modules\Connect\Module as Connect_Module;
+use ImageOptimization\Modules\Optimization\Classes\Optimize_Image;
 use ImageOptimization\Modules\Stats\Classes\Optimization_Stats;
 use Throwable;
 use WP_Error;
@@ -22,10 +24,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Client {
 	const BASE_URL = 'https://my.elementor.com/api/v2/image-optimizer/';
 	const BASE_URL_FEEDBACK = 'https://feedback-api.prod.apps.elementor.red/apps/api/v1/';
-	const STATUS_CHECK = 'status/check';
 	const SITE_INFO = 'site/info';
-	const SITE_INFO_TRANSIENT = 'image_optimizer_site_info_transient';
-
+	const SITE_INFO_TRANSIENT = 'image_optimizer_site_info';
+	const SITE_INFO_TRANSIENT_ERROR = 'image_optimizer_site_info_error';
+	const ERROR_CACHE_DURATION = MINUTE_IN_SECONDS * 5;
 
 	private bool $refreshed = false;
 
@@ -39,6 +41,7 @@ class Client {
 		if ( ! self::$instance ) {
 			self::$instance = new self();
 		}
+
 		return self::$instance;
 	}
 
@@ -55,7 +58,7 @@ class Client {
 
 		];
 
-		if ( $endpoint !== self::STATUS_CHECK ) {
+		if ( Optimize_Image::IMAGE_OPTIMIZE_ENDPOINT === $endpoint ) {
 			// Media library stats
 			$data['media_data'] = base64_encode( wp_json_encode( self::get_request_stats() ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
 		}
@@ -68,17 +71,33 @@ class Client {
 	 * @return mixed|WP_Error|null
 	 */
 	public static function get_subscription_info() {
-		$info = get_transient( self::SITE_INFO_TRANSIENT );
-		if ( ! $info ) {
-			try {
-				$info = self::get_instance()->make_request( 'POST', self::SITE_INFO );
-			} catch ( Throwable $t ) {
-				Logger::log( Logger::LEVEL_ERROR, 'Cannot get site info response from service: ' . $t->getMessage() );
-				return null;
-			}
+		$cached_info = get_transient( self::SITE_INFO_TRANSIENT );
 
-			set_transient( self::SITE_INFO_TRANSIENT, $info, ( 24 * 60 * 60 ) );
+		if ( $cached_info ) {
+			return $cached_info;
 		}
+
+		$cached_error = get_transient( self::SITE_INFO_TRANSIENT_ERROR );
+
+		if ( $cached_error ) {
+			Logger::debug( 'Status check skipped due to recent error: ' . $cached_error );
+			return null;
+		}
+
+		try {
+			$info = self::get_instance()->make_request( 'POST', self::SITE_INFO );
+		} catch ( Throwable $t ) {
+			$error_message = $t->getMessage();
+
+			Logger::error( 'Cannot get site info response from service: ' . $error_message );
+
+			set_transient( self::SITE_INFO_TRANSIENT_ERROR, $error_message, self::ERROR_CACHE_DURATION );
+
+			return null;
+		}
+
+		set_transient( self::SITE_INFO_TRANSIENT, $info, DAY_IN_SECONDS );
+
 		return $info;
 	}
 
@@ -155,7 +174,6 @@ class Client {
 	}
 
 	protected function generate_authentication_headers( $endpoint ): array {
-
 		$connect_instance = Plugin::instance()->modules_manager->get_modules( 'connect-manager' )->connect_instance;
 
 		if ( ! $connect_instance->get_is_connect_on_fly() ) {
@@ -227,6 +245,13 @@ class Client {
 			}
 		}
 
+		// If there is mismatch then trigger the mismatch flow explicitly.
+		if ( ! $this->refreshed && ! empty( $body->message ) && ( false !== strpos( $body->message, 'site url mismatch' ) ) ) {
+			Connect_Module::get_connect()->data()->set_home_url( 'https://wrongurl' );
+			return new WP_Error( 401, 'site url mismatch' );
+		}
+
+
 		if ( ! in_array( $response_code, [ 200, 201 ], true ) ) {
 			// In case $as_array = true.
 			$message = $body->message ?? wp_remote_retrieve_response_message( $response );
@@ -259,6 +284,7 @@ class Client {
 	 */
 	private function get_upload_request_body( array $body, $file, string $boundary, string $file_name = '' ): string {
 		$payload = '';
+
 		// add all body fields as standard POST fields:
 		foreach ( $body as $name => $value ) {
 			$payload .= '--' . $boundary;
@@ -304,13 +330,14 @@ class Client {
 	 */
 	private function get_file_payload( string $filename, string $file_type, string $file_path, string $boundary ): string {
 		$name = $filename ?? basename( $file_path );
-		$mine_type = 'image' === $file_type ? image_type_to_mime_type( exif_imagetype( $file_path ) ) : $file_type;
+		$mime_type = 'image' === $file_type ? image_type_to_mime_type( exif_imagetype( $file_path ) ) : $file_type;
 		$payload = '';
+
 		// Upload the file
 		$payload .= '--' . $boundary;
 		$payload .= "\r\n";
 		$payload .= 'Content-Disposition: form-data; name="' . esc_attr( $name ) . '"; filename="' . esc_attr( $name ) . '"' . "\r\n";
-		$payload .= 'Content-Type: ' . $mine_type . "\r\n";
+		$payload .= 'Content-Type: ' . $mime_type . "\r\n";
 		$payload .= "\r\n";
 		$payload .= file_get_contents( $file_path );
 		$payload .= "\r\n";

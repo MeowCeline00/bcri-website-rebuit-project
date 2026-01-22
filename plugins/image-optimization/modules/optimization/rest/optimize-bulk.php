@@ -9,7 +9,6 @@ use ImageOptimization\Modules\Optimization\Classes\{
 };
 use ImageOptimization\Classes\Image\Exceptions\Invalid_Image_Exception;
 use ImageOptimization\Classes\Exceptions\Quota_Exceeded_Error;
-use ImageOptimization\Modules\Oauth\Components\Connect;
 use Throwable;
 use WP_REST_Request;
 use ImageOptimization\Plugin;

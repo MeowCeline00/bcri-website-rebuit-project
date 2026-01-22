@@ -64,7 +64,7 @@ class One_Million_Installs_Banner {
 			.elementor-io-banner {
 				overflow: hidden;
 				margin-left: -20px;
-				background: #05047E;
+				background: #05047e;
 			}
 
 			.elementor-io-banner-container {
@@ -92,7 +92,7 @@ class One_Million_Installs_Banner {
 				padding: 12px 24px;
 				font-size: 18px;
 				color: #000;
-				background-color: #FF7BE5;
+				background-color: #ff7be5;
 				text-decoration: none;
 				z-index: 2;
 			}

@@ -4,6 +4,7 @@ namespace ImageOptimization\Modules\Optimization;
 use ImageOptimization\Classes\Module_Base;
 use ImageOptimization\Modules\Backups\Rest\Restore_Single;
 use ImageOptimization\Modules\Optimization\Rest\Optimize_Single_Image;
+use ImageOptimization\Modules\Settings\Module as Settings_Module;
 use Throwable;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -75,6 +76,7 @@ class Module extends Module_Base {
 			[
 				'optimizeSingleImageNonce' => wp_create_nonce( Optimize_Single_Image::NONCE_NAME ),
 				'restoreSingleImageNonce' => wp_create_nonce( Restore_Single::NONCE_NAME ),
+				'connectLink' => admin_url( 'admin.php?page=' . Settings_Module::SETTING_BASE_SLUG . '&action=connect' ),
 			]
 		);
 	}

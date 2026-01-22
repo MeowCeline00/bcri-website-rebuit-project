@@ -85,7 +85,7 @@ class Sale_Banner {
 					padding: 12px 24px;
 					font-size: 18px;
 					color: #000;
-					background-color: #FF7BE5;
+					background-color: #ff7be5;
 					text-decoration: none;
 					z-index: 2;
 				}

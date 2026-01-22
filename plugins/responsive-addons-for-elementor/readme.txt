@@ -4,10 +4,10 @@ Donate Link: https://cyberchimps.com
 Tags: elementor, elementor addons, widgets for elementor, header footer builder, elementor templates
 Requires at least: 5.0
 Tested up to: 6.9
-Elementor tested up to: 3.33
-Elementor Pro tested up to: 3.33
+Elementor tested up to: 3.34
+Elementor Pro tested up to: 3.34
 Requires PHP: 5.6
-Stable tag: 2.0.9
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -283,6 +283,12 @@ The Development Version of the Responsive Addons for Elementor plugin is located
 
 == Changelog ==
 
+= 2.1.0 – 20th January 2026 =
+- New: RAE Extension – Scroll Animations: Introduced a scroll animations extension to enhance motion effects across supported elements.
+- Improvement: RAE Flipbox – Added image and icon options for the back side section, enabling richer and more flexible Flipbox designs.
+- Improvement: Core Framework – Enhanced internal code structure and asset management for improved stability and performance.
+- Fix: RAE Media Carousel – Resolved an issue where video links assigned to individual slides were not clickable, ensuring videos open and play correctly on user interaction.
+
 = 2.0.9 – 24th December 2025 =
 - Improvement: RAE Testimonial Slider
 Added negative margin control for testimonial images to enable advanced overlapping layouts.
@@ -297,6 +303,8 @@ Added option to display both icon and text in the search button for the Classic 
 - Improvement: RAE Image Gallery
 Added Active Tab styling controls under Filterable Tabs in the Style tab for enhanced design flexibility.
 Added border radius control for filterable tabs to allow rounded and custom tab designs.
+
+- Fix: Enhanced Security: Strengthened the codebase.
 
 = 2.0.8 - 12th December 2025 = 
 - New: RAE Extension – Duplicator: Added a one-click duplication feature for any page, post or custom post types, including full support for meta data, taxonomies and featured images.

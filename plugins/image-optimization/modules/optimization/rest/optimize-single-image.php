@@ -2,8 +2,6 @@
 
 namespace ImageOptimization\Modules\Optimization\Rest;
 
-use ImageOptimization\Classes\Image\Image;
-use ImageOptimization\Modules\Oauth\Components\Connect;
 use ImageOptimization\Modules\Optimization\Classes\{
 	Route_Base,
 	Single_Optimization,

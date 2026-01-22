@@ -130,4 +130,14 @@ class Utils {
 
 		return str_contains( $current_screen->id, 'update' );
 	}
+
+	public static function get_upgrade_link( $link ): string {
+		$subscription_id = get_option( 'image_optimizer_subscription_id' );
+
+		if ( ! $subscription_id ) {
+			return $link;
+		}
+
+		return add_query_arg( 'subscription_id', $subscription_id, $link );
+	}
 }

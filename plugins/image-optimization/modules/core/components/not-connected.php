@@ -22,9 +22,8 @@ class Not_Connected {
 		<div class="notice notice-info notice is-dismissible image-optimizer__notice image-optimizer__notice--pink"
 			 data-notice-slug="<?php echo esc_attr( self::NOT_CONNECTED_NOTICE_SLUG ); ?>">
 			<div class="image-optimizer__icon-block">
-				<svg width="32" height="32" fill="none" role="presentation">
-					<rect width="32" height="32" fill="#FF7BE5" rx="16"/>
-					<path fill="#fff" d="M10.508 4.135a.125.125 0 0 0-.236 0l-1.183 3.42a.125.125 0 0 1-.078.078L5.553 8.8a.125.125 0 0 0 0 .237l3.458 1.166a.125.125 0 0 1 .078.078l1.183 3.42a.125.125 0 0 0 .236 0l1.182-3.42a.125.125 0 0 1 .078-.078l3.458-1.166a.125.125 0 0 0 0-.237l-3.458-1.167a.125.125 0 0 1-.078-.077l-1.182-3.421ZM17.425 12.738v3.683l-4.073 4.582L26.495 9.598a.125.125 0 0 1 .207.094v14.851a.125.125 0 0 1-.125.125H5.874a.125.125 0 0 1-.09-.212l11.427-11.805a.125.125 0 0 1 .214.087Z"/>
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M12 0C5.37 0 0 5.37 0 12C0 18.63 5.37 24 12 24C18.63 24 24 18.63 24 12C24 5.37 18.63 0 12 0ZM8.4 18H6V6H8.4V18ZM18 18H10.8V15.6H18V18ZM18 13.2H10.8V10.8H18V13.2ZM18 8.4H10.8V6H18V8.4Z" fill="#ED01EE"/>
 				</svg>
 			</div>
 
@@ -73,7 +72,7 @@ class Not_Connected {
 							e.preventDefault();
 
 							onNotConnectedNoticeClose().promise().done(() => {
-								window.open( $( this ).attr( 'href' ), '_blank' ).focus();
+								window.open( $( this ).attr( 'href' ), '_self' ).focus();
 
 								$closeButton.click();
 							});

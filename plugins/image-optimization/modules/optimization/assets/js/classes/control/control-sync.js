@@ -30,10 +30,6 @@ class ControlSync {
 				return;
 			}
 
-			if ( currentStatus === 'error' && ! new ControlMeta( controlWrapper ).allowRetry() ) {
-				return;
-			}
-
 			switch ( imageData.status ) {
 				case 'optimization-in-progress':
 					controlStates.renderLoading( 'optimize' );
@@ -72,7 +68,9 @@ class ControlSync {
 				case 'optimization-failed':
 					controlStates.renderError( {
 						message: imageData.message,
+						errorType: imageData.error_type,
 						imagesLeft: imageData.images_left,
+						allowRetry: new ControlMeta( controlWrapper ).allowRetry(),
 						action: 'optimize',
 					} );
 
@@ -81,7 +79,9 @@ class ControlSync {
 				case 'reoptimizing-failed':
 					controlStates.renderError( {
 						message: imageData.message,
+						errorType: imageData.error_type,
 						imagesLeft: imageData.images_left,
+						allowRetry: new ControlMeta( controlWrapper ).allowRetry(),
 						action: 'reoptimize',
 					} );
 

@@ -2,16 +2,13 @@
 namespace ImageOptimization\Modules\ConnectManager\Components;
 
 use ImageOptimization\Modules\Connect\{
-	Module as ConnectModule,
-	Classes\Data,
-	Classes\Service,
-	Classes\Utils as ConnectUtils,
-	Rest\Authorize,
-	Rest\Version
+	Module as Connect_Module,
 };
 
+use ImageOptimization\Modules\Settings\Classes\Settings;
 use ImageOptimization\Classes\Logger;
 use ImageOptimization\Classes\Utils;
+use ImageOptimization\Classes\Client\Client;
 use Throwable;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -19,19 +16,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Connect implements Connect_Interface {
-
 	const STATUS_CHECK_TRANSIENT = 'image_optimizer_status_check';
+	const STATUS_CHECK_ERROR_TRANSIENT = 'image_optimizer_status_check_error';
+	const ERROR_CACHE_DURATION = MINUTE_IN_SECONDS * 5;
 
 	public function is_connected() : bool {
-		return ConnectModule::is_connected();
+		return Connect_Module::is_connected();
 	}
 
 	public function is_activated() : bool {
-		return ConnectModule::is_connected();
+		return Connect_Module::is_connected();
 	}
 
 	public function is_valid_home_url() : bool {
-		return ConnectUtils::is_valid_home_url();
+		return Connect_Module::get_connect()->utils()->is_valid_home_url();
 	}
 
 	public function get_connect_status() {
@@ -46,33 +44,53 @@ class Connect implements Connect_Interface {
 			return $cached_status;
 		}
 
+		$cached_error = get_transient( self::STATUS_CHECK_ERROR_TRANSIENT );
+
+		if ( $cached_error ) {
+			Logger::debug( 'Status check skipped due to recent error: ' . $cached_error );
+			return null;
+		}
+
 		try {
 			$response = Utils::get_api_client()->make_request(
 				'POST',
 				'status/check'
 			);
 		} catch ( Throwable $t ) {
-			Logger::log(
-				Logger::LEVEL_ERROR,
-				'Status check error. Reason: ' . $t->getMessage()
-			);
+			$error_message = $t->getMessage();
+
+			Logger::error( 'Status check error. Reason: ' . $error_message );
+
+			set_transient( self::STATUS_CHECK_ERROR_TRANSIENT, $error_message, self::ERROR_CACHE_DURATION );
 
 			return null;
 		}
 
 		if ( ! isset( $response->status ) ) {
-			Logger::log( Logger::LEVEL_ERROR, 'Invalid response from server' );
+			$error_message = 'Invalid response from server';
+
+			Logger::error( $error_message );
+
+			set_transient( self::STATUS_CHECK_ERROR_TRANSIENT, $error_message, self::ERROR_CACHE_DURATION );
 
 			return null;
 		}
 
-		if ( ! empty( $response->site_url ) && Data::get_home_url() !== $response->site_url ) {
-			Data::set_home_url( $response->site_url );
-		}
+	if ( ! empty( $response->site_url ) && Connect_Module::get_connect()->data()->get_home_url() !== $response->site_url ) {
+		Connect_Module::get_connect()->data()->set_home_url( $response->site_url );
+	}
 
-		set_transient( self::STATUS_CHECK_TRANSIENT, $response, MINUTE_IN_SECONDS * 5 );
+	Settings::set( Settings::SUBSCRIPTION_ID, $response->subscription_id );
 
-		return $response;
+	// Append subscription info to response
+	$subscription_info = Client::get_subscription_info();
+	if ( $subscription_info ) {
+		$response->subscription_info = $subscription_info;
+	}
+
+	set_transient( self::STATUS_CHECK_TRANSIENT, $response, MINUTE_IN_SECONDS * 5 );
+
+	return $response;
 	}
 
 	public function get_connect_data( bool $force = false ): array {
@@ -127,16 +145,16 @@ class Connect implements Connect_Interface {
 	}
 
 	public function get_access_token() {
-		return Data::get_access_token();
+		return Connect_Module::get_connect()->data()->get_access_token();
 
 	}
 
 	public function get_client_id(): string {
-		return Data::get_client_id();
+		return Connect_Module::get_connect()->data()->get_client_id();
 	}
 
 	public function get_client_secret(): string {
-		return Data::get_client_secret();
+		return Connect_Module::get_connect()->data()->get_client_secret();
 	}
 
 	public function images_left(): int {
@@ -153,32 +171,32 @@ class Connect implements Connect_Interface {
 	}
 
 	public function user_is_subscription_owner(): bool {
-		return Data::user_is_subscription_owner();
+		return Connect_Module::get_connect()->data()->user_is_subscription_owner();
 	}
 
 	// Nonces.
 	public function connect_init_nonce(): string {
-		return Authorize::NONCE_NAME;
+		return 'wp_rest';
 	}
 
 	public function disconnect_nonce(): string {
-		return Authorize::NONCE_NAME;
+		return 'wp_rest';
 	}
 
 	public function deactivate_nonce(): string {
-		return Authorize::NONCE_NAME;
+		return 'wp_rest';
 	}
 
 	public function get_subscriptions_nonce(): string {
-		return Authorize::NONCE_NAME;
+		return 'wp_rest';
 	}
 
 	public function activate_nonce(): string {
-		return Authorize::NONCE_NAME;
+		return 'wp_rest';
 	}
 
 	public function version_nonce(): string {
-		return Version::NONCE_NAME;
+		return 'wp_rest';
 	}
 
 	public function get_is_connect_on_fly(): bool {
@@ -186,6 +204,10 @@ class Connect implements Connect_Interface {
 	}
 
 	public function refresh_token(): void {
-		Service::refresh_token();
+		Connect_Module::get_connect()->service()->renew_access_token();
+	}
+
+	public function clear_error_cache(): void {
+		delete_transient( self::STATUS_CHECK_ERROR_TRANSIENT );
 	}
 }

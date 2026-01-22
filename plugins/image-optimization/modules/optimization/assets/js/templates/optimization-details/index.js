@@ -1,5 +1,6 @@
 import { __, sprintf } from '@wordpress/i18n';
 import { formatFileSize } from '../../utils';
+import { getUpgradeLink } from '../../../../../../assets/dev/js/utils';
 
 const header = () => {
 	return `
@@ -117,6 +118,8 @@ const tooLargeChunk = () => {
 		formatFileSize( window?.imageOptimizerUserData?.maxFileSize ),
 	);
 
+	const subscriptionId = window?.imageOptimizerUserData?.planData?.subscription_id;
+
 	return `
 		<td class="image-optimization-details-table__status">
 			<span class="image-optimization-details-table__property">
@@ -126,7 +129,7 @@ const tooLargeChunk = () => {
 
   	<td class="image-optimization-details-table__action">
   		<a class="button button-primary button-large"
-				 href="https://go.elementor.com/io-panel-upgrade/"
+				 href="${ getUpgradeLink( 'https://go.elementor.com/io-panel-upgrade/', subscriptionId ) }"
 				 target="_blank" rel="noopener noreferrer">
 				${ __( 'Upgrade', 'image-optimization' ) }
 			</a>

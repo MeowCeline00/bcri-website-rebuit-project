@@ -1,8 +1,14 @@
-import styled from '@emotion/styled';
-import { RadioControl, Button } from '@wordpress/components';
+import FormControl from '@elementor/ui/FormControl';
+import FormControlLabel from '@elementor/ui/FormControlLabel';
+import ListItem from '@elementor/ui/ListItem';
+import ListItemIcon from '@elementor/ui/ListItemIcon';
+import Radio from '@elementor/ui/Radio';
+import RadioGroup from '@elementor/ui/RadioGroup';
+import { styled } from '@elementor/ui/styles';
+import Button from '@elementor/ui/Button';
 import { __ } from '@wordpress/i18n';
-import { useSettings } from '../hooks/use-settings';
 import { MoodEmpty, MoodHappy, MoodSad, MoodSadSquint, MoodSmile } from '../icons';
+import { useSettings } from '../hooks/use-settings';
 
 const RatingForm = ( { close, handleSubmitForm } ) => {
 	const {
@@ -38,77 +44,42 @@ const RatingForm = ( { close, handleSubmitForm } ) => {
 		}
 	};
 
-	// Convert ratingsMap to options format expected by RadioControl
-	const options = ratingsMap.map( ( { value, label, icon } ) => ( {
-		label: (
-			<StyledRadioOption key={ value }>
-				<span className="rating-icon">{ icon }</span>
-				<span className="rating-label">{ label }</span>
-			</StyledRadioOption>
-		),
-		value,
-	} ) );
-
 	return (
-		<StyledContainer>
-			<StyledRadioControl
-				selected={ rating }
-				options={ options }
-				onChange={ handleRatingChange }
-			/>
-			<StyledButton
-				variant="primary"
+		<FormControl fullWidth>
+			<RadioGroup
+				aria-labelledby="Image Optimizer feedback form"
+				onChange={ ( event, value ) => handleRatingChange( value ) }
+				name="radio-buttons-group"
+			>
+				{ ratingsMap.map( ( { value, label, icon } ) => {
+					return (
+						<ListItem key={ 'item-' + value } disableGutters disablePadding>
+							<ListItemIcon>{ icon }</ListItemIcon>
+							<StyledFormControlLabel
+								control={ <Radio color="secondary" /> }
+								label={ label }
+								value={ value }
+								labelPlacement="start" />
+						</ListItem>
+					);
+				} ) }
+			</RadioGroup>
+			<Button
+				color="primary"
+				variant="contained"
 				onClick={ handleNextButton }
 				disabled={ nextButtonDisabled }
 			>
 				{ __( 'Next', 'image-optimization' ) }
-			</StyledButton>
-		</StyledContainer>
+			</Button>
+		</FormControl>
 	);
 };
 
 export default RatingForm;
 
-const StyledContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-`;
-
-const StyledRadioOption = styled.div`
-	display: flex;
+const StyledFormControlLabel = styled( FormControlLabel )`
 	justify-content: space-between;
-	align-items: center;
+	margin-left: 0;
 	width: 100%;
-	
-	.rating-icon {
-		margin-right: 8px;
-	}
-	
-	.rating-label {
-		flex: 1;
-	}
-`;
-
-const StyledButton = styled( Button )`
-	min-width: 80px;
-	align-self: flex-end;
-	margin-top: 16px;
-	background-color: #515962 !important;
-	align-items: center;
-	justify-content: center;
-`;
-
-const StyledRadioControl = styled( RadioControl )`
-	.components-radio-control__option {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		flex-direction: row-reverse;
-
-		.components-radio-control__input[type=radio]:checked {
-			background-color: #515962 !important;
-			border-color: #515962 !important;
-		}
-	}
 `;

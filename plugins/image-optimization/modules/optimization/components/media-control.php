@@ -30,6 +30,7 @@ use ImageOptimization\Modules\Stats\Classes\Optimization_Stats;
 use Throwable;
 
 use ImageOptimization\Plugin;
+use WP_Post;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -95,11 +96,11 @@ class Media_Control {
 	 * Adds optimization control to media modals.
 	 *
 	 * @param array $form_fields
-	 * @param \WP_Post $post
+	 * @param WP_Post $post
 	 *
 	 * @return array
 	 */
-	public function add_media_modal_details( array $form_fields, \WP_Post $post ): array {
+	public function add_media_modal_details( array $form_fields, WP_Post $post ): array {
 		$form_fields[ self::DETAILS_MODAL_FIELD_ID ] = [
 			'label' => '',
 			'input' => 'hidden',
@@ -146,7 +147,7 @@ class Media_Control {
 
 		try {
 			if ( ! $module->connect_instance->is_connected() || ! $module->connect_instance->is_activated() ) {
-				throw new Auth_Error( 'You have to activate your license to use Image Optimizer' );
+				throw new Auth_Error( esc_html__( 'You need to connect an Elementor account', 'image-optimization' ) );
 			}
 
 			Validate_Image::is_valid( $image_id );
@@ -277,7 +278,8 @@ class Media_Control {
 			Module::load_template( $context, 'error', array_merge(
 				$global_context, [
 					'action' => 'error',
-					'message' => esc_html__( 'N/A', 'image-optimization' ),
+					'optimization_error_type' => Image_Optimization_Error_Type::AUTH_ERROR,
+					'message' => $ae->getMessage(),
 					'allow_retry' => false,
 				]
 			) );
@@ -285,6 +287,7 @@ class Media_Control {
 			Module::load_template( $context, 'error', array_merge(
 				$global_context, [
 					'action' => 'error',
+					'optimization_error_type' => Image_Optimization_Error_Type::GENERIC,
 					'message' => esc_html__( 'Internal server error', 'image-optimization' ),
 					'allow_retry' => false,
 				]

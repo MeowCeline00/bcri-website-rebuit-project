@@ -1,10 +1,11 @@
-import styled from '@emotion/styled';
-import { Popover, Flex } from '@wordpress/components';
-import { useEffect } from '@wordpress/element';
+import Box from '@elementor/ui/Box';
+import Popover from '@elementor/ui/Popover';
+import Typography from '@elementor/ui/Typography';
+import { styled } from '@elementor/ui/styles';
+import { useEffect, useRef } from '@wordpress/element';
 import { escapeHTML } from '@wordpress/escape-html';
 import { __ } from '@wordpress/i18n';
 import useStorage from '../hooks/use-storage';
-import Typography from '../../../../../assets/dev/js/components/typography';
 import API from '../api';
 import DismissButton from '../components/dismiss-button';
 import FeedbackForm from '../components/feedback-form';
@@ -15,6 +16,7 @@ import { useNotifications, useSettings } from '../hooks/use-settings';
 const UserFeedbackForm = ( ) => {
 	const { success, error } = useNotifications();
 	const { save, get } = useStorage();
+	const anchorEl = useRef( null );
 	const {
 		rating,
 		setRating,
@@ -74,9 +76,9 @@ const UserFeedbackForm = ( ) => {
 				/**
 				 * Show success message if the feedback was already submitted.
 				 */
-				await success( __( 'Feedback already submitted', 'image-optimization' ) );
+				success( __( 'Feedback already submitted', 'image-optimization' ) );
 			} else if ( response?.success && parseInt( rating ) < 4 ) {
-				await success( __( 'Thank you for your feedback!', 'image-optimization' ) );
+				success( __( 'Thank you for your feedback!', 'image-optimization' ) );
 			}
 
 			if ( ! avoidClosing ) {
@@ -92,44 +94,60 @@ const UserFeedbackForm = ( ) => {
 	};
 
 	return (
-		isOpened && (
-			<Popover
-				id={ id }
-				onClose={ handleClose }
-				placement="bottom-start"
-				onFocusOutside={ ( e ) => handleClose( e, 'backdropClick' ) }
-			>
-				<StyledBox>
-					<Header>
-						<Typography
-							variant="subtitle1"
-							color="text.primary"
-							style={ { fontSize: '16px' } }
-						>
-							{ headerMessage?.[ currentPage ] }
-						</Typography>
-						<DismissButton close={ close } />
-					</Header>
-					{ 'ratings' === currentPage && <RatingForm close={ handleClose } handleSubmitForm={ handleSubmit } /> }
-					{ 'feedback' === currentPage && <FeedbackForm close={ handleClose } handleSubmitForm={ handleSubmit } /> }
-					{ 'review' === currentPage && <ReviewForm close={ handleClose } /> }
-				</StyledBox>
-			</Popover>
-		)
+		<Popover
+			open={ isOpened }
+			anchorOrigin={ { vertical: 'bottom', horizontal: 'right' } }
+			anchorReference="anchorPosition"
+			anchorPosition={ {
+				top: window.innerHeight - 10,
+				left: window.innerWidth - 10,
+			} }
+			id={ id }
+			onClose={ handleClose }
+			anchorEl={ anchorEl.current }
+			disableEscapeKeyDown
+			disableScrollLock
+			disablePortal
+			slotProps={ {
+				paper: {
+					sx: {
+						pointerEvents: 'auto', // allow interactions inside popover
+					},
+				},
+			} }
+			sx={ {
+				pointerEvents: 'none', // allow click-through behind
+			} }
+		>
+			<StyledBox>
+				<Header>
+					<Typography
+						variant="subtitle1"
+						color="text.primary"
+					>
+						{ headerMessage?.[ currentPage ] }
+					</Typography>
+					<DismissButton close={ close } />
+				</Header>
+				{ 'ratings' === currentPage && <RatingForm close={ handleClose } handleSubmitForm={ handleSubmit } /> }
+				{ 'feedback' === currentPage && <FeedbackForm close={ handleClose } handleSubmitForm={ handleSubmit } /> }
+				{ 'review' === currentPage && <ReviewForm close={ handleClose } /> }
+			</StyledBox>
+		</Popover>
 	);
 };
 
 export default UserFeedbackForm;
-const StyledBox = styled( Flex )`
+
+const StyledBox = styled( Box )`
 	width: 350px;
-	padding: ${ ( { theme } ) => theme.spacing[ 1.5 ] };
-	flex-direction: column;
+	padding: ${ ( { theme } ) => theme.spacing( 1.5 ) };
 `;
 
-const Header = styled( Flex )`
+const Header = styled( Box )`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: ${ ( { theme } ) => theme.spacing[ 1.5 ] };
+	margin-bottom: ${ ( { theme } ) => theme.spacing( 2 ) };
 `;

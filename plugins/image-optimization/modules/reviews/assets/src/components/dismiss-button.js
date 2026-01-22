@@ -1,5 +1,4 @@
-import styled from '@emotion/styled';
-import { Button } from '@wordpress/components';
+import CloseButton from '@elementor/ui/CloseButton';
 import { date } from '@wordpress/date';
 import { useSettings } from '../hooks/use-settings';
 import useStorage from '../hooks/use-storage';
@@ -29,22 +28,11 @@ const DismissButton = () => {
 	};
 
 	return (
-		<StyledButton
+		<CloseButton
 			onClick={ handleDismiss }
 			variant="tertiary"
-			aria-label="Dismiss"
-		>
-			×
-		</StyledButton>
+			aria-label="Dismiss" />
 	);
 };
 
 export default DismissButton;
-
-const StyledButton = styled( Button )`
-	color: #515962 !important;
-	align-items: center;
-	justify-content: center;
-	padding: 10px !important;
-	font-size: 24px !important;
-`;

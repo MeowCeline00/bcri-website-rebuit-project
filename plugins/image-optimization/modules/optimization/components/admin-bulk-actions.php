@@ -2,10 +2,6 @@
 
 namespace ImageOptimization\Modules\Optimization\Components;
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
-}
-
 use ImageOptimization\Modules\Backups\Classes\Restore_Images;
 use ImageOptimization\Modules\Optimization\Classes\Single_Optimization as Single_Optimization_Controller;
 

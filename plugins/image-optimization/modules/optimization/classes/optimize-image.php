@@ -28,6 +28,7 @@ use ImageOptimization\Modules\Optimization\Classes\{
 	Exceptions\Bulk_Token_Expired_Error,
 	Exceptions\Image_Already_Optimized_Error,
 };
+use ImageOptimization\Modules\Connect\Classes\Exceptions\Connection_Error;
 use ImageOptimization\Modules\Settings\Classes\Settings;
 use Throwable;
 
@@ -44,7 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * This class is used by manual, bulk and on-upload optimization flows.
  */
 class Optimize_Image {
-	private const IMAGE_OPTIMIZE_ENDPOINT = 'image/optimize';
+	public const IMAGE_OPTIMIZE_ENDPOINT = 'image/optimize';
 
 	protected ?Image $image;
 	protected WP_Image_Meta $wp_meta;
@@ -58,16 +59,13 @@ class Optimize_Image {
 	private bool $is_reoptimize;
 
 	/**
-	 * @throws Quota_Exceeded_Error|Bulk_Token_Expired_Error|Image_File_Already_Exists_Error|Image_Optimization_Error
+	 * @throws Quota_Exceeded_Error|Connection_Error|Bulk_Token_Expired_Error|Image_File_Already_Exists_Error|Image_Optimization_Error
 	 */
 	public function optimize(): void {
 		$sizes_enabled = Settings::get( Settings::CUSTOM_SIZES_OPTION_NAME );
 		$sizes_exist = $this->wp_meta->get_size_keys();
 
-		Logger::log(
-			Logger::LEVEL_INFO,
-			"Start optimization of {$this->image->get_id()}"
-		);
+		Logger::debug( "Start optimization of {$this->image->get_id()}" );
 
 		foreach ( $sizes_exist as $size_exist ) {
 			// If some image sizes optimization is disabled in settings, we check if the current one is still enabled
@@ -88,19 +86,13 @@ class Optimize_Image {
 
 			// If the current size was already optimized -- ignore it.
 			if ( ! $this->is_reoptimize && in_array( $size_exist, $image_meta->get_optimized_sizes(), true ) ) {
-				Logger::log(
-					Logger::LEVEL_INFO,
-					"Size `$size_exist` is already optimized"
-				);
+				Logger::debug( "Size `$size_exist` is already optimized" );
 
 				continue;
 			}
 
 			if ( ! file_exists( $this->image->get_file_path( $size_exist ) ) ) {
-				Logger::log(
-					Logger::LEVEL_ERROR,
-					"Can't access file for size `$size_exist`"
-				);
+				Logger::debug( "Can't access file for size `$size_exist`" );
 
 				continue;
 			}
@@ -122,10 +114,7 @@ class Optimize_Image {
 			Image_Backup::remove( $this->image->get_id() );
 		}
 
-		Logger::log(
-			Logger::LEVEL_INFO,
-			"End optimization of {$this->image->get_id()}"
-		);
+		Logger::debug( "End optimization of {$this->image->get_id()}" );
 	}
 
 	private function optimize_current_size(): void {
@@ -152,7 +141,7 @@ class Optimize_Image {
 
 			$this->update_attachment_meta( $original_size, true );
 			$this->update_attachment_post( true );
-		} catch ( Bulk_Token_Expired_Error | Quota_Exceeded_Error | Image_File_Already_Exists_Error $e ) {
+		} catch ( Bulk_Token_Expired_Error | Quota_Exceeded_Error | Connection_Error | Image_File_Already_Exists_Error $e ) {
 			throw $e;
 		} catch ( Throwable $t ) {
 			// In case of anything else
@@ -204,10 +193,7 @@ class Optimize_Image {
 		}
 
 		if ( ! isset( $response->imageKey ) || $image_key !== $response->imageKey ) { // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
-			Logger::log(
-				Logger::LEVEL_ERROR,
-				"Image key must be $image_key, instead got $response->imageKey"
-			);
+			Logger::error( "Image key must be $image_key, instead got $response->imageKey" );
 
 			throw new Image_Optimization_Error( esc_html__( 'Service response is incorrect', 'image-optimization' ) );
 		}
@@ -215,10 +201,7 @@ class Optimize_Image {
 		$received_file_hash = md5( base64_decode( $response->image, true ) );
 
 		if ( ! isset( $response->checksum ) || $received_file_hash !== $response->checksum ) {
-			Logger::log(
-				Logger::LEVEL_ERROR,
-				"Image key must be $response->checksum, instead calculated $received_file_hash"
-			);
+			Logger::error( "Image key must be $response->checksum, instead calculated $received_file_hash" );
 
 			throw new Image_Optimization_Error( esc_html__( 'Service response is incorrect', 'image-optimization' ) );
 		}

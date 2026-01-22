@@ -3,6 +3,7 @@
 namespace ImageOptimization\Modules\Optimization\Components;
 
 use ImageOptimization\Modules\Core\Components\Pointers;
+use ImageOptimization\Modules\Core\Module as Core_Module;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -12,6 +13,10 @@ class List_View_Pointer {
 	const CURRENT_POINTER_SLUG = 'image-optimizer-list-view';
 
 	public function admin_print_script() {
+		if ( Core_Module::is_elementor_one() ) {
+			return;
+		}
+
 		if ( $this->is_dismissed() ) {
 			return;
 		}

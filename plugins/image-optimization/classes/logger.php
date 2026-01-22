@@ -29,9 +29,9 @@ class Logger {
 
 		$backtrace = debug_backtrace(); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_debug_backtrace
 
-		$class = $backtrace[1]['class'] ?? null;
-		$type = $backtrace[1]['type'] ?? null;
-		$function = $backtrace[1]['function'];
+		$class = $backtrace[2]['class'] ?? null;
+		$type = $backtrace[2]['type'] ?? null;
+		$function = $backtrace[2]['function'];
 
 		if ( $class ) {
 			$message = '[Image Optimizer]: ' . $log_level . ' in ' . "$class$type$function()" . ': ' . $message;

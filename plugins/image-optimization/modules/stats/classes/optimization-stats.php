@@ -127,15 +127,10 @@ class Optimization_Stats {
 			}
 
 			$meta = new Image_Meta( $attachment_id );
-			$image_sizes = $wp_meta->get_size_keys();
-			$sizes_enabled = Settings::get( Settings::CUSTOM_SIZES_OPTION_NAME );
+			$image_sizes = self::filter_only_enabled_sizes( $wp_meta->get_size_keys() );
 
 			foreach ( $image_sizes as $image_size ) {
 				if ( ! $image->file_exists( $image_size ) ) {
-					continue;
-				}
-
-				if ( 'all' !== $sizes_enabled && in_array( $image_size, $sizes_enabled, true ) ) {
 					continue;
 				}
 
@@ -167,18 +162,9 @@ class Optimization_Stats {
 		];
 
 		$meta = new Image_Meta( $attachment_id );
-		$image_sizes = $wp_meta->get_size_keys();
-		$sizes_enabled = Settings::get( Settings::CUSTOM_SIZES_OPTION_NAME );
+		$image_sizes = self::filter_only_enabled_sizes( $wp_meta->get_size_keys() );
 
 		foreach ( $image_sizes as $image_size ) {
-			if (
-				'all' !== $sizes_enabled &&
-				Image::SIZE_FULL !== $image_size &&
-				! in_array( $image_size, $sizes_enabled, true )
-			) {
-				continue;
-			}
-
 			$current_image_size = self::calculate_current_image_file_size( $attachment_id, $wp_meta, $image_size );
 			$output['total'] += $current_image_size;
 

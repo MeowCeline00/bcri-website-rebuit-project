@@ -2,18 +2,19 @@
 
 namespace ImageOptimization\Modules\Optimization\Components;
 
-use ImageOptimization\Classes\Async_Operation\Async_Operation_Hook;
+use ImageOptimization\Classes\Async_Operation\{
+	Async_Operation_Hook,
+	Exceptions\Async_Operation_Exception,
+};
+
 use ImageOptimization\Classes\Image\{
 	Image,
 	Image_Meta,
 	Image_Optimization_Error_Type,
 	Image_Restore,
-	Image_Status
+	Image_Status,
 };
-use ImageOptimization\Classes\Async_Operation\Exceptions\Async_Operation_Exception;
-use ImageOptimization\Classes\Logger;
-use ImageOptimization\Classes\Utils;
-use ImageOptimization\Classes\Exceptions\Quota_Exceeded_Error;
+
 use ImageOptimization\Modules\Optimization\{
 	Classes\Exceptions\Bulk_Token_Expired_Error,
 	Classes\Exceptions\Image_File_Already_Exists_Error,
@@ -22,6 +23,10 @@ use ImageOptimization\Modules\Optimization\{
 	Components\Exceptions\Bulk_Optimization_Token_Not_Found_Error,
 };
 
+use ImageOptimization\Classes\Logger;
+use ImageOptimization\Classes\Utils;
+use ImageOptimization\Classes\Exceptions\Quota_Exceeded_Error;
+use ImageOptimization\Modules\Connect\Classes\Exceptions\Connection_Error;
 use ImageOptimization\Modules\Stats\Classes\Optimization_Stats;
 use Throwable;
 
@@ -44,17 +49,6 @@ class Bulk_Optimization {
 		<?php
 	}
 
-	public function register_page() {
-		add_media_page(
-			__( 'Bulk Optimization', 'image-optimization' ),
-			__( 'Bulk Optimization', 'image-optimization' ),
-			self::BULK_OPTIMIZATION_CAPABILITY,
-			self::BULK_OPTIMIZATION_BASE_SLUG,
-			[ $this, 'render_app' ],
-			7
-		);
-	}
-
 	/** @async */
 	public function optimize_bulk( int $image_id, string $operation_id ) {
 		try {
@@ -72,6 +66,11 @@ class Bulk_Optimization {
 				->set_status( Image_Status::OPTIMIZATION_FAILED )
 				->set_error_type( Image_Optimization_Error_Type::QUOTA_EXCEEDED )
 				->save();
+		} catch ( Connection_Error $ce ) {
+			( new Image_Meta( $image_id ) )
+				->set_status( Image_Status::OPTIMIZATION_FAILED )
+				->set_error_type( Image_Optimization_Error_Type::CONNECTION_ERROR )
+				->save();
 		} catch ( Image_File_Already_Exists_Error $fe ) {
 			( new Image_Meta( $image_id ) )
 				->set_status( Image_Status::OPTIMIZATION_FAILED )
@@ -84,7 +83,7 @@ class Bulk_Optimization {
 
 			Bulk_Optimization_Controller::reschedule_bulk_optimization();
 		} catch ( Throwable $t ) {
-			Logger::log( Logger::LEVEL_ERROR, 'Optimization error. Reason: ' . $t->getMessage() );
+			Logger::error( 'Bulk optimization error. Reason: ' . $t->getMessage() );
 
 			Retry::maybe_retry_optimization( $image_id );
 		} finally {
@@ -116,6 +115,11 @@ class Bulk_Optimization {
 				->set_status( Image_Status::REOPTIMIZING_FAILED )
 				->set_error_type( Image_Optimization_Error_Type::QUOTA_EXCEEDED )
 				->save();
+		} catch ( Connection_Error $ce ) {
+			( new Image_Meta( $image_id ) )
+				->set_status( Image_Status::OPTIMIZATION_FAILED )
+				->set_error_type( Image_Optimization_Error_Type::CONNECTION_ERROR )
+				->save();
 		} catch ( Image_File_Already_Exists_Error $fe ) {
 			( new Image_Meta( $image_id ) )
 				->set_status( Image_Status::REOPTIMIZING_FAILED )
@@ -128,7 +132,7 @@ class Bulk_Optimization {
 
 			Bulk_Optimization_Controller::reschedule_bulk_reoptimization();
 		} catch ( Throwable $t ) {
-			Logger::log( Logger::LEVEL_ERROR, 'Reoptimization error. Reason: ' . $t->getMessage() );
+			Logger::error( 'Bulk reoptimization error. Reason: ' . $t->getMessage() );
 
 			Retry::maybe_retry_optimization( $image_id );
 		} finally {
@@ -170,7 +174,6 @@ class Bulk_Optimization {
 	}
 
 	public function __construct() {
-		add_action( 'admin_menu', [ $this, 'register_page' ] );
 
 		add_action( Async_Operation_Hook::OPTIMIZE_BULK, [ $this, 'optimize_bulk' ], 10, 2 );
 		add_action( Async_Operation_Hook::REOPTIMIZE_BULK, [ $this, 'reoptimize_bulk' ], 10, 2 );

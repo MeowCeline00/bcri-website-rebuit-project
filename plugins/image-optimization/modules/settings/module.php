@@ -10,6 +10,10 @@ use ImageOptimization\Modules\Settings\{
 	Banners\Birthday_Banner,
 	Classes\Settings,
 };
+use ImageOptimization\Modules\Stats\Classes\Optimization_Stats;
+use ImageOptimization\Classes\Client\Client;
+use ImageOptimization\Modules\ConnectManager\Components\Connect as Connect_Manager_Connect;
+use ImageOptimization\Modules\Connect\Classes\Config;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -70,7 +74,7 @@ class Module extends Module_Base {
 						'additionalProperties' => true,
 					],
 				],
-			]
+			],
 		];
 	}
 
@@ -109,14 +113,32 @@ class Module extends Module_Base {
 	}
 
 	public function register_page() {
-		add_media_page(
-			__( 'Image Optimizer', 'image-optimization' ),
-			__( 'Image Optimizer', 'image-optimization' ),
+		add_submenu_page(
+			'elementor-home',
+			__( 'Image Optimization', 'image-optimization' ),
+			__( 'Image Optimization', 'image-optimization' ),
 			self::SETTING_CAPABILITY,
 			self::SETTING_BASE_SLUG,
 			[ $this, 'render_app' ],
-			6
+			50
 		);
+
+		$this->add_menu_item_class( 'elementor-home', self::SETTING_BASE_SLUG, 'image-optimizer-menu' );
+	}
+
+	private function add_menu_item_class( string $parent_slug, string $menu_slug, string $class ) {
+		global $submenu;
+
+		if ( ! isset( $submenu[ $parent_slug ] ) ) {
+			return;
+		}
+
+		foreach ( $submenu[ $parent_slug ] as &$item ) {
+			if ( $item[2] === $menu_slug ) {
+				$item[4] = isset( $item[4] ) ? $item[4] . ' ' . $class : $class;
+				break;
+			}
+		}
 	}
 
 	/**
@@ -143,12 +165,69 @@ class Module extends Module_Base {
 		delete_option( Settings::CONVERT_TO_WEBP_OPTION_NAME );
 	}
 
+	/**
+	 * The handler triggers stats recalculation on custom sizes update.
+	 *
+	 * @param $result
+	 * @param $name
+	 *
+	 * @return void
+	 */
+	public function recalculate_stats_on_custom_sizes_update( $result, $name ) {
+		if ( Settings::CUSTOM_SIZES_OPTION_NAME === $name ) {
+			Optimization_Stats::get_image_stats( null, true );
+		}
+	}
+
+	public function cleanup_data() {
+		delete_transient( Client::SITE_INFO_TRANSIENT );
+		delete_transient( Connect_Manager_Connect::STATUS_CHECK_TRANSIENT );
+	}
+
+	/**
+     * Register or update site data for One connect
+     * @throws Exception
+     */
+    public function on_migration_run() {
+		$old_options = [
+			'image_optimizer_client_id',
+			'image_optimizer_client_secret',
+			'image_optimizer_home_url',
+			'image_optimizer_access_token',
+			'image_optimizer_token_id',
+			'image_optimizer_refresh_token',
+			'image_optimizer_user_access_token',
+			'image_optimizer_owner_user_id',
+			'image_optimizer_subscription_id',
+			Settings::SUBSCRIPTION_ID
+		];
+
+       	$this->cleanup_data();
+
+		foreach ( $old_options as $option ) {
+			delete_option( $option );
+		}
+    }
+
 	public function __construct() {
 		$this->register_components();
 
 		add_action( 'admin_init', [ $this, 'register_options' ] );
 		add_action( 'rest_api_init', [ $this, 'register_options' ] );
 		add_action( 'admin_init', [ $this, 'maybe_migrate_legacy_conversion_option' ] );
-		add_action( 'admin_menu', [ $this, 'register_page' ] );
+		add_action( 'admin_menu', [ $this, 'register_page' ], 99 );
+		add_action( 'rest_pre_update_setting', [ $this, 'recalculate_stats_on_custom_sizes_update' ], 10, 2 );
+
+		add_action( 'elementor_one/' . Config::APP_PREFIX . '_connected', [ $this, 'cleanup_data' ] );
+        add_action( 'elementor_one/' . Config::APP_PREFIX . '_disconnected', [ $this, 'cleanup_data' ] );
+        add_action( 'elementor_one/' . Config::APP_PREFIX . '_migration_run', [ $this, 'on_migration_run' ] );
+
+		// Add action on switch domain for update access token
+		add_action( 'elementor_one/' . Config::APP_PREFIX . '_switched_domain', function( $facade ) {
+			$facade->service()->renew_access_token();
+		} );
+		add_action( 'elementor_one/switched_domain', function( $facade ) {
+			$facade->service()->renew_access_token();
+		} );
 	}
 }

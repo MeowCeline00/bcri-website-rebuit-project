@@ -23,6 +23,9 @@ use ImageOptimization\Classes\{
 	Utils,
 };
 
+use ImageOptimization\Modules\Connect\Module as Connect_Module;
+use ImageOptimization\Modules\Connect\Classes\Config;
+
 use ImageOptimization\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -30,6 +33,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Module extends Module_Base {
+
+	const ONE_MISMATCH_URL = '/wp-admin/admin.php?page=elementor-home#/home/url-mismatch';
+
 	public function get_name(): string {
 		return 'core';
 	}
@@ -63,6 +69,7 @@ class Module extends Module_Base {
 
 		// @var ImageOptimizer/Modules/ConnectManager/Module
 		$module = Plugin::instance()->modules_manager->get_modules( 'connect-manager' );
+		$upgrade_link = Utils::get_upgrade_link( 'https://go.elementor.com/io-quota-upgrade/' );
 
 		if ( ! $module->connect_instance->get_connect_status() || $module->connect_instance->images_left() > 0 ) {
 			return;
@@ -84,7 +91,7 @@ class Module extends Module_Base {
 						'image-optimization'
 					); ?>
 
-					<a href="https://go.elementor.com/io-quota-upgrade/">
+					<a href="<?php echo esc_url( $upgrade_link ); ?>">
 						<?php esc_html_e(
 							'Upgrade plan now',
 							'image-optimization'
@@ -97,21 +104,22 @@ class Module extends Module_Base {
 	}
 
 	public function maybe_add_80_quota_reached_notice() {
-
 		// @var ImageOptimizer/Modules/ConnectManager/Module
 		$module = Plugin::instance()->modules_manager->get_modules( 'connect-manager' );
 
 		$connect_status = $module->connect_instance->get_connect_status();
 
-		if ( ! isset( $connect_status->quota ) && ! isset( $connect_status->used_quota ) ) {
+		if ( ! isset( $connect_status->quota ) || ! isset( $connect_status->used_quota ) ) {
 			return;
 		}
 
 		$usage = $connect_status->used_quota / $connect_status->quota * 100;
 
-		if ( ! $module->connect_instance->get_connect_status() || ( $usage < 80 || $usage === 100 ) ) {
+		if ( $usage < 80 || 100 === $usage ) {
 			return;
 		}
+
+		$upgrade_link = Utils::get_upgrade_link( 'https://go.elementor.com/io-quota-upgrade/' );
 
 		?>
 		<div class="notice notice-warning notice image-optimizer__notice image-optimizer__notice--warning">
@@ -129,7 +137,7 @@ class Module extends Module_Base {
 						'image-optimization'
 					); ?>
 
-					<a href="https://go.elementor.com/io-quota-upgrade/">
+					<a href="<?php echo esc_url( $upgrade_link ); ?>">
 						<?php esc_html_e(
 							'Upgrade plan now',
 							'image-optimization'
@@ -149,6 +157,8 @@ class Module extends Module_Base {
 			return;
 		}
 
+		$onclick = self::is_elementor_one() ? 'window.location.href = "' . self::ONE_MISMATCH_URL . '";' : 'document.dispatchEvent( new Event( "image-optimizer/auth/url-mismatch-modal/open" ) );';
+
 		?>
 		<div class="notice notice-error notice image-optimizer__notice image-optimizer__notice--error">
 			<p>
@@ -165,7 +175,7 @@ class Module extends Module_Base {
 						'image-optimization'
 					); ?>
 
-					<button type="button" onclick="document.dispatchEvent( new Event( 'image-optimizer/auth/url-mismatch-modal/open' ) );">
+					<button type="button" onclick="<?php echo esc_js( $onclick ); ?>">
 						<?php esc_html_e(
 							'Fix mismatched URL',
 							'image-optimization'
@@ -192,15 +202,16 @@ class Module extends Module_Base {
 		// @var ImageOptimizer/Modules/ConnectManager/Module
 		$module = Plugin::instance()->modules_manager->get_modules( 'connect-manager' );
 
-		if ( $module->connect_instance->is_connected() ) {
+		if ( $module->connect_instance->is_connected() && ! self::is_elementor_one() ) {
 			$custom_links['upgrade'] = sprintf(
-				'<a href="%s" style="color: #524CFF; font-weight: 700;" target="_blank" rel="noopener noreferrer">%s</a>',
-				'https://go.elementor.com/io-plugins-upgrade/',
+				'<a href="%s" style="color: #524cff; font-weight: 700;" target="_blank" rel="noopener noreferrer">%s</a>',
+				Utils::get_upgrade_link( 'https://go.elementor.com/io-plugins-upgrade/' ),
 				esc_html__( 'Upgrade', 'image-optimization' )
 			);
-		} else {
+		}
+		if ( ! $module->connect_instance->is_connected() ){
 			$custom_links['connect'] = sprintf(
-				'<a href="%s" style="color: #524CFF; font-weight: 700;">%s</a>',
+				'<a href="%s" style="color: #524cff; font-weight: 700;">%s</a>',
 				admin_url( 'admin.php?page=' . \ImageOptimization\Modules\Settings\Module::SETTING_BASE_SLUG ),
 				esc_html__( 'Connect', 'image-optimization' )
 			);
@@ -250,6 +261,8 @@ class Module extends Module_Base {
 				'siteUrl' => wp_parse_url( get_site_url(), PHP_URL_HOST ),
 				'thumbnailSizes' => wp_get_registered_image_subsizes(),
 				'isDevelopment' => defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG,
+				'isRTL' => is_rtl(),
+				'version' => IMAGE_OPTIMIZATION_VERSION,
 			]
 		);
 
@@ -257,7 +270,6 @@ class Module extends Module_Base {
 		 * @var ImageOptimizer\Modules\ConnectManager\Module $module
 		 */
 		$module = Plugin::instance()->modules_manager->get_modules( 'connect-manager' );
-		$is_connect_on_fly = $module->connect_instance->get_is_connect_on_fly();
 		$connect_email = $module->connect_instance->get_connect_data()['user']['email'] ?? null;
 		$show_reset = ! $module->connect_instance->is_connected()
 							&& ( $module->connect_instance->get_client_id() || $module->connect_instance->get_client_secret() );
@@ -266,8 +278,10 @@ class Module extends Module_Base {
 			'image-optimization-admin',
 			'imageOptimizerUserData',
 			[
-				'isConnectOnFly' => $is_connect_on_fly,
+				'isConnectOnFly' => self::is_connect_on_fly(),
 				'isConnected' => $module->connect_instance->is_connected(),
+				'isElementorOne' => self::is_elementor_one(),
+				'currentPage' => get_current_screen()->base,
 				'isActivated' => $module->connect_instance->is_activated(),
 				'isUrlMismatch' => ! $module->connect_instance->is_valid_home_url(),
 				'planData' => $module->connect_instance->is_activated() ? $module->connect_instance->get_connect_status() : null,
@@ -299,6 +313,29 @@ class Module extends Module_Base {
 
 	private function should_render(): bool {
 		return ( Utils::is_media_page() || Utils::is_plugin_page() ) && Utils::user_is_admin();
+	}
+
+	private static function is_connect_on_fly(): bool {
+		/**
+		 * @var ImageOptimizer\Modules\ConnectManager\Module $module
+		 */
+		$module = Plugin::instance()->modules_manager->get_modules( 'connect-manager' );
+		return $module->connect_instance->get_is_connect_on_fly();
+	}
+
+	public static function is_elementor_one(): bool {
+
+		if ( ! self::is_connect_on_fly() ) {
+			return false;
+		}
+
+		$connect = Connect_Module::get_connect();
+
+		if ( ! $connect ) {
+			return false;
+		}
+
+		return Connect_Module::get_connect()->get_config( 'app_type' ) !== Config::APP_TYPE;
 	}
 
 	public static function on_deactivation(): void {
@@ -361,8 +398,8 @@ class Module extends Module_Base {
 	 */
 	public function add_bulk_optimization_links(): void {
 		$page_url = add_query_arg(
-			[ 'page' => 'image-optimization-bulk-optimization' ],
-			admin_url( 'upload.php' )
+			[ 'page' => 'image-optimization-settings', 'tab' => 'image-optimization-bulk-optimization' ],
+			admin_url( 'admin.php' )
 		);
 
 		?>
@@ -404,14 +441,14 @@ class Module extends Module_Base {
 				return;
 			}
 
-			add_action( 'admin_notices', [ $this, 'maybe_add_quota_reached_notice' ] );
-			add_action( 'admin_notices', [ $this, 'maybe_add_80_quota_reached_notice' ] );
+			if ( ! self::is_elementor_one() ) {
+				add_action( 'admin_notices', [ $this, 'maybe_add_quota_reached_notice' ] );
+				add_action( 'admin_notices', [ $this, 'maybe_add_80_quota_reached_notice' ] );
+			}
+
 			add_action( 'admin_notices', [ $this, 'maybe_add_url_mismatch_notice' ] );
 
 			if ( Utils::is_media_page() ) {
-				add_action('in_admin_header', function () {
-					$this->render_top_bar();
-				});
 
 				add_action('all_admin_notices', function () {
 					$this->render_app();

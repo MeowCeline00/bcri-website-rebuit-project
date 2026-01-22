@@ -130,6 +130,7 @@ class Bulk_Optimization_Controller {
 			self::set_bulk_operation_token( $operation_id, $bulk_token );
 		} catch ( Bulk_Token_Obtaining_Error $e ) {
 			$bulk_token = null;
+			throw new Quota_Exceeded_Error( __( 'Images quota exceeded', 'image-optimization' ) );
 		}
 
 		foreach ( $images['attachments_in_quota'] as $attachment_id ) {
@@ -254,11 +255,11 @@ class Bulk_Optimization_Controller {
 		$images_left = Plugin::instance()->modules_manager->get_modules( 'connect-manager' )->connect_instance->images_left();
 
 		if ( ! $images_left ) {
-			throw new Quota_Exceeded_Error( __( 'Images quota exceeded', 'image-optimization' ) );
+			//throw new Quota_Exceeded_Error( __( 'Images quota exceeded', 'image-optimization' ) );
 		}
 
 		if ( $limit_to_quota ) {
-			$query->set_paging_size( $images_left );
+			//$query->set_paging_size( $images_left );
 		}
 
 		$wp_query = $query->execute();
@@ -277,12 +278,8 @@ class Bulk_Optimization_Controller {
 
 			$sizes_count = count( $wp_meta->get_size_keys() );
 
-			if ( $output['total_images_count'] + $sizes_count <= $images_left ) {
-				$output['total_images_count'] += $sizes_count;
-				$output['attachments_in_quota'][] = $attachment_id;
-			} else {
-				break;
-			}
+			$output['total_images_count'] += $sizes_count;
+			$output['attachments_in_quota'][] = $attachment_id;
 		}
 
 		$output['attachments_out_of_quota'] = array_diff( $wp_query->posts, $output['attachments_in_quota'] );
