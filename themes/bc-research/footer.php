@@ -54,7 +54,7 @@ if (!defined('ABSPATH')) exit;
         </ul>
         <h4 class="site-footer__heading">Resources</h4>
         <ul class="site-footer__list">
-          <li><a href="/patents-publications">Patent and Publications</a></li>
+          <li><a href="/patent-and-publications/">Patent and Publications</a></li>
           <li><a href="/careers">Careers</a></li>
         </ul>
       </div>
