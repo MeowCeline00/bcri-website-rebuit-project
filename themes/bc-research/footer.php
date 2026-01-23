@@ -34,9 +34,9 @@ if (!defined('ABSPATH')) exit;
         <h4 class="site-footer__heading">Core Research Areas</h4>
         <ul class="site-footer__list">
           <li><a href="/biobased-products">Biobased Products</a></li>
-          <li><a href="/chemistry-of-multiphase-systems">Chemistry of multiphase systems</a></li>
+          <li><a href="/chemistry-of-multiphase-systems">Chemistry of Multiphase systems</a></li>
           <li><a href="/extreme-industrial-chemistry">Extreme Industrial Chemistry</a></li>
-          <li><a href="/hydrogen-separation">Hydrogen processing and separation</a></li>
+          <li><a href="/hydrogen-separation">Hydrogen Processing and Separation</a></li>
         </ul>
       </div>
 
