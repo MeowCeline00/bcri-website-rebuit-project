@@ -1,56 +1,134 @@
-/* Filter bar */
-.eq-filters{
-  display:flex;
-  gap:24px;
-  overflow-x:auto;
-  white-space:nowrap;
-  padding-bottom:8px;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:thin;
-}
-.eq-filters::-webkit-scrollbar{height:4px;}
-.eq-filters::-webkit-scrollbar-thumb{background:#cfcfcf;border-radius:4px;}
+/* =========================================================
+   Equipment Filter Bar (FORCED single line + scroll)
+   ========================================================= */
 
-/* Filter button look */
-.eq-filter a.elementor-button{
-  background:transparent;
-  border:none;
-  padding:0;
-  color:#2b2b2b;
-  font-weight:500;
-  box-shadow:none;
-  position:relative;
+.eq-filters {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center;
+  justify-content: flex-start;
+
+  gap: 24px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+
+  margin-top: 24px;
+  margin-bottom: 32px;
+  padding-bottom: 12px;
+
+  scrollbar-width: thin; 
 }
 
-/* underline on hover + active */
-.eq-filter a.elementor-button::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-6px;
-  width:100%;
-  height:2px;
-  background:transparent;
-  transition:background .2s ease;
+/* scrollbar styling (WebKit browsers) */
+.eq-filters::-webkit-scrollbar {
+  height: 6px;
+  display: block;
 }
+
+.eq-filters::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.eq-filters::-webkit-scrollbar-thumb {
+  background: #cfcfcf;
+  border-radius: 4px;
+}
+
+
+/* =========================================================
+   Filter Buttons
+   ========================================================= */
+
+.eq-filter {
+  flex: 0 0 auto !important; 
+  white-space: nowrap;
+}
+
+.eq-filter a.elementor-button,
+.eq-filter .elementor-button-text {
+  white-space: nowrap;
+}
+
+.eq-filter a.elementor-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+
+  color: #2b2b2b;
+  font-weight: 500;
+  line-height: 1.2;
+
+  box-shadow: none;
+  position: relative;
+}
+
+/* underline (hover + active) */
+.eq-filter a.elementor-button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+
+  width: 100%;
+  height: 2px;
+  background: transparent;
+
+  transition: background 0.2s ease;
+}
+
 .eq-filter:hover a.elementor-button::after,
-.eq-filter.is-active a.elementor-button::after{
-  background:#0FB8D2;
+.eq-filter.is-active a.elementor-button::after {
+  background: #0FB8D2;
 }
 
-/* Grid (works for flex or grid containers) */
-.eq-grid{
-  display:flex;
-  flex-wrap:wrap;
-  gap:24px;
-}
-.eq-grid .eq-card{
-  width:calc((100% - 48px)/3);
+
+/* =========================================================
+   Equipment Grid
+   ========================================================= */
+
+.eq-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
 }
 
-@media (max-width:1024px){
-  .eq-grid .eq-card{width:calc((100% - 24px)/2);}
+/* desktop: 3 columns */
+.eq-grid .eq-card {
+  width: calc((100% - 48px) / 3);
 }
-@media (max-width:767px){
-  .eq-grid .eq-card{width:100%;}
+
+/* tablet: 2 columns */
+@media (max-width: 1024px) {
+  .eq-grid .eq-card {
+    width: calc((100% - 24px) / 2);
+  }
+}
+
+/* mobile: 1 column */
+@media (max-width: 767px) {
+  .eq-grid .eq-card {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   Large screens: spread tabs evenly AND keep scrollbar if needed
+   ========================================================= */
+@media (min-width: 1200px) {
+  .eq-filters {
+    justify-content: space-between; 
+    overflow-x: auto;             
+    padding-bottom: 8px;           
+    scrollbar-width: thin;
+  }
+
+  .eq-filters::-webkit-scrollbar {
+    height: 6px;
+    display: block;               
+  }
 }
