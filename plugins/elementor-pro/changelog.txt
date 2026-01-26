@@ -1,5 +1,18 @@
 # Elementor Pro - by Elementor.com
 
+#### 3.34.3 - 2026-01-26
+
+* Fix: Theme Builder WordPress view does not work as expected
+* Fix: Submissions menu appears even when the setting is disabled
+
+#### 3.34.2 - 2026-01-22
+
+* Tweak: Updated notification behavior in Elementor menu in WordPress admin
+
+#### 3.34.1 - 2026-01-20
+
+* Tweak: Unified the Elementor interface into a single place to manage, optimize, and configure Elementor capabilities in WordPress admin
+
 #### 3.34.0 - 2025-12-22
 
 * New: Added support for Display Conditions for Atomic Elements - Editor V4

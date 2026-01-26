@@ -81,6 +81,7 @@ final class Modules_Manager {
 			'search',
 			'cloud-library',
 			'variables',
+			'editor-one',
 		];
 
 		foreach ( $modules as $module_name ) {
