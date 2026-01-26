@@ -100,6 +100,11 @@ add_filter('nav_menu_link_attributes', function ($atts, $item, $args) {
     return $atts;
   }
 
+  if (!empty($item->url) && strpos($item->url, 'linkedin.com/company/bc-research-inc-/posts/?feedView=all') !== false) {
+    $atts['target'] = '_blank';
+    $atts['rel'] = 'noopener noreferrer';
+  }
+
   if (!empty($item->classes) && in_array('menu-item-has-children', $item->classes, true)) {
     $atts['href'] = '#';
     $atts['role'] = 'button';

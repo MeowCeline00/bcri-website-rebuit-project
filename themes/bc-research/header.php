@@ -33,7 +33,9 @@ if (!defined('ABSPATH')) exit;
             <li class="menu-item"><a href="/resources">Resources</a></li>
             <li class="menu-item"><a href="/news">News</a></li>
             <li class="menu-item"><a href="/contact">Contact</a></li>
-            <li class="menu-item"><a class="utility-icon" href="https://www.linkedin.com" aria-label="LinkedIn"><span class="sr-only">LinkedIn</span></a></li>
+            <li class="menu-item"><a class="utility-icon" href="https://www.linkedin.com/company/bc-research-inc-/posts/?feedView=all"  target="_blank"
+    rel="noopener noreferrer"
+    aria-label="LinkedIn"><span class="sr-only">LinkedIn</span></a></li>
           </ul>
         <?php endif; ?>
       </nav>
