@@ -1,0 +1,71 @@
+.elementor-60 .elementor-element.elementor-element-89b072f {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+  align-items: stretch !important;
+}
+
+.elementor-60 .elementor-element.elementor-element-89b072f > .e-con-inner {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+  align-items: stretch !important;
+}
+
+.elementor-60 .elementor-element.elementor-element-89b072f > .elementor-element,
+.elementor-60 .elementor-element.elementor-element-89b072f > .e-con-inner > .elementor-element {
+  height: 100% !important;
+  min-height: 100% !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+
+  padding: 18px 16px !important;  
+  box-sizing: border-box !important;
+}
+
+.elementor-60 .elementor-element.elementor-element-89b072f .elementor-widget-icon {
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.elementor-60 .elementor-element.elementor-element-89b072f .elementor-widget-text-editor,
+.elementor-60 .elementor-element.elementor-element-89b072f .elementor-widget-text-editor .elementor-widget-container {
+  width: 100%;
+  text-align: center;
+}
+
+
+@media (max-width: 1024px) {
+  .elementor-60 .elementor-element.elementor-element-89b072f,
+  .elementor-60 .elementor-element.elementor-element-89b072f > .e-con-inner {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  /* Match mobile layout: stack form + map column on tablet. */
+  .elementor-60 .elementor-element.elementor-element-61e3e70 > .e-con-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .elementor-60 .elementor-element.elementor-element-61e3e70
+  > .elementor-element {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .elementor-60 .elementor-element.elementor-element-89b072f,
+  .elementor-60 .elementor-element.elementor-element-89b072f > .e-con-inner {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+}
