@@ -87,7 +87,7 @@ if (!defined('ABSPATH')) exit;
           </div>
         </div>
         <a class="site-footer__cta" href="/contact">Contact Us</a>
-        <a class="site-footer__linkedin" href="https://www.linkedin.com" aria-label="LinkedIn">
+        <a class="site-footer__linkedin" href="https://www.linkedin.com/company/bc-research-inc-/posts/?feedView=all" target="_blank" rel="noopener" aria-label="LinkedIn">
           <i class="bi bi-linkedin" aria-hidden="true"></i>
         </a>
       </div>
