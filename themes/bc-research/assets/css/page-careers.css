@@ -1,0 +1,37 @@
+.page-careers .elementor-element-70c4349e {
+  align-items: stretch;
+  height: 100%;
+}
+
+.page-careers .elementor-element-70c4349e > .elementor-element {
+  height: 100%;
+}
+
+.page-careers .elementor-element-1b8ff79,
+.page-careers .elementor-element-80081e6,
+.page-careers .elementor-element-f5c2d75 {
+  height: 100%;
+}
+
+.page-careers .elementor-element-f5c2d75 {
+  position: relative;
+  align-self: stretch;
+  overflow: hidden;
+}
+
+.page-careers .elementor-element-f5c2d75 .elementor-widget-container {
+  position: absolute;
+  inset: 0;
+}
+
+.page-careers .elementor-element-70c4349e .elementor-widget-container,
+.page-careers .elementor-element-70c4349e .elementor-widget-container figure,
+.page-careers .elementor-element-70c4349e .elementor-widget-container img {
+  height: 100%;
+}
+
+.page-careers .elementor-element-70c4349e .elementor-widget-container img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
