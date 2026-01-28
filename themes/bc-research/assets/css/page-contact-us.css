@@ -291,3 +291,12 @@
 .elementor-widget-form {
   flex: 1 1 auto;
 }
+
+/* Normalize image heights inside the Our Work section */
+.elementor-element.elementor-element-4f8e329 img {
+  width: 100%;
+  height: clamp(180px, 26vw, 260px);
+  object-fit: cover;
+  display: block;
+  flex: 1 1 auto;
+}
