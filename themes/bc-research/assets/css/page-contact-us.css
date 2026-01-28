@@ -205,6 +205,33 @@
   line-height: 1.25;
 }
 
+@media (max-width: 767px) {
+  .elementor-60 .elementor-element.elementor-element-89b072f {
+    grid-auto-rows: auto;
+  }
+
+  .elementor-60 .elementor-element.elementor-element-89b072f > .elementor-element {
+    aspect-ratio: auto;
+    height: auto;
+    min-height: 140px;
+    padding: 16px 18px;
+  }
+
+  .elementor-60 .elementor-element.elementor-element-89b072f
+  .elementor-widget-icon-box,
+  .elementor-60 .elementor-element.elementor-element-89b072f
+  .elementor-widget-icon-box .elementor-widget-container {
+    height: auto;
+  }
+
+  .elementor-60 .elementor-element.elementor-element-89b072f
+  .elementor-icon-box-title,
+  .elementor-60 .elementor-element.elementor-element-89b072f
+  .elementor-icon-box-description {
+    word-break: break-word;
+  }
+}
+
 @media (min-width: 768px) {
   .elementor-60 .elementor-element.elementor-element-89b072f {
     --e-con-grid-template-columns: repeat(3, minmax(120px, 1fr));
