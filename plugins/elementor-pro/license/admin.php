@@ -225,7 +225,7 @@ class Admin {
 		}
 
 		?>
-		<div class="wrap elementor-admin-page-license">
+		<div class="wrap elementor-admin-page-license <?php echo $this->is_editor_one_active() ? 'elementor-admin-page-license-editor-one' : ''; ?>">
 			<h2 class="wp-heading-inline"><?php echo esc_html__( 'License Settings', 'elementor-pro' ); ?></h2>
 
 			<form class="<?php echo esc_attr( $this->get_license_box_classes() ); ?>" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
