@@ -42,7 +42,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-auto-rows: 1fr;
-  gap: 20px;
+  gap: 8px;
   align-items: stretch;
   justify-items: stretch;
 }
@@ -50,11 +50,27 @@
 .elementor-60 .elementor-element.elementor-element-89b072f
 > .elementor-element {
   height: 100%;
-  min-height: 200px;
+  min-height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 16px;
+}
+
+.elementor-60 .elementor-element.elementor-element-89b072f
+> .elementor-element > .e-con-inner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.elementor-60 .elementor-element.elementor-element-89b072f
+> .elementor-element > .e-con-inner > .elementor-element {
+  width: 100%;
+  max-width: 100%;
+  flex: 1 1 100%;
+  align-self: stretch;
 }
 
 .elementor-60 .elementor-element.elementor-element-f7d3946 {
@@ -103,6 +119,32 @@
 .elementor-icon-box-icon {
   margin-left: 0;
   margin-right: 0;
+}
+
+.elementor-60 .elementor-element.elementor-element-f7d3946,
+.elementor-60 .elementor-element.elementor-element-8db360a {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+.elementor-60 .elementor-element.elementor-element-8db360a {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.elementor-60 .elementor-element.elementor-element-a1c5ac0 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.elementor-60 .elementor-element.elementor-element-a1c5ac0,
+.elementor-60 .elementor-element.elementor-element-8db360a {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 .elementor-60 .elementor-element.elementor-element-89b072f
@@ -156,7 +198,7 @@
 .elementor-icon-box-title,
 .elementor-60 .elementor-element.elementor-element-89b072f
 .elementor-icon-box-description {
-  font-size: clamp(12px, 1.2vw, 16px);
+  font-size: clamp(10px, 1vw, 14px);
   line-height: 1.2;
   word-break: break-word;
   overflow-wrap: anywhere;
@@ -164,7 +206,7 @@
 
 .elementor-60 .elementor-element.elementor-element-89b072f
 .elementor-widget-text-editor p {
-  font-size: clamp(12px, 1.2vw, 16px);
+  font-size: clamp(10px, 1vw, 14px);
   line-height: 1.2;
   margin-bottom: 0;
 }
@@ -172,7 +214,7 @@
 
 .elementor-60 .elementor-element.elementor-element-55e4b14
 .elementor-widget-google_maps {
-  flex: 1 1 auto;               /* 🔥 take remaining height */
+  flex: 1 1 auto;          
   min-height: 240px;
 }
 
@@ -190,6 +232,38 @@
   > .elementor-element {
     min-height: 200px;
   }
+}
+
+@media (max-width: 1200px) {
+  .elementor-60 .elementor-element.elementor-element-044c7bc {
+    width: 100%;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    text-align: center;
+  }
+
+  .elementor-60 .elementor-element.elementor-element-f7d3946 {
+    margin: 0 !important;
+  }
+
+  .elementor-60 .elementor-element.elementor-element-f7d3946
+  .elementor-icon-box-wrapper,
+  .elementor-60 .elementor-element.elementor-element-f7d3946
+  .elementor-icon-box-content {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+.elementor-60 .elementor-element.elementor-element-e1027d2
+.elementor-image-carousel-wrapper img {
+  width: 100%;
+  height: clamp(180px, 26vw, 260px);
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  flex: 1 1 auto;
 }
 
 @media (max-width: 767px) {
