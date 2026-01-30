@@ -130,6 +130,35 @@
       card.setAttribute('role', 'link');
     }
   });
+
+  const contactInfo = document.querySelector('.elementor-60 .elementor-element-89b072f');
+  if (contactInfo) {
+    const infoLines = contactInfo.querySelectorAll('.elementor-widget-text-editor p');
+    infoLines.forEach((line) => {
+      if (line.querySelector('a')) return;
+
+      const text = line.textContent.trim();
+      if (!text) return;
+
+      if (text.includes('@')) {
+        const emailLink = document.createElement('a');
+        emailLink.href = `mailto:${text}`;
+        emailLink.textContent = text;
+        line.textContent = '';
+        line.appendChild(emailLink);
+        return;
+      }
+
+      const normalized = text.replace(/[^0-9+]/g, '');
+      if (normalized === '+16044153570' || normalized === '16044153570' || normalized === '6044153570') {
+        const phoneLink = document.createElement('a');
+        phoneLink.href = 'tel:+16044153570';
+        phoneLink.textContent = text;
+        line.textContent = '';
+        line.appendChild(phoneLink);
+      }
+    });
+  }
 })();
 
 
