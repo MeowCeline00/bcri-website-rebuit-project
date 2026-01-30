@@ -1,0 +1,56 @@
+﻿/* Chemistry of multiphase systems: align Core Research Areas card headers and first description line. */
+.elementor-element.elementor-element-e6198ab {
+  --core-ra-title-height: 4.2em;
+  --core-ra-desc-height: 6.8em;
+}
+
+.elementor-element.elementor-element-e6198ab .elementor-widget-heading,
+.elementor-element.elementor-element-e6198ab .elementor-icon-box-title,
+.elementor-element.elementor-element-e6198ab .elementor-image-box-title,
+.elementor-element.elementor-element-e6198ab .elementor-cta__title {
+  min-height: var(--core-ra-title-height);
+  display: flex;
+  align-items: flex-start;
+  margin: 0;
+}
+
+.elementor-element.elementor-element-e6198ab .elementor-widget-heading .elementor-heading-title,
+.elementor-element.elementor-element-e6198ab .elementor-icon-box-title,
+.elementor-element.elementor-element-e6198ab .elementor-image-box-title,
+.elementor-element.elementor-element-e6198ab .elementor-cta__title {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.elementor-element.elementor-element-e6198ab .elementor-widget-text-editor,
+.elementor-element.elementor-element-e6198ab .elementor-icon-box-description,
+.elementor-element.elementor-element-e6198ab .elementor-image-box-description,
+.elementor-element.elementor-element-e6198ab .elementor-cta__description {
+  min-height: var(--core-ra-desc-height);
+  display: flex;
+  align-items: flex-start;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.elementor-element.elementor-element-e6198ab .elementor-widget-text-editor p,
+.elementor-element.elementor-element-e6198ab .elementor-icon-box-description p,
+.elementor-element.elementor-element-e6198ab .elementor-image-box-description p,
+.elementor-element.elementor-element-e6198ab .elementor-cta__description p {
+  margin: 0;
+  line-height: inherit;
+}
+
+@media (max-width: 1024px) {
+  .elementor-element.elementor-element-e6198ab {
+    --core-ra-title-height: 4.6em;
+    --core-ra-desc-height: 7.4em;
+  }
+}
+
+@media (max-width: 767px) {
+  .elementor-element.elementor-element-e6198ab {
+    --core-ra-title-height: 3.2em;
+    --core-ra-desc-height: 5.8em;
+  }
+}
