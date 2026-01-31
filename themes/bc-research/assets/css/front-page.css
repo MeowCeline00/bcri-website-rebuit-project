@@ -208,6 +208,43 @@
   }
 }
 
+/* Front page latest news: align card titles to the same start height. */
+.elementor-24 .elementor-element.elementor-element-4968ecd {
+  align-items: stretch;
+}
+
+.elementor-24 .elementor-element.elementor-element-4968ecd > .elementor-element {
+  display: flex;
+  flex-direction: column;
+}
+
+.elementor-24 .elementor-element.elementor-element-4968ecd .elementor-widget-heading {
+  --latest-news-title-height: 3.2em;
+  min-height: var(--latest-news-title-height);
+  margin: 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+.elementor-24 .elementor-element.elementor-element-4968ecd .elementor-heading-title.elementor-size-default {
+  line-height: 1.25;
+}
+
+@media (max-width: 1024px) {
+  .elementor-24 .elementor-element.elementor-element-4968ecd .elementor-heading-title.elementor-size-default {
+    font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .elementor-24 .elementor-element.elementor-element-4968ecd {
+    --latest-news-title-height: 3.6em;
+  }
+
+  .elementor-24 .elementor-element.elementor-element-4968ecd .elementor-heading-title.elementor-size-default {
+    font-size: clamp(1rem, 4.2vw, 1.15rem);
+  }
+}
 
 
 
